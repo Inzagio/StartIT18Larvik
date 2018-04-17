@@ -1,6 +1,6 @@
 // JavaScript source code
-(function (){
+(function (){ // Denne skal wrappe hele koden
     'use strict';
 
 
-})();
+})(); // Ikke legg kode under denne
