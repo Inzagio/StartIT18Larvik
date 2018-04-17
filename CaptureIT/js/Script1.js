@@ -4,3 +4,4 @@
 
 
 })();
+// Åsmund tester å comitte
