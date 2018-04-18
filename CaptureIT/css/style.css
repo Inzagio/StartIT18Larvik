@@ -32,7 +32,6 @@ header {
     top: 80px;
     left: -300px;
     background-color: rgb(123, 255, 145);
-    overflow-x: hidden;
     transition: 0.5s;
     padding-top: 30px;
     margin-left: -50px;
