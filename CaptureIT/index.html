@@ -13,7 +13,36 @@
     <script src="js/status.js"></script>
 </head>
 <body>
-    <img src="img/renewgen_logo.svg" class="logo" />
-    <script type="text/javascript"></script>
+    <header>
+        <div>
+            <div>
+                <h1 id="headerTekst">
+                    <span class="highlight">ReNewGen</span>
+                    <br>Capture IT
+                </h1>
+            </div>
+
+            <span id="menuButton" onclick="menuOpen()">&#9776; <b>Menu</b></span>
+            <div id="menu" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="menuClose()">&times;</a>
+                <a href="#"><b>Login</b></a>
+                <a href="#">Savings/Loans</a>
+                <a href="#">Status</a>
+                <a href="#">Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Welcome</h1>
+            <img class="logo" src="img/renewgen_logo.svg" />
+        </div>
+    </section>
+
+    <footer>
+        <p>Capture-IT</p>
+    </footer>
+
 </body>
 </html>

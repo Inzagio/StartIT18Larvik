@@ -1,3 +1,75 @@
-﻿body
-{
+﻿body {
+    background-color: #00ff5528;
+}
+
+header {
+    background: #69bae9;
+    color: #000000;
+    border-bottom: #0030ce 4px solid;
+    margin: -8px;
+    margin-top: -21px;
+}
+
+#headerTekst {
+    text-align: center;
+}
+
+.highlight {
+    font-size: 1.5em;
+}
+
+#menuButton {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 0px 0px 0px 20px;
+}
+
+.sidenav {
+    height: 250px;
+    width: 250px;
+    position: absolute;
+    z-index: 1;
+    top: 80px;
+    left: -300px;
+    background-color: rgb(123, 255, 145);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+    margin-left: -50px;
+}
+
+    .sidenav a {
+        padding: 15px 8px 8px 75px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+    }
+
+        .sidenav a:hover {
+            color: #ffffff;
+        }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 40px;
+        margin-left: 50px;
+    }
+
+.logo {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
 }
