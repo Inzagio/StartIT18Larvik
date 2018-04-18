@@ -1,7 +1,7 @@
 // JavaScript source code
 function admin_panel() {
     wrapper();
-    header();
+  
     side_bar();
     main_content();
     footer();
@@ -15,9 +15,9 @@ function admin_panel() {
 //}
 
 function wrapper() {
-    var wrapper = document.createElement("wrapper");
+    var wrapper = document.createElement("div");
     wrapper.setAttribute("id", "wrapper");
-    document.body.appendChild(wrapper);
+    replacedNode = showcase.replaceChild(wrapper, container);
 }
 
 function side_bar() {
@@ -26,14 +26,14 @@ function side_bar() {
     sidebar.setAttribute("class", "sidebar");
     document.getElementById("wrapper").appendChild(sidebar);
 }
-function header() {
-    var header = document.createElement("header");
-    header.innerHTML = "Header";
-    header.setAttribute("class", "header");
-    document.getElementById("wrapper").appendChild(header);
-}
+//function header() {
+//    var header = document.createElement("header");
+//    header.innerHTML = "Header";
+//    header.setAttribute("class", "header");
+//    document.getElementById("wrapper").appendChild(header);
+//}
 function main_content () {
-    var mainContent = document.createElement("mainContent");
+    var mainContent = document.createElement("div");
     mainContent.innerHTML = "lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum"
     mainContent.setAttribute("class", "content");
     document.getElementById("wrapper").appendChild(mainContent);
