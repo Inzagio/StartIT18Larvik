@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width" />
 
     <title>Capture IT</title>
-
+    
+    <link rel="stylesheet" href="css/admin.css"/>
     <link rel="stylesheet" href="css/style.css" />
 
     <script src="js/menu.js"></script>
     <script src="js/status.js"></script>
+    <script src="js/admin.js"></script>
 </head>
 <body>
     <header>
@@ -28,13 +30,13 @@
                 <a href="#"><b>Login</b></a>
                 <a href="#">Savings/Loans</a>
                 <a href="#">Status</a>
-                <a href="#">Admin</a>
+                <a onclick="admin_panel()">Admin</a>
             </div>
         </div>
     </header>
 
     <section id="showcase">
-        <div class="container">
+        <div id="container">
             <h1>Welcome</h1>
             <img class="logo" src="img/renewgen_logo.svg" />
         </div>
