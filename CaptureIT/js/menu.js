@@ -2,25 +2,33 @@
 var menu = function () {
     'use strict';
 
-    const extraPadding = 50;
+    const menuExtraPadding = 52; // Extra padding on the bottom of menu.
+    const loginExtraPadding = 30; // Extra padding on the bottom of login form.
     var menuDiv;
-    var menuWidth;
-    var menuPos;
-    var loginBox
+    var menuHeight;
+    var loginBox;
+    var menuIsOpen;
 
     document.addEventListener('DOMContentLoaded', menuOnLoad);
     function menuOnLoad() {
         menuDiv = document.getElementById('menu');
-        menuWidth = parseInt(window.getComputedStyle(menuDiv).getPropertyValue('width'));
-        menuPos = Math.abs(parseInt(window.getComputedStyle(menuDiv).getPropertyValue('left')) + menuWidth + extraPadding);
+        menuDiv.style.top = parseInt(window.getComputedStyle(document.getElementsByTagName('header')[0]).getPropertyValue('height')) + 'px';
 
         // Load initial items
         menuSetup();
+        menuDiv.style.height = '0px';
+        menuIsOpen = false;
     }
 
     function menuSetup() {
         // Load initial items
-        menuDiv.innerHTML = getMenuItems();
+        var menuItems = getMenuItems();
+        menuDiv.innerHTML = '';
+        for (var i = 0; i < menuItems.length; i++) {
+            menuDiv.innerHTML += menuItems[i];
+        }
+        menuHeight = (menuItems.length * menuExtraPadding);
+        menuDiv.style.height = menuHeight + 'px';
 
         // Login Box
         loginBox = document.createElement('div');
@@ -28,13 +36,14 @@ var menu = function () {
         menuDiv.appendChild(loginBox);
 
         loginBox.style = '\
-            position: absolute; \
             z-index: 2; \
-            left: 150px; \
-            top: 50px; \
+            position: relative; \
+            left: 10px; \
             width: 180px; \
             background-color: skyblue; \
-            padding: 10px;';
+            padding: 10px; \
+            transition: 0.5s;';
+
         loginBox.innerHTML = ' \
             <form action="" name="login"> \
             Username:<br /> <input type="text" name="username"><br /> \
@@ -45,8 +54,30 @@ var menu = function () {
         document.getElementById('loginButton').addEventListener('click', loginAction);
     }
 
+    function menuOpen() {
+        if (menuIsOpen)
+            menuClose();
+        else {
+            menuDiv.style.height = menuHeight + 'px';
+            menuIsOpen = true;
+        }
+    }
+
+    function menuClose() {
+        loginHide();
+        menuDiv.style.height = '0px';
+        menuIsOpen = false;
+    }
+
+    function loginShow() {
+        loginBox.style.visibility = 'visible';
+        document.forms['login']['username'].focus();
+        menuDiv.style.height = (menuHeight + parseInt(window.getComputedStyle(loginBox).getPropertyValue('height')) + loginExtraPadding) + 'px';
+    }
+
     function loginHide() {
         loginBox.style.visibility = 'hidden';
+        menuDiv.style.height = menuHeight + 'px';
     }
 
     function loginAction() {
@@ -64,29 +95,31 @@ var menu = function () {
         isLoggedIn = true;
         loginHide();
 
-        menuDiv.innerHTML = getMenuItems();
+        menuSetup();
         setupStatus();
     }
+
+    function logout() {
+        isLoggedIn = false;
+        menuSetup();
+        setupStatus(); // Gå til start siden når man logger ut.
+    }
+
     return { // Public methods
-        logout: function () {
-            isLoggedIn = false;
-            menuSetup();
-            setupStatus(); // Gå til start siden når man logger ut.
+        logout() {
+            logout();
         },
 
-        menuOpen: function () {
-            menuDiv.style.left = menuPos + 'px';
+        menuOpen() {
+            menuOpen();
         },
 
-        menuClose: function () {
-            loginHide();
-            menuDiv.style.left = '-' + (menuWidth + extraPadding) + 'px';
+        menuClose() {
+            menuClose();
         },
 
-        loginShow: function () {
-            loginBox.style.visibility = 'visible';
-            document.forms['login']['username'].focus();
-
+        loginShow() {
+            loginShow();
         }
     }
 }();

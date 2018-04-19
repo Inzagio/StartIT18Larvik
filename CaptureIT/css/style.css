@@ -25,20 +25,18 @@ header {
 }
 
 .sidenav {
-    height: 250px;
-    width: 250px;
+    width: 225px;
     position: absolute;
     z-index: 1;
-    top: 80px;
-    left: -300px;
+    left: 0px;
     background-color: rgb(123, 255, 145);
     transition: 0.5s;
-    padding-top: 30px;
-    margin-left: -50px;
+    margin-left: 0px;
+    overflow: hidden;
 }
 
     .sidenav a {
-        padding: 15px 8px 8px 75px;
+        padding: 15px 8px 8px 15px;
         text-decoration: none;
         font-size: 25px;
         color: #000000;
@@ -55,7 +53,7 @@ header {
         top: 0;
         right: 10px;
         font-size: 40px;
-        margin-left: 50px;
+        margin-left: 40px;
     }
 
 .logo {
@@ -65,10 +63,6 @@ header {
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
         .sidenav a {
             font-size: 18px;
         }
