@@ -1,3 +1,5 @@
+
+
 // JavaScript source code
 function admin_panel() {
     wrapper();
@@ -23,11 +25,24 @@ function wrapper() {
 
 function side_bar() {
     var sidebar = document.createElement("div");
-    sidebar.innerHTML = "Admin sidebar";
-    sidebar.setAttribute("id", "sidebar");
+    sidebar.setAttribute("id", "wrapper");
     sidebar.classList.add("sidebar");
     document.getElementById("wrapper").appendChild(sidebar);
+
+    var menuItems = ["Dashboard", "Statistics", "Users", "Settings"];
+    var menu_ul = document.createElement("ul");
+    sidebar.appendChild(menu_ul);
+    menu_ul.setAttribute("id", "menu");
+
+    menuItems.forEach(function(menuItems) {
+        var menu_li = document.createElement("li");
+        menu_ul.appendChild(menu_li);
+        menu_li.innerHTML += menuItems;
+    });
+
+
 }
+
 //function header() {
 //    var header = document.createElement("header");
 //    header.innerHTML = "Header";

@@ -4,6 +4,10 @@
     grid-area: sidebar;
     background-color: #444444;
     color: white;
+    text-align: center;
+    vertical-align: middle;
+
+               
                      
 }
 
@@ -18,16 +22,23 @@
 .footer {
     grid-area: footer;
 }
+ul {
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+    text-align: left;
 
+}
 
 .wrapper {
     margin-top: 5px;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 120px 120px 120px;
+    grid-template-columns: 120px repeat(2, 1fr);
     grid-template-areas: "sidebar header header" 
                          "sidebar content content"
                          "sidebar  footer  footer";
-    background-color: #2566ce;
+    background-color: #fff;
     color: #444;
 }
