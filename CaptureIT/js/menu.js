@@ -77,6 +77,18 @@ function loginHide() {
 }
 
 function loginAction() {
+    if (document.forms['login']['username'].value == '' || document.forms['login']['password'].value == '') {
+        var errorText = document.getElementById('loginError')
+        if (!errorText) {
+            errorText = document.createElement('span');
+            errorText.setAttribute('id', 'loginError');
+            errorText.style.color = 'red';
+            loginBox.appendChild(errorText);
+        }
+        errorText.innerHTML = 'You need to enter a username and password!';
+        return;
+    }
+
     loginHide();
     //menuClose();
 
