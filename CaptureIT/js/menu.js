@@ -35,11 +35,11 @@ var menu = function () {
             width: 180px; \
             background-color: skyblue; \
             padding: 10px;';
-        loginBox.innerHTML = '' +
-            '<form action="" name="login">' +
-            'Username:<br /> <input type="text" name="username"><br />' +
-            'Password:<br /><input type="password" name="password"><br />' +
-            '<input id="loginButton" type="button" value="Log In">';
+        loginBox.innerHTML = ' \
+            <form action="" name="login"> \
+            Username:<br /> <input type="text" name="username"><br /> \
+            Password:<br /><input type="password" name="password"><br /> \
+            <input id="loginButton" type="button" value="Log In">';
 
         loginHide();
         document.getElementById('loginButton').addEventListener('click', loginAction);
