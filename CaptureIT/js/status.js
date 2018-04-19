@@ -6,6 +6,12 @@ var loginButton;
 document.addEventListener('DOMContentLoaded', setupStatus);
 function setupStatus() {
     var container = document.getElementById('container');
+    if (!container) {
+        showcase.innerHTML = '';
+        container = document.createElement('div');
+        container.setAttribute('id', 'container');
+        showcase.appendChild(container);
+    }
 
     if (!isLoggedIn) { // Basic startskjerm hvis man ikke er logget inn.
         container.innerHTML = '<h1>Welcome</h1> \
