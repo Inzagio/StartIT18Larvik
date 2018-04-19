@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Input for Application for loan out of social funds:</p>
+
+    <input id="socialLoan" type="number" oninput="alertMaxInput(this)">   </input>max aviable funds(x-input from DB -x put 100 as dummy)<br />
+
+    <p>Input for Application for loan out of social funds:</p>
+    <input id="sharesLoan" type="number" oninput="alertMaxInput(this)">   </input>max aviable funds(x-input from DB -x put 100 as dummy)<br />
+
+
+    <script>
+
+        function alertMaxInput(inputValue) {
+            if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later.
+                alert('This is all that´s aviable for loans at the moment');
+                inputValue.value = 100; //setter verdien som oversteg til maxbeløp.
+            }
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>
