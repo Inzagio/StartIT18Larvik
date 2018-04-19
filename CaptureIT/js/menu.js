@@ -76,12 +76,11 @@ function loginAction() {
         errorText.innerHTML = 'You need to enter a username and password!';
         return;
     }
-
-    setupStatus();
+    isLoggedIn = true;
     loginHide();
 
-    isLoggedIn = true;
     menuDiv.innerHTML = getMenuItems();
+    setupStatus();
 }
 
 function logout() {
