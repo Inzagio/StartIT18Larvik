@@ -6,7 +6,6 @@ var menuDiv;
 var menuWidth;
 var menuPos;
 var loginBox
-var loginButton;
 var isLoggedIn = false;
 
 document.addEventListener('DOMContentLoaded', menuOnLoad);
@@ -44,18 +43,6 @@ function menuSetup() {
 
     loginHide();
     document.getElementById('loginButton').addEventListener('click', loginAction);
-
-    // Login Button
-    if (!isLoggedIn) {
-        if (!loginButton)
-            loginButton = document.createElement('input');
-
-        document.getElementById('container').appendChild(loginButton);
-        loginButton.setAttribute('type', 'button');
-        loginButton.setAttribute('value', 'Login');
-        loginButton.addEventListener('click', menuOpen);
-        loginButton.addEventListener('click', loginShow);
-    }
 }
 
 function menuOpen() {
@@ -89,15 +76,15 @@ function loginAction() {
         return;
     }
 
+    setupStatus();
     loginHide();
-    //menuClose();
 
     isLoggedIn = true;
     menuDiv.innerHTML = getMenuItems();
-    document.getElementById('container').removeChild(loginButton);
 }
 
 function logout() {
     isLoggedIn = false;
     menuSetup();
+    setupStatus(); // Gå til start siden når man logger ut.
 }
