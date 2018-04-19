@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <script src="js/menu.js"></script>
+    <script src="js/menuItems.js"></script>
     <script src="js/status.js"></script>
     <script src="js/admin.js"></script>
 </head>
@@ -26,11 +27,7 @@
 
             <span id="menuButton" onclick="menuOpen()">&#9776; <b>Menu</b></span>
             <div id="menu" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="menuClose()">&times;</a>
-                <a href="#"><b>Login</b></a>
-                <a href="#">Savings/Loans</a>
-                <a href="#">Status</a>
-                <a onclick="admin_panel()">Admin</a>
+                <!-- Menyelementer legges i menuItems.js -->
             </div>
         </div>
     </header>
@@ -38,7 +35,7 @@
     <section id="showcase">
         <div id="container">
             <h1>Welcome</h1>
-            <img class="logo" src="img/renewgen_logo.svg" />
+            <div><img class="logo" src="img/renewgen_logo.svg" /></div>
         </div>
     </section>
 

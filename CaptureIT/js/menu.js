@@ -1,17 +1,27 @@
 // JavaScript source code
 'use strict';
 
+const extraPadding = 50;
 var menuDiv;
 var menuWidth;
 var menuPos;
-var extraPadding = 50;
 var loginBox
+var loginButton;
+var isLoggedIn = false;
 
 document.addEventListener('DOMContentLoaded', menuOnLoad);
 function menuOnLoad() {
     menuDiv = document.getElementById('menu');
     menuWidth = parseInt(window.getComputedStyle(menuDiv).getPropertyValue('width'));
     menuPos = Math.abs(parseInt(window.getComputedStyle(menuDiv).getPropertyValue('left')) + menuWidth + extraPadding);
+
+    // Load initial items
+    menuSetup();
+}
+
+function menuSetup() {
+    // Load initial items
+    menuDiv.innerHTML = getMenuItems();
 
     // Login Box
     loginBox = document.createElement('div');
@@ -33,18 +43,19 @@ function menuOnLoad() {
         '<input id="loginButton" type="button" value="Log In">';
 
     loginHide();
-    menuDiv.getElementsByTagName('a')[1].addEventListener('click', loginShow);
     document.getElementById('loginButton').addEventListener('click', loginAction);
 
-
     // Login Button
-    var loginButton = document.createElement('input');
-    document.getElementById('showcase').getElementsByClassName('container')[0].appendChild(document.createElement('br'));
-    document.getElementById('showcase').getElementsByClassName('container')[0].appendChild(loginButton);
-    loginButton.setAttribute('type', 'button');
-    loginButton.setAttribute('value', 'Login');
-    loginButton.addEventListener('click', menuOpen);
-    loginButton.addEventListener('click', loginShow);
+    if (!isLoggedIn) {
+        if (!loginButton)
+            loginButton = document.createElement('input');
+
+        document.getElementById('container').appendChild(loginButton);
+        loginButton.setAttribute('type', 'button');
+        loginButton.setAttribute('value', 'Login');
+        loginButton.addEventListener('click', menuOpen);
+        loginButton.addEventListener('click', loginShow);
+    }
 }
 
 function menuOpen() {
@@ -67,5 +78,14 @@ function loginHide() {
 
 function loginAction() {
     loginHide();
-    menuClose();
+    //menuClose();
+
+    isLoggedIn = true;
+    menuDiv.innerHTML = getMenuItems();
+    document.getElementById('container').removeChild(loginButton);
+}
+
+function logout() {
+    isLoggedIn = false;
+    menuSetup();
 }
