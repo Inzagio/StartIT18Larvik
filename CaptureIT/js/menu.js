@@ -6,7 +6,7 @@ var menuDiv;
 var menuWidth;
 var menuPos;
 var loginBox
-var isLoggedIn = false;
+var isLoggedIn = true; // TODO: Set false før release.
 
 document.addEventListener('DOMContentLoaded', menuOnLoad);
 function menuOnLoad() {
