@@ -25,7 +25,7 @@ function wrapper() {
 
 function side_bar() {
     var sidebar = document.createElement("div");
-    sidebar.setAttribute("id", "wrapper");
+    sidebar.setAttribute("id", "sidebar");
     sidebar.classList.add("sidebar");
     document.getElementById("wrapper").appendChild(sidebar);
 
