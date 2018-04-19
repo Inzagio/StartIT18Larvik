@@ -56,7 +56,8 @@ function menuClose() {
 
 function loginShow() {
     loginBox.style.visibility = 'visible';
-    loginBox.getElementsByTagName('form')[0].getElementsByTagName('input')[0].focus();
+    document.forms['login']['username'].focus();
+    
 }
 
 function loginHide() {
