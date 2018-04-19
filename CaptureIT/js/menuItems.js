@@ -1,8 +1,8 @@
 // JavaScript source code
 'use strict';
 
-function getMenuItems(loggedIn) {
-    if (loggedIn)
+function getMenuItems() {
+    if (isLoggedIn)
         return '<a href="javascript:void(0)" class="closebtn" onclick="menuClose()">&times;</a> \
             <a href="javascript:void(0)" onclick="logout()"><b>Logout</b></a> \
             <a href="javascript:void(0)" onclick="">Savings/Loans</a> \
