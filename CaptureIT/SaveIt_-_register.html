@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <style> 
+        body{
+            padding: 30px;
+        }
+
+        #wrapper{
+            width: 250px;
+        }
+    
+        p {
+            font-size: 20px;
+            width: 120px;
+            height: 28px;
+            padding: 10px;
+            border: 1px solid black;
+            margin-right: 10px;
+            float: right;            
+            text-align: center;
+
+        }
+    /* Dropdown Button*/
+            .dropbtn{
+              background-color: #21ABA5;
+              color: white;
+              padding: 16px;
+              font-size: 16px;
+              cursor: ponter;
+              border: none;
+              margin-top: 20px;
+              }
+            
+            /* Dropdown hover */
+            .dropbtn:hover, .dropbtn:focus {
+              background-color: lightgrey;
+            }
+            
+            /* Search field */
+            #myInput {
+              background-image: url('');
+              background-position: 14px 12px;
+              background-repeat: no-repeat;
+              font-size: 16px;
+              padding: 14px 20px 12px 45px;
+              border: none;
+              border-bottom: 2px solid black;
+            }
+            
+            myInput:focus {outline: 3px solid lightgray;}
+            
+            .dropdown{
+              position: relative;
+              display: inline-block;
+            }
+            
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              min-width: 230px;
+              overflow: auto;
+              border: 1px solid #ddd;
+              z-index:1;
+            }
+            
+            .dropdown-content a{
+              color: black;
+              padding: 12px 16px;
+              display: block;
+              text-decoration: none;
+            }
+            
+            .dropdown a:hover {
+                background-color: #f1f1f1;
+            }
+            
+            .show {display:block;}
+            
+            .dropdown:hover  .dropdown-content{
+                display: block;
+            }
+            </style>
+</head>
+<body>
+        <div id="wrapper">
+        <p id="navnBoks"></p>
+
+    <div class = "dropdown">
+            <button onclick = "nameFunction()" class = "dropbtn"> Name </button>
+            <div id = "myDropdown" class = "dropdown-content">
+            <input type = "text"  placeholder = "Search name" id ="myInput" onkeyup = "filterFunction()">
+
+                <a onclick="settNavn(this)"> Abdi </a>
+                <a onclick="settNavn(this)"> Hasan </a>
+                <a onclick="settNavn(this)"> Mohamed </a>
+                <a onclick="settNavn(this)"> Li </a>
+        </div>
+    </div>
+</div>
+    <script>
+        const navnBoks = document.getElementById("navnBoks");
+
+function nameFunction(){
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction(){
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+        
+        for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+        } else {
+        a[i].style.display = "none";
+        }
+    }
+}
+
+function settNavn(a){
+  navnBoks.innerHTML = a.innerHTML;
+}
+    </script>
+
+</body>
+</html>
