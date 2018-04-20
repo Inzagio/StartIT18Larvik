@@ -23,8 +23,8 @@ function setupStatus() {
         document.getElementById('container').appendChild(loginButton);
         loginButton.setAttribute('type', 'button');
         loginButton.setAttribute('value', 'Login');
-        loginButton.addEventListener('click', menuOpen);
-        loginButton.addEventListener('click', loginShow);
+        loginButton.addEventListener('click', menu.menuOpen);
+        loginButton.addEventListener('click', menu.loginShow);
     }
     else {
         container.innerHTML = '<h1>Logged In</h1>';
