@@ -33,6 +33,7 @@ li {
 }
 
 .wrapper {
+    font-family: helvetica;
     margin-top: 5px;
     display: grid;
     grid-gap: 10px;
