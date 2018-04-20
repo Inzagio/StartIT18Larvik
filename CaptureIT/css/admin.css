@@ -25,16 +25,27 @@
 }
 ul {
     text-decoration: none;
+    margin: 2px;
+    padding-right: 4px;
 }
 li {
     list-style-type: none;
     text-align: left;
+    cursor: pointer;
+ 
 
 }
+    li:hover {
+        color: #00ccff;
+    }
+    li:active {
+        color: #66ff66;
+        border-bottom: 1px rgba(0, 204, 255, 0.7);
+    }
 
 .wrapper {
     font-family: helvetica;
-    margin-top: 5px;
+    margin-top: 8px;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 120px repeat(2, 1fr);
