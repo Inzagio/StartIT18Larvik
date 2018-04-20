@@ -32,13 +32,14 @@ function draw_menu_items() {
     menu.appendChild(menu_ul);
 
 
-
+    // This will create a list of 4 items, based on the items array and give them an anchor tag with an onclick function
     items.forEach(function (items) {
         var menu_li = document.createElement("li");
         menu_li.setAttribute("id", "menu-li");
         menu_ul.appendChild(menu_li);
         var menu_a = document.createElement("a");
         menu_li.appendChild(menu_a);
+        menu_a.innerHTML += items;
         menu_a.setAttribute("href", "#");
         menu_a.setAttribute("onclick", "callMyStuff(this)");
     });
