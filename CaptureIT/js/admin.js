@@ -37,6 +37,7 @@ function side_bar() {
     menuItems.forEach(function(menuItems) {
         var menu_li = document.createElement("li");
         menu_ul.appendChild(menu_li);
+        menu_li.setAttribute("onclick", "callfunction(this)");
         menu_li.innerHTML += menuItems;
     });
 
