@@ -1,4 +1,96 @@
-﻿
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+
+#menu-ul {
+    list-style-type: none;
+    margin-top: 8px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    text-align: center;
+}
+#menu-ul #menu-li {
+    display: inline;
+}
+#menu-ul #menu-li a{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-right: 1px rgba(0, 150, 255, 0.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*#sidebar {
     grid-area: sidebar;

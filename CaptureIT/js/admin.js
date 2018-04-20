@@ -32,7 +32,7 @@ function draw_menu_items() {
     menu.appendChild(menu_ul);
 
 
-    // This will create a list of 4 items, based on the items array and give them an anchor tag with an onclick function
+    // This will create a list of 4 items, based on the items array and give them an anchor tag with an onclick function - FUNCTION NAME IS PLACEHOLDER!!!
     items.forEach(function (items) {
         var menu_li = document.createElement("li");
         menu_li.setAttribute("id", "menu-li");
