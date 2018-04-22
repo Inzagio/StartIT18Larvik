@@ -106,20 +106,9 @@ var menu = function () {
     }
 
     return { // Public methods
-        logout() {
-            logout();
-        },
-
-        menuOpen() {
-            menuOpen();
-        },
-
-        menuClose() {
-            menuClose();
-        },
-
-        loginShow() {
-            loginShow();
-        }
+        logout: logout,
+        menuOpen: menuOpen,
+        menuClose: menuClose,
+        loginShow: loginShow
     }
 }();
