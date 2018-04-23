@@ -1,0 +1,9 @@
+﻿.grid {
+    stroke: lightgray;
+    stroke-width: 1;
+}
+
+.Info {
+    stroke: black;
+    stroke-width: 2;
+}
