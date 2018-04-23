@@ -1,5 +1,5 @@
 var graph;
-var container;
+
 var time;
 var person;
 var Januar = 510;
@@ -15,10 +15,11 @@ var April1 = 510;
 var Mai1 = 510;
 var Juni1 = 510;
 
-function Hei() {
 
-    container = document.getElementById('container');
-    container.innerHTML = '<div class="Graphnested">'
+function callMyStuff(graph) {
+
+   var containerbox = document.getElementById('contentbox');
+    containerbox.innerHTML = '<div class="Graphnested">'
          +  '<div>Year'
          +  '<select onchange="start()" title="Displays years." size="1" name="time" id="dropList" required>'
          +          '<option value="2018">2018</option>'
