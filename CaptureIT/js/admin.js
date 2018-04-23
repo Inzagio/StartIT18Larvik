@@ -5,6 +5,7 @@ function admin_panel() {
     wrapper();
     navigation_admin();
     draw_menu_items();
+    draw_content();
 
 
     //navigation_menu();
@@ -12,6 +13,13 @@ function admin_panel() {
     //side_bar();
     //main_content();
     //footer();
+}
+
+function wrapper() {
+    var wrapper = document.createElement("div");
+    wrapper.setAttribute("id", "wrapper");
+    wrapper.classList.add("wrapper");
+    replacedNode = showcase.replaceChild(wrapper, container);
 }
 // JavaScript source code
 function navigation_admin() {
@@ -23,19 +31,27 @@ function navigation_admin() {
 
 }
 
+function draw_content() {
+    var wrapper = document.getElementById("wrapper");
+    var box = document.createElement("div");
+    box.setAttribute("id", "contentbox");
+    //box.innerHTML = "Test lol yolo";
+    wrapper.appendChild(box);
+}
+
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
     var items = ["Dashboard", "Statistics", "Users", "Settings"];
 
     var menu_ul = document.createElement("ul");
-    menu_ul.setAttribute("id", "menu-ul");
+    menu_ul.setAttribute("class", "menu-ul");
     menu.appendChild(menu_ul);
 
 
-    // This will create a list of 4 items, based on the items array and give them an anchor tag with an onclick function
+    // This will create a list of 4 items, based on the items array and give them an anchor tag with an onclick function - FUNCTION NAME IS PLACEHOLDER!!!
     items.forEach(function (items) {
         var menu_li = document.createElement("li");
-        menu_li.setAttribute("id", "menu-li");
+        menu_li.setAttribute("class", "menu-li");
         menu_ul.appendChild(menu_li);
         var menu_a = document.createElement("a");
         menu_li.appendChild(menu_a);
@@ -55,12 +71,7 @@ function draw_menu_items() {
 }
 
 
-function wrapper() {
-    var wrapper = document.createElement("div");
-    wrapper.setAttribute("id", "wrapper");
-    wrapper.classList.add("wrapper");
-    replacedNode = showcase.replaceChild(wrapper, container);
-}
+
 
 //function side_bar() {
 //    var sidebar = document.createElement("div");

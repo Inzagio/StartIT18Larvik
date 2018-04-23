@@ -24,9 +24,9 @@ var menu = function () {
         // Load initial items
         var menuItems = getMenuItems();
         menuDiv.innerHTML = '';
-        for (var i = 0; i < menuItems.length; i++) {
-            menuDiv.innerHTML += menuItems[i];
-        }
+        menuItems.forEach(function (item) {
+            menuDiv.innerHTML += item;
+        })
         menuHeight = (menuItems.length * menuExtraPadding);
         menuDiv.style.height = menuHeight + 'px';
 
@@ -106,20 +106,9 @@ var menu = function () {
     }
 
     return { // Public methods
-        logout() {
-            logout();
-        },
-
-        menuOpen() {
-            menuOpen();
-        },
-
-        menuClose() {
-            menuClose();
-        },
-
-        loginShow() {
-            loginShow();
-        }
+        logout: logout,
+        menuOpen: menuOpen,
+        menuClose: menuClose,
+        loginShow: loginShow
     }
 }();
