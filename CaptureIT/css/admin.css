@@ -4,7 +4,7 @@
 }
 
 
-#menu-ul {
+.menu-ul {
     list-style-type: none;
     margin-top: 8px;
     padding: 0;
@@ -12,10 +12,10 @@
     background-color: #333;
     text-align: center;
 }
-#menu-ul #menu-li {
+.menu-ul .menu-li {
     display: inline;
 }
-#menu-ul #menu-li a{
+.menu-ul .menu-li a{
     display: inline-block;
     color: white;
     text-align: center;
@@ -23,7 +23,14 @@
     text-decoration: none;
     border-right: 1px rgba(0, 150, 255, 0.4);
 }
-
+#contentbox {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 90%;
+    color: black;
+    z-index: -1;
+}
 
 
 
