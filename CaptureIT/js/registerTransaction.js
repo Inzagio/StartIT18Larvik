@@ -2,6 +2,7 @@
 
 
 			function registerTransaction(){
+				document.getElementById('container').innerHTML
 				 '<div class="grid wrapper">' +
             '<div class="box nm">'+
             '<p class="navnBoks" id="navnBoks"></p>'+
