@@ -15,11 +15,6 @@ var menu = function () {
         menuDiv = document.getElementById('menu');
         menuButton = document.getElementById('menuButton');
 
-        // Place menu under button (whereever it is)
-        var menuButtonPos = menuButton.getBoundingClientRect();
-        menuDiv.style.top = menuButtonPos.bottom + 'px';
-        menuDiv.style.left = menuButtonPos.left + 'px';
-
         // Load initial items
         menuSetup();
         menuDiv.style.height = '0px';

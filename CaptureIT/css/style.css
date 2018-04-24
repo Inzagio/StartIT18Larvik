@@ -29,6 +29,7 @@ header {
     position: absolute;
     z-index: 1;
     left: 0px;
+    top: 152px;
     background-color: rgb(123, 255, 145);
     transition: 0.5s;
     margin-left: 0px;
