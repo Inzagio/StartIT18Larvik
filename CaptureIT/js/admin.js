@@ -26,7 +26,10 @@ function wrapper() {
   
     wrapper.setAttribute("id", "wrapper");
     wrapper.classList.add("wrapperAdmin");
-    var replacedNode = showcase.replaceChild(wrapper, container);
+    var container = document.getElementById('container');
+    container.innerHTML = '';
+    container.appendChild(wrapper);
+    //var replacedNode = showcase.replaceChild(wrapper, container);
 }
 
 // Draws the navigation bar used for the admin panel

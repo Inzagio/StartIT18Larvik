@@ -3,10 +3,14 @@
     padding: 0;
 }
 
-#admin-navigation {
-    margin: 0;
+#admin-navigation  {
+    margin-left: -8px;
+    margin-right: -8px;
     padding: 0;
 }
+
+
+
 .menu-ul {
     list-style-type: none;
     margin-top: 8px;
@@ -15,6 +19,7 @@
     background-color: #333;
     text-align: center;
     margin-bottom: 0;
+    
 }
 .menu-ul .menu-li {
     display: inline;
@@ -31,6 +36,7 @@
 }
 #contentbox {
     padding: 0;
+    margin-left: -8px;
     position: absolute;
     background-color: white;
     width: 100%;
