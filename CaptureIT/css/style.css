@@ -42,6 +42,7 @@ header {
         color: #000000;
         display: block;
         transition: 0.3s;
+        height: 28px;
     }
 
         .sidenav a:hover {
