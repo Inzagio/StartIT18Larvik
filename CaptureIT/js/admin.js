@@ -1,4 +1,4 @@
-var items = ["Dashboard", "Statistics", "Users", "Settings"];
+"use strict"
 
 // JavaScript source code
 function admin_panel() {
@@ -7,19 +7,14 @@ function admin_panel() {
     draw_menu_items();
     draw_content();
 
-
-    //navigation_menu();
-    //header();
-    //side_bar();
-    //main_content();
-    //footer();
 }
 
 function wrapper() {
     var wrapper = document.createElement("div");
+  
     wrapper.setAttribute("id", "wrapper");
     wrapper.classList.add("wrapper");
-    replacedNode = showcase.replaceChild(wrapper, container);
+    var replacedNode = showcase.replaceChild(wrapper, container);
 }
 // JavaScript source code
 function navigation_admin() {
@@ -35,14 +30,13 @@ function draw_content() {
     var wrapper = document.getElementById("wrapper");
     var box = document.createElement("div");
     box.setAttribute("id", "contentbox");
-    //box.innerHTML = "Test lol yolo";
     wrapper.appendChild(box);
 }
 
 
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
-
+    var items = ["Dashboard", "Statistics", "Users", "Settings"];
 
     var menu_ul = document.createElement("ul");
     menu_ul.setAttribute("class", "menu-ul");
@@ -83,7 +77,7 @@ function callMyStuff(element) {
 
     }
     if (element == "Settings") {
-
+        drawSettings();
     }
     
 }
