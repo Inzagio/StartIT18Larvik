@@ -1,3 +1,14 @@
+/**
+ * admin.js
+ *
+ *
+ * @version 0.1
+ * @author  Trym Kristian Bjørnvik
+ * @updated 24-04-2018
+ *
+ *
+ */
+
 "use strict"
 
 // JavaScript source code
@@ -54,16 +65,6 @@ function draw_menu_items() {
         menu_a.setAttribute("href", "#");
         menu_a.setAttribute("onclick", "callMyStuff('" + items + "')");
     });
-    //if ()
-
-    //items.forEach(function (items) {
-    //    var menu_a = document.createElement("a");
-    //    menu_li.appendChild(menu_a);
-    //    menu_a.setAttribute("href", "#");
-    //    menu_a.setAttribute("onclick", "callMyStuff(this)");
-
-    //});
-
 }
 
 function callMyStuff(element) {
