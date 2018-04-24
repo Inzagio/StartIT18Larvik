@@ -11,6 +11,7 @@
 
 "use strict"
 
+
 // JavaScript source code
 function admin_panel() {
     wrapper();
@@ -24,7 +25,7 @@ function wrapper() {
     var wrapper = document.createElement("div");
   
     wrapper.setAttribute("id", "wrapper");
-    wrapper.classList.add("wrapper");
+    wrapper.classList.add("wrapperAdmin");
     var replacedNode = showcase.replaceChild(wrapper, container);
 }
 
