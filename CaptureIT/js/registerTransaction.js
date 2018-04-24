@@ -2,6 +2,7 @@
 
 
 function registerTransaction() {
+    // Creates container element if it has been removed.
     var container = document.getElementById('container');
     if (!container) {
         showcase.innerHTML = '';
