@@ -2,7 +2,15 @@
 
 
 			function registerTransaction(){
-				document.getElementById('container').innerHTML = 
+                var container = document.getElementById('container');
+                if (!container) {
+                    showcase.innerHTML = '';
+                    container = document.createElement('div');
+                    container.setAttribute('id', 'container');
+                    showcase.appendChild(container);
+                }
+
+                container.innerHTML = 
 				 '<div class="grid wrapper">' +
             '<div class="box nm">'+
             '<p class="navnBoks" id="navnBoks"></p>'+
