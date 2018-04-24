@@ -77,7 +77,7 @@ function callMyStuff(element) {
 
     }
     if (element == "Statistics") {
-        grap_draw();
+        graph_draw();
     }
     if (element == "Users") {
 
