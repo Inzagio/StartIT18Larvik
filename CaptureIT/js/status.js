@@ -8,10 +8,7 @@ function setupStatus() {
     // Creates container element if it has been removed.
     var container = document.getElementById('container');
     if (!container) {
-        showcase.innerHTML = '';
-        container = document.createElement('div');
-        container.setAttribute('id', 'container');
-        showcase.appendChild(container);
+        container = createContainer();
     }
 
     if (!isLoggedIn) { // Basic startskjerm hvis man ikke er logget inn.
