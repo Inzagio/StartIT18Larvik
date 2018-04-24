@@ -13,10 +13,10 @@
                 container.innerHTML = 
 				 '<div class="grid wrapper">' +
             '<div class="box nm">'+
-            '<p class="navnBoks" id="navnBoks"></p>'+
+            '<p class="box navnBoks" id="navnBoks"></p>'+
         '</div>'+
-         '<div class="choosedate">Choose date:</div>'+
-        '<div class="dato">'+
+         '<div class="box choosedate">Choose date:</div>'+
+        '<div class="box dato">'+
            ' <form>'+
                ' <input id="kalender" type="date" name="chooseday">'+
            ' </form>'+
