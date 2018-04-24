@@ -16,7 +16,7 @@ var Mai1 = 510;
 var Juni1 = 510;
 
 
-function grap_draw() {
+function graph_draw() {
 
    var containerbox = document.getElementById('contentbox');
     containerbox.innerHTML = '<div class="Graphnested">'

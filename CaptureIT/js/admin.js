@@ -42,7 +42,7 @@ function draw_content() {
 
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
-  
+
 
     var menu_ul = document.createElement("ul");
     menu_ul.setAttribute("class", "menu-ul");
@@ -58,7 +58,7 @@ function draw_menu_items() {
         menu_li.appendChild(menu_a);
         menu_a.innerHTML += items;
         menu_a.setAttribute("href", "#");
-        menu_a.setAttribute("onclick", "callMyStuff(this)");
+        menu_a.setAttribute("onclick", "callMyStuff('" + items + "')");
     });
     //if ()
 
@@ -67,15 +67,24 @@ function draw_menu_items() {
     //    menu_li.appendChild(menu_a);
     //    menu_a.setAttribute("href", "#");
     //    menu_a.setAttribute("onclick", "callMyStuff(this)");
-        
+
     //});
 
 }
 
-//function callMyStuff(elements) {
-//    if (onclick === items[1]) {
-//        grap_draw();
-//    } 
-//}
+function callMyStuff(element) {
+    if (element == "Dashboard") {
 
+    }
+    if (element == "Statistics") {
+        grap_draw();
+    }
+    if (element == "Users") {
+
+    }
+    if (element == "Settings") {
+
+    }
+    
+}
 
