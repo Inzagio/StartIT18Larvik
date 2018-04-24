@@ -2,7 +2,7 @@
 
 
 			function registerTransaction(){
-				document.getElementById('container').innerHTML
+				document.getElementById('container').innerHTML = 
 				 '<div class="grid wrapper">' +
             '<div class="box nm">'+
             '<p class="navnBoks" id="navnBoks"></p>'+
@@ -51,9 +51,9 @@
        ' <div class="box submit"> '+
            ' <input id="submit" type="submit" value="Submit" action="send/submit to DB linkage here"> '+
         '</div> '+
+   ' </div>';
 
-
-   ' </div>'
+   setDateToday();
 		}
 
 
@@ -103,11 +103,12 @@
 
 			
         // Tester dato-sak funkis - skal prøve å få denne kombinert med "kalenderen" så dagens dato blir default value
-        n = new Date();
-        y = n.getFullYear();
-        m = n.getMonth() + 1;
-        d = n.getDate();
+        function setDateToday(){
+        var n = new Date();
+        var y = n.getFullYear();
+        var m = n.getMonth() + 1;
+        var d = n.getDate();
         if (m < 10) m = '0' + m;
         if (d < 10) m = '0' + d;
         document.getElementById("kalender").value = y + "-" + m + "-" + d;
-        
+        }
