@@ -30,6 +30,13 @@ var menu = function () {
         menuHeight = (menuItems.length * menuExtraPadding);
         menuDiv.style.height = menuHeight + 'px';
 
+        if (!isLoggedIn) {
+            document.getElementById('menuButton').style.visibility = 'hidden';
+        }
+        else {
+            document.getElementById('menuButton').style.visibility = 'visible';
+        }
+
         // Login Box
         loginBox = document.createElement('div');
         loginBox.setAttribute('id', 'loginBox');
@@ -102,6 +109,7 @@ var menu = function () {
     function logout() {
         isLoggedIn = false;
         menuSetup();
+        menuClose();
         setupStatus(); // Gå til start siden når man logger ut.
     }
 
