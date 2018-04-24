@@ -19,7 +19,7 @@ function admin_panel() {
     draw_content();
 
 }
-
+// Creates the wrapper element and replaces the container element in index.html with the created wrapper
 function wrapper() {
     var wrapper = document.createElement("div");
   
@@ -27,7 +27,8 @@ function wrapper() {
     wrapper.classList.add("wrapper");
     var replacedNode = showcase.replaceChild(wrapper, container);
 }
-// JavaScript source code
+
+// Draws the navigation bar used for the admin panel
 function navigation_admin() {
     var wrapper = document.getElementById("wrapper");
 
@@ -37,6 +38,7 @@ function navigation_admin() {
 
 }
 
+// Draw the area which we will put in the panel elements, e.g statistics, users, settings and main dashboard. 
 function draw_content() {
     var wrapper = document.getElementById("wrapper");
     var box = document.createElement("div");
@@ -44,7 +46,7 @@ function draw_content() {
     wrapper.appendChild(box);
 }
 
-
+//Draws the menu items
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
     var items = ["Dashboard", "Statistics", "Users", "Settings"];
