@@ -1,4 +1,4 @@
-
+var items = ["Dashboard", "Statistics", "Users", "Settings"];
 
 // JavaScript source code
 function admin_panel() {
@@ -39,9 +39,10 @@ function draw_content() {
     wrapper.appendChild(box);
 }
 
+
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
-    var items = ["Dashboard", "Statistics", "Users", "Settings"];
+  
 
     var menu_ul = document.createElement("ul");
     menu_ul.setAttribute("class", "menu-ul");
@@ -59,6 +60,7 @@ function draw_menu_items() {
         menu_a.setAttribute("href", "#");
         menu_a.setAttribute("onclick", "callMyStuff(this)");
     });
+    //if ()
 
     //items.forEach(function (items) {
     //    var menu_a = document.createElement("a");
@@ -70,55 +72,10 @@ function draw_menu_items() {
 
 }
 
-
-
-
-//function side_bar() {
-//    var sidebar = document.createElement("div");
-//    sidebar.setAttribute("id", "sidebar");
-//    sidebar.classList.add("sidebar");
-//    document.getElementById("wrapper").appendChild(sidebar);
-
-
-
+//function callMyStuff(elements) {
+//    if (onclick === items[1]) {
+//        grap_draw();
+//    } 
 //}
 
-//function navigation_menu() {
-//    var navigation = document.createElement("div");
-//    navigation.innerHTML = "Test";
-//    navigation.setAttribute("id", "navigation");
-//    navigation.classList.add("navigation");
 
-//    document.getElementById("wrapper").appendChild(navigation);
-
-//    var menuItems = ["Dashboard", "Statistics", "Users", "Settings"];
-//    var menu_ul = document.createElement("ul");
-//    navigation.appendChild(menu_ul);
-//    menu_ul.setAttribute("id", "menu");
-//    menu_ul.classList.add("ul")
-
-//    menuItems.forEach(function (menuItems) {
-//        var menu_li = document.createElement("li");
-//        menu_ul.appendChild(menu_li);
-//        menu_li.setAttribute("onclick", "callfunction(this)");
-//        menu_li.classList.add("li")
-//        menu_li.innerHTML += menuItems;
-//    });
-
-//}
-//function main_content () {
-//    var mainContent = document.createElement("div");
-//    mainContent.innerHTML = "Test2";
-//    mainContent.classList.add("content");
-//    mainContent.setAttribute("id", "content");
-//    document.getElementById("wrapper").appendChild(mainContent);
-//}
-
-//function footer() {
-//    var footer = document.createElement("footer");
-//    footer.innerHTML = "Copyright Start IT 2018 Larvik & ReNewGen AS";
-//    footer.setAttribute("id", "footer");
-//    footer.classList.add("footer");
-//    document.getElementById("wrapper").appendChild(footer);
-
-//}
