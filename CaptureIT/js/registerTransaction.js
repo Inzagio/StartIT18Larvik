@@ -1,4 +1,4 @@
-﻿  var navnBoks = document.getElementById("navnBoks");
+﻿ 
 
 
 			function registerTransaction(){
@@ -52,6 +52,8 @@
            ' <input id="submit" type="submit" value="Submit" action="send/submit to DB linkage here"> '+
         '</div> '+
    ' </div>';
+		
+		 var navnBoks = document.getElementById("navnBoks");
 
    setDateToday();
 		}
