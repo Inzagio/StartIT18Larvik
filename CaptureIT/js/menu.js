@@ -22,10 +22,10 @@ var menu = function () {
 
     function menuSetup() {
         // Load initial items and get the height of each
-        var menuItems = getMenuItems();
+        var items = getMenuItems();
         menuDiv.innerHTML = '';
         menuHeight = 0;
-        menuItems.forEach(function (item, index) {
+        items.forEach(function (item, index) {
             menuDiv.innerHTML += item;
             menuHeight += menuDiv.children[index].getBoundingClientRect().height + 1;
         })
@@ -65,6 +65,7 @@ var menu = function () {
 
         loginHide();
         document.getElementById('loginButton').addEventListener('click', loginAction);
+        menuClose();
     }
 
     function menuOpen() {
@@ -123,6 +124,7 @@ var menu = function () {
         logout: logout,
         menuOpen: menuOpen,
         menuClose: menuClose,
+        menuSetup: menuSetup,
         loginShow: loginShow
     }
 }();
