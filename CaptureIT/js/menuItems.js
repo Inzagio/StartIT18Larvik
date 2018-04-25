@@ -10,6 +10,7 @@ var menuItems = [
 ];
 
 const defaultItems = menuItems.slice();
+Object.freeze(defaultItems);
 
 function getMenuItems() {
     if (isLoggedIn)
