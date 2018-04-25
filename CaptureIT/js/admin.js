@@ -15,7 +15,7 @@
 // JavaScript source code
 function admin_panel() {
     wrapper();
-    navigation_admin();
+    render_nav_admin();
     draw_menu_items();
     draw_content();
 
@@ -33,7 +33,7 @@ function wrapper() {
 }
 
 // Draws the navigation bar used for the admin panel
-function navigation_admin() {
+function render_nav_admin() {
     var wrapper = document.getElementById("wrapper");
 
     var menu = document.createElement("div");
