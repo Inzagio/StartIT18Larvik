@@ -11,3 +11,12 @@ function getMenuItems() {
     else
         return ['<a href="javascript:void(0)" onclick="menu.loginShow();"><b>Login</b></a>'];
 }
+
+function createContainer() {
+    var showcase = document.getElementById('showcase');
+    showcase.innerHTML = '';
+    var container = document.createElement('div');
+    container.setAttribute('id', 'container');
+    showcase.appendChild(container);
+    return container;
+}
