@@ -4,7 +4,7 @@ var isLoggedIn = true; // TODO: Set false f�r release.
 
 // Global values for use in calculations and displaying data
 
-const currency = 'TZS';
+var currency = 'TZS';
 //Defines what one share costs in the selected currency 
 const sharesValue = 10;
 //Defines the community payment (minimum ammount to save each month)
