@@ -2,8 +2,7 @@
 var menu = function () {
     'use strict';
 
-    const menuExtraPadding = 52; // Extra padding on the bottom of menu.
-    const loginExtraPadding = 30; // Extra padding on the bottom of login form.
+    const loginExtraPadding = 15; // Extra padding on the bottom of login form.
     var menuDiv;
     var menuButton;
     var menuHeight;
@@ -22,13 +21,15 @@ var menu = function () {
     }
 
     function menuSetup() {
-        // Load initial items
+        // Load initial items and get the height of each
         var menuItems = getMenuItems();
         menuDiv.innerHTML = '';
-        menuItems.forEach(function (item) {
+        menuHeight = 0;
+        menuItems.forEach(function (item, index) {
             menuDiv.innerHTML += item;
+            menuHeight += menuDiv.children[index].getBoundingClientRect().height + 1;
         })
-        menuHeight = (menuItems.length * menuExtraPadding);
+
         menuDiv.style.height = menuHeight + 'px';
 
         var header = document.getElementsByTagName('header')[0];
@@ -84,7 +85,7 @@ var menu = function () {
     function loginShow() {
         loginBox.style.visibility = 'visible';
         document.forms['login']['username'].focus();
-        menuDiv.style.height = (menuHeight + parseInt(window.getComputedStyle(loginBox).getPropertyValue('height')) + loginExtraPadding) + 'px';
+        menuDiv.style.height = (menuHeight + loginBox.getBoundingClientRect().height + loginExtraPadding) + 'px';
     }
 
     function loginHide() {
