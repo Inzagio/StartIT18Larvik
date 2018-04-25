@@ -9,7 +9,7 @@ var menuItems = [
     '<a href="javascript:void(0)" onclick="admin_panel()">Admin</a>'
 ];
 
-var defaultItems = menuItems;
+const defaultItems = menuItems.slice();
 
 function getMenuItems() {
     if (isLoggedIn)
