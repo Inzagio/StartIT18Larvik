@@ -31,11 +31,15 @@ var menu = function () {
         menuHeight = (menuItems.length * menuExtraPadding);
         menuDiv.style.height = menuHeight + 'px';
 
+        var header = document.getElementsByTagName('header')[0];
+
         if (!isLoggedIn) {
             menuButton.style.visibility = 'hidden';
+            header.style.visibility = 'hidden';
         }
         else {
             menuButton.style.visibility = 'visible';
+            header.style.visibility = 'visible';
         }
 
         // Login Box
