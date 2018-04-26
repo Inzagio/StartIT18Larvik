@@ -147,6 +147,11 @@
             outline: 3px solid lightgray;
         }
 
+        .navnBoks {
+                width: 100%;
+                transform: translate(-0%, -70%);
+        }
+
 
         /* Innholde på droppdownen */
         .dropdown-content {
@@ -205,11 +210,6 @@
                 grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "sub sub";
             }
 
-
-            .navnBoks {
-                width: 100%;
-                transform: translate(-0%, -70%);
-            }
 
             .a, .c, .e, .choosedate {
                 text-align: justify;
