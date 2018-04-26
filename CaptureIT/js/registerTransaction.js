@@ -48,7 +48,7 @@ function registerTransaction() {
 
         ' </div> ' +
         ' <div class="box e">' +
-        ' <p>Loan out of social funds:</p>' +
+        ' <p>Loan out of Shares funds:</p>' +
         ' </div>' +
 
         ' <div class="box f"> ' +
