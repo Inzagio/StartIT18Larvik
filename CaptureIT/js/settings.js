@@ -6,22 +6,27 @@ function drawSettings() {
     var containerbox = document.getElementById('contentbox');
     containerbox.innerHTML = '';
 
-    var htm = ['<div>', '</div>' , 'Currency: ', ];
+    var htm = ['<div>', '</div>' , 'Currency: ', '<br/>'];
+    var txt = ['Currency: ', 'Shares value: ', 'Community savings amount: ', 'Save']
 
     var infoDiv1 = document.createElement('div');
     infoDiv1.className = 'infoDiv';
     containerbox.appendChild(infoDiv1);
-    infoDiv1.innerHTML = htm[0] + htm[2] + currency + htm[1];
+    infoDiv1.innerHTML = htm[3] + htm[3] + htm[0] + txt[0] + currency + htm[1];
 
     createList();
 
     var infoDiv2 = document.createElement('div');
-    infoDiv2.innerHTML += '<div>Choose value of shares<div>';
+    infoDiv2.className = 'infoDiv';
+    containerbox.appendChild(infoDiv2);
+    infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
 
-    //createShares();
+    createShares();
 
     var infoDiv3 = document.createElement('div');
-    infoDiv2.innerHTML += '<div>Choose obligatory amount for community saving<div>';
+    infoDiv3.className = 'infoDiv';
+    containerbox.appendChild(infoDiv3);
+    infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
 
     //createCommunity();
 
@@ -47,15 +52,41 @@ function drawSettings() {
             optionSelect.value = option;
         });
 
+        selectList.value = 'TZS';
+        
         //Changing the currency global variable and currency selected
         function changeCurrency() {
             var selectList = document.getElementById('selectCurrencyTag');
             currency = selectList.value;
-            infoDiv1.innerHTML = htm[0] + htm[2] + currency + htm[1];
+            infoDiv1.innerHTML = htm[3] + htm[3] + htm[0] + txt[0] + currency + htm[1];
+            infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
+            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
 
             //drawSettings();
         }
     
+    }
+    function createShares() {
+        var containerbox = document.getElementById('contentbox');
+        
+        var sharesBox = document.createElement('input');
+        sharesBox.setAttribute('id', 'sharesInput');
+        containerbox.appendChild(sharesBox);
+
+        var sharesBtn = document.createElement('button');
+        sharesBtn.setAttribute('class', 'settingsBtn');
+        sharesBtn.innerHTML = txt[3];
+        sharesBtn.onclick = submitShares;
+        containerbox.appendChild(sharesBtn);
+
+        function submitShares() {
+            sharesValue = sharesBox.value;
+            infoDiv2.innerHTML = htm[0] + txt[1] + sharesValue + currency + htm[1];
+        }
+    }
+
+    function createCommunity() {
+
     }
 }
 
