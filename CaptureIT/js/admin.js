@@ -49,11 +49,11 @@ function draw_content() {
     box.setAttribute("id", "contentbox");
     wrapper.appendChild(box);
 }
-
+var items = ["Dashboard", "Statistics", "Users", "Settings"];
 //Draws the menu items
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
-    var items = ["Dashboard", "Statistics", "Users", "Settings"];
+    //var items = ["Dashboard", "Statistics", "Users", "Settings"];
     //var icons = ["", "&#xE8B8;", "&#xE8B8;", "&#xE8B8;"];
     //var icons = "settings";
     var menu_ul = document.createElement("ul");
@@ -79,33 +79,43 @@ function draw_menu_items() {
         menu_a.appendChild(icons);
         //menu_a.setAttribute("onclick", "callMyStuff('" + items + "')");
         if (index == 0) {
-            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
-            icons.innerHTML += "&#xE8B8;";
+            menu_a.setAttribute("onclick", "draw_dashboard()");
+            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            icons.innerHTML += "&#xE871;";
         }
         if (index == 1) {
-            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            menu_a.setAttribute("onclick", "graph_draw()");
+            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            icons.innerHTML += "";
         }
         if (index == 2) {
-            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            menu_a.setAttribute("onclick", "users()");
+            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            icons.innerHTML += "";
         }
         if (index == 3) {
-            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            menu_a.setAttribute("onclick", "drawSettings()");
+            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            icons.innerHTML += "&#xE8B8;";
         }
     }
 }
-function callMyStuff(element) {
-    if (element == "Dashboard") {
+function callMyStuff(items) {
+    if (items[index] == 0) {
 
     }
-    if (element == "Statistics") {
+    if (items[index] == 1) {
         graph_draw();
     }
-    if (element == "Users") {
+    if (items == "Users") {
         users();
     }
-    if (element == "Settings") {
+    if (items == "Settings") {
         drawSettings();
     }
 
 }
-
+function draw_dashboard() {
+   var contbox = document.getElementById("contentbox");
+    contbox.innerHTML = "Hei pepelord";
+}

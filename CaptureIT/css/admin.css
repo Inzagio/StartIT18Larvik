@@ -22,10 +22,7 @@
     margin-bottom: 0;
     
 }
-    .menu-li:hover {
-        background-color: rgba(0, 150, 255, 0.4);
-        display: block; 
-    }
+ 
 .menu-ul .menu-li {
     display: inline;
     padding: 0;
