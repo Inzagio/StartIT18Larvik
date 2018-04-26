@@ -125,6 +125,7 @@ var menu = function () {
         menuOpen: menuOpen,
         menuClose: menuClose,
         menuSetup: menuSetup,
+        loginAction: loginAction,
         loginShow: loginShow
     }
 }();

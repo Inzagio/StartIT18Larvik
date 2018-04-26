@@ -3,7 +3,6 @@
 
 var menuItems = [
     '<a href="javascript:void(0)" onclick="menu.logout()"><b>Logout</b></a>',
-    '<a href="javascript:void(0)" onclick="">Savings/Loans</a>',
     '<a href="javascript:void(0)" onclick="setupStatus();">Status</a>',
     '<a href="javascript:void(0)" onclick="registerTransaction();">Register Transaction</a>',
     '<a href="javascript:void(0)" onclick="admin_panel()">Admin</a>'
