@@ -18,12 +18,12 @@ function admin_panel() {
     render_nav_admin();
     draw_menu_items();
     draw_content();
-
+    //addIcons();
 }
 // Creates the wrapper element and replaces the container element in index.html with the created wrapper
 function wrapper() {
     var wrapper = document.createElement("div");
-  
+
     wrapper.setAttribute("id", "wrapper");
     wrapper.classList.add("wrapperAdmin");
     var container = document.getElementById('container');
@@ -54,25 +54,45 @@ function draw_content() {
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
     var items = ["Dashboard", "Statistics", "Users", "Settings"];
-
+    //var icons = ["", "&#xE8B8;", "&#xE8B8;", "&#xE8B8;"];
+    //var icons = "settings";
     var menu_ul = document.createElement("ul");
     menu_ul.setAttribute("class", "menu-ul");
     menu.appendChild(menu_ul);
 
 
     // This will create a list of 4 items, based on the items array and give them an anchor tag with an onclick function - FUNCTION NAME IS PLACEHOLDER!!!
-    items.forEach(function (items) {
+
+    for (var index = 0; index < items.length; index++) {
         var menu_li = document.createElement("li");
         menu_li.setAttribute("class", "menu-li");
         menu_ul.appendChild(menu_li);
+
+
         var menu_a = document.createElement("a");
         menu_li.appendChild(menu_a);
-        menu_a.innerHTML += items;
+        menu_a.innerHTML += items[index];
         menu_a.setAttribute("href", "#");
-        menu_a.setAttribute("onclick", "callMyStuff('" + items + "')");
-    });
-}
 
+        var icons = document.createElement("i");
+        icons.setAttribute("class", "material-icons");
+        menu_a.appendChild(icons);
+        //menu_a.setAttribute("onclick", "callMyStuff('" + items + "')");
+        if (index == 0) {
+            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+            icons.innerHTML += "&#xE8B8;";
+        }
+        if (index == 1) {
+            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+        }
+        if (index == 2) {
+            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+        }
+        if (index == 3) {
+            menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
+        }
+    }
+}
 function callMyStuff(element) {
     if (element == "Dashboard") {
 
@@ -86,6 +106,6 @@ function callMyStuff(element) {
     if (element == "Settings") {
         drawSettings();
     }
-    
+
 }
 
