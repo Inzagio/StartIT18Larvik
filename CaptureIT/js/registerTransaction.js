@@ -11,7 +11,7 @@ function registerTransaction() {
     container.innerHTML =
         '<div class="grid wrapper">' +
         '<div class="box nm">' +
-        '<p class="box navnBoks" id="navnBoks"></p>' +
+        '<p class="box nameBox" id="nameBox"></p>' +
         '</div>' +
         '<div class="box choosedate">Choose date:</div>' +
         '<div class="box dato">' +
@@ -28,6 +28,7 @@ function registerTransaction() {
         ' <a onclick="settNavn(this)"> Hasan </a>' +
         ' <a onclick="settNavn(this)"> Mohamed </a> ' +
         '<a onclick="settNavn(this)"> Li </a>' +
+		'<a onclick="settNavn(this)"> Zainah </a>' +
         '</div> ' +
 
         ' </div>' +
@@ -59,7 +60,7 @@ function registerTransaction() {
         '</div> ' +
         ' </div>';
 
-    var navnBoks = document.getElementById("navnBoks");
+    var nameBox = document.getElementById("nameBox");
 
     setDateToday();
 }
@@ -93,7 +94,7 @@ function filter() {
 }
 
 function settNavn(a) {
-    navnBoks.innerHTML = a.innerHTML;
+    nameBox.innerHTML = a.innerHTML;
 }
 
 
