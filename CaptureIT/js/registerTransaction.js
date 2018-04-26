@@ -98,9 +98,9 @@ function settNavn(a) {
 
 
 function alertMaxInput(inputValue) {
-    if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later.
+    if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later
         alert('This is all that´s aviable for loans at the moment');
-        inputValue.value = 100; //setter verdien som oversteg til maxbeløp.
+        inputValue.value = 100; //setter verdien som oversteg til maxbeløp
     }
 }
 
