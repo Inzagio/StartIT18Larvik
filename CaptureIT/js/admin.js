@@ -101,7 +101,7 @@ function callMyStuff(element) {
         graph_draw();
     }
     if (element == "Users") {
-
+        users();
     }
     if (element == "Settings") {
         drawSettings();
