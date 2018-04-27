@@ -73,7 +73,7 @@ function draw_menu_items() {
         menu_li.appendChild(menu_a);
         menu_a.innerHTML += items[index];
         menu_a.setAttribute("href", "#");
-
+        menu_a.setAttribute("class", "admin-anchor");
         var icons = document.createElement("i");
         icons.setAttribute("class", "material-icons");
         menu_a.appendChild(icons);
@@ -82,16 +82,18 @@ function draw_menu_items() {
             menu_a.setAttribute("onclick", "draw_dashboard()");
             //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
             icons.innerHTML += "&#xE871;";
+           
         }
         if (index == 1) {
             menu_a.setAttribute("onclick", "graph_draw()");
             //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
-            icons.innerHTML += "";
+            icons.innerHTML += "&#xE85C";
+
         }
         if (index == 2) {
             menu_a.setAttribute("onclick", "users()");
             //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
-            icons.innerHTML += "";
+            icons.innerHTML += "&#xE7FB";
         }
         if (index == 3) {
             menu_a.setAttribute("onclick", "drawSettings()");
