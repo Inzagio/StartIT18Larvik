@@ -73,3 +73,69 @@ header {
             font-size: 18px;
         }
 }
+
+#startpage {
+    font-family: "Trebuchet MS", helvetica, arial;
+    margin: auto;
+    text-align: center;
+}
+
+#startlogo {
+    margin-top: 10vh;
+    width: 50vh;
+}
+#startheader {
+    font-size: 8vh;
+}
+#head1 {
+    color: rgb(190, 17, 31)
+}
+#head2 {
+    color: rgb(251, 184, 0)
+}
+
+#startparagraph {
+    margin-top: 3vh;
+    color: rgb(85, 72, 79);
+    font-weight: bold;
+    font-size: 2.7vh;
+}
+
+#startselect {
+    color: rgb(165, 135, 135);
+    margin-top: 2vh;
+    padding-right: 6vh;
+    padding-left: 6vh;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 2.3vh;
+}
+
+#startfield1 {
+    padding-right: 5vh;
+    padding-left: 5vh;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#startfield2 {
+    margin-top: 2px;
+    padding-right: 5vh;
+    padding-left: 5vh;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#startbutton {
+    margin-top: 5px;
+    color: white;
+    font-size: 2.7vh;
+    font-weight: bold;
+    background-color: rgb(29, 177, 91);
+    border: 1px solid rgb(31, 169, 83);
+    border-radius: 4px;
+    padding-right: 13.1vh;
+    padding-left: 13.1vh;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}

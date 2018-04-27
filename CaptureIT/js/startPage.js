@@ -10,24 +10,25 @@ function setupStartPage() {
 
     if (!isLoggedIn) { // Basic startskjerm hvis man ikke er logget inn.
         container.innerHTML =
-            '    <img src="img/renewgen_logo.svg" alt="ReNewGen" style="width:50%;">' +
-            '    <br>' +
-            '    <h1>' +
-            '        <span id="header1">Capture</span>' +
-            '        <span id="header2">IT</span>' +
-            '    </h1>' +
-            '    <p id="paragraph">Please select your village community</p>' +
-            '    <div>' +
-            '        <select>' +
-            '            <option value="" disabled selected hidden>Select your village community here</option>' +
-            '            <option>Kitinku</option>' +
-            '            <option>Muhadala</option>' +
-            '            <option>Kilimatinde</option>' +
-            '        </select>' +
-            '    </div>' +
-            '    <form action="javascript:changeGroup()" method="get">' +
-            '    <input type="submit" value="Proceed to your site"/>' +
-            '    </form>';
+            ' <div id="startpage">' +
+            '     <img id="startlogo" src="img/renewgen_logo.svg" alt="ReNewGen">' +
+            '     <br>' +
+            '     <h1 id="startheader">' +
+            '         <span id="head1">Capture</span><span id="head2">IT</span>' +
+            '     </h1>' +
+            '     <p id="startparagraph">Please select your village community</p>' +
+            '     <div>' +
+            '         <select id="startselect">' +
+            '             <option value="" disabled selected hidden>Select your village community here</option>' +
+            '             <option>Kitinku</option>' +
+            '             <option>Muhadala</option>' +
+            '             <option>Kilimatinde</option>' +
+            '         </select>' +
+            '     </div>' +
+            '     <form action="javascript:changeGroup()" method="get">' +
+            '     <input id="startbutton" type="submit" value="Proceed to your site"/>' +
+            '     </form>' +
+            '</div>';
     }
 
     else {
@@ -38,24 +39,25 @@ function setupStartPage() {
 function changeGroup() {
     var container = document.getElementById('container');
     container.innerHTML =
-        ' <img src="img/renewgen_logo.svg" alt="ReNewGen" style="width:50%;">' +
-        '    <br>' +
-        '    <h1>' +
-        '        <span id="header1">Capture</span>' +
-        '        <span id="header2">IT</span>' +
-        '    </h1>' +
-        '    <div>' +
-        '    <h2>Kilimatinde</h2>' +
-        '    <a href="javascript:setupStartPage()">Not from Kilimatinde?</a>' +
-        '    </div>' +
-        '    <br>' +
-        '    <form action="javascript:menu.loginAction(\'login\')" name="login">' +
-        '    <input type="text" placeholder="Username" name="user" required>' +
-        '    <br>' +
-        '    <input type="password" placeholder="Password" name="pass" required>' +
-        '    <br>' +
-        '    <input type="submit" value="Log in" />' +
-        '    </form>' +
-        '    <br>' +
-        '    <a href="">Forgotten password?</a>';
+   ' <div id="startpage">\
+        <img id="startlogo" src="img/renewgen_logo.svg" alt="ReNewGen">\
+            <br>\
+                <h1 id="startheader">\
+                    <span id="head1">Capture</span><span id="head2">IT</span>\
+                </h1>\
+                <div>\
+                    <h2>Kilimatinde</h2>\
+                    <a href="javascript:setupStartPage()">Not from Kilimatinde?</a>\
+                </div>\
+                <br>\
+                    <form action="javascript:menu.loginAction(\'login\')" name="login">\
+                    <input id="startfield1" type="text" placeholder="Username" name="user" required>\
+                        <br>\
+                            <input id="startfield2" type="password" placeholder="Password" name="pass" required>\
+                                <br>\
+                                    <input id="startbutton" type="submit" value="Log in" />\
+                                    </form>\
+                                    <br>\
+                                        <a href="">Forgotten password?</a>\
+</div>';
 }
