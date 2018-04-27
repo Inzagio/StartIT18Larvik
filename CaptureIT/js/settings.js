@@ -7,7 +7,7 @@ function drawSettings() {
     containerbox.innerHTML = '';
 
     var htm = ['<div>', '</div>' , 'Currency: ', '<br/>'];
-    var txt = ['Currency: ', 'Shares value: ', 'Minimum savings: ', 'Save', 'Max Loan']
+    var txt = ['Currency: ', 'Shares value: ', 'Minimum savings: ', 'Save', 'Max Loan (times saved amount) ']
 
     var infoDiv1 = document.createElement('div');
     infoDiv1.className = 'infoDiv';
@@ -31,6 +31,11 @@ function drawSettings() {
     createCommunity();
 
     var infoDiv4 = document.createElement('div');
+    infoDiv4.className = 'infoDiv';
+    containerbox.appendChild(infoDiv4);
+    infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + currency + htm[1];
+
+    createToLend();
 
     function createList() {
         var containerbox = document.getElementById('contentbox');
@@ -74,6 +79,7 @@ function drawSettings() {
         
         var sharesBox = document.createElement('input');
         sharesBox.setAttribute('class', 'settingsInput');
+        sharesBox.setAttribute('type', 'number');
         containerbox.appendChild(sharesBox);
 
         var sharesBtn = document.createElement('button');
@@ -84,7 +90,7 @@ function drawSettings() {
 
         function submitShares() {
             sharesValue = sharesBox.value;
-            infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
+            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + sharesValue + currency + htm[1];
         }
     }
 
@@ -93,6 +99,7 @@ function drawSettings() {
 
         var communityBox = document.createElement('input');
         communityBox.setAttribute('class', 'settingsInput');
+        communityBox.setAttribute('type', 'number');
         containerbox.appendChild(communityBox);
 
         var communityBtn = document.createElement('button');
@@ -107,22 +114,23 @@ function drawSettings() {
         }
     }
 
-    function toLend() {
+    function createToLend() {
         var containerbox = document.getElementById('contentbox');
 
         var toLendBox = document.createElement('input');
         toLendBox.setAttribute('class', 'settingsInput');
+        toLendBox.setAttribute('type', 'number');
         containerbox.appendChild(toLendBox);
 
         var toLendBtn = document.createElement('button');
-        communityBtn.setAttribute('class', 'settingsBtn');
-        communityBtn.innerHTML = txt[3];
-        communityBtn.onclick = submitToLend;
-        containerbox.appendChild(communityBtn);
+        toLendBtn.setAttribute('class', 'settingsBtn');
+        toLendBtn.innerHTML = txt[3];
+        toLendBtn.onclick = submitToLend;
+        containerbox.appendChild(toLendBtn);
 
         function submitToLend() {
             toLend = toLendBox.value;
-            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + communityValue + currency + htm[1];
+            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + toLend + currency + htm[1];
         }
     }
 }
