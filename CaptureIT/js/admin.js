@@ -102,21 +102,21 @@ function draw_menu_items() {
         }
     }
 }
-function callMyStuff(items) {
-    if (items[index] == 0) {
+//function callMyStuff(items) {
+//    if (items[index] == 0) {
 
-    }
-    if (items[index] == 1) {
-        graph_draw();
-    }
-    if (items == "Users") {
-        users();
-    }
-    if (items == "Settings") {
-        drawSettings();
-    }
+//    }
+//    if (items[index] == 1) {
+//        graph_draw();
+//    }
+//    if (items == "Users") {
+//        users();
+//    }
+//    if (items == "Settings") {
+//        drawSettings();
+//    }
 
-}
+//}
 function draw_dashboard() {
    var contbox = document.getElementById("contentbox");
     contbox.innerHTML = "Hei pepelord";

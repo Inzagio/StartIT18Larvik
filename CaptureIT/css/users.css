@@ -1,0 +1,21 @@
+#table {
+    background:rgb(178, 232, 237);
+    padding:10px;
+}
+
+#table-div {
+    border:1px solid grey;
+    margin:5px;
+}
+
+#table-div:first-child {
+    background-color:grey;
+}
+
+#search {
+    padding: 5px;
+    font-size: 16px;
+    border-radius:5px;
+    border:1px solid grey;
+    margin:5px;
+}
