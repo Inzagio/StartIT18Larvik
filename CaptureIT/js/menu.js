@@ -47,11 +47,15 @@ var menu = function () {
     }
 
     function menuOpen() {
-        if (menuIsOpen)
+        if (menuIsOpen) {
             menuClose();
+            window.removeEventListener('click', menuClose);
+        }
         else {
             menuDiv.style.height = menuHeight + 'px';
             menuIsOpen = true;
+            event.stopImmediatePropagation();
+            window.addEventListener('click', menuClose);
         }
     }
 
