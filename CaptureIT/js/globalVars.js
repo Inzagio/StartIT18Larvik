@@ -8,9 +8,9 @@ var currency = ' TZS';
 //Defines what one share costs in the selected currency 
 var sharesValue = 10;
 //Defines the community payment (minimum ammount to save each month)
-const communityValue = 20;
+var communityValue = 20;
 //Defines what a user is allowed to borrow (users savings * toLend)
-const toLend = 3;
+var toLend = 3;
 
 var users = ['Jon', 'Arve', 'Torgeir', 'Leif', 'Paul', 'Johannes'];
 

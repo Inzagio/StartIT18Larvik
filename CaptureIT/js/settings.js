@@ -106,6 +106,25 @@ function drawSettings() {
             infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + communityValue + currency + htm[1];
         }
     }
+
+    function toLend() {
+        var containerbox = document.getElementById('contentbox');
+
+        var toLendBox = document.createElement('input');
+        toLendBox.setAttribute('class', 'settingsInput');
+        containerbox.appendChild(toLendBox);
+
+        var toLendBtn = document.createElement('button');
+        communityBtn.setAttribute('class', 'settingsBtn');
+        communityBtn.innerHTML = txt[3];
+        communityBtn.onclick = submitToLend;
+        containerbox.appendChild(communityBtn);
+
+        function submitToLend() {
+            toLend = toLendBox.value;
+            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + communityValue + currency + htm[1];
+        }
+    }
 }
 
 //    containerbox.innerHTML = '<div class="settingsNested">'
