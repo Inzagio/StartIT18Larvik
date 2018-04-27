@@ -6,6 +6,7 @@ function drawSettings() {
     var containerbox = document.getElementById('contentbox');
     containerbox.innerHTML = '';
 
+    //setting local variables to be used for html and text generation
     var htm = ['<div>', '</div>' , 'Currency: ', '<br/>'];
     var txt = ['Currency: ', 'Shares value: ', 'Minimum savings: ', 'Save', 'Max Loan (times saved amount) ']
 
@@ -33,7 +34,7 @@ function drawSettings() {
     var infoDiv4 = document.createElement('div');
     infoDiv4.className = 'infoDiv';
     containerbox.appendChild(infoDiv4);
-    infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + currency + htm[1];
+    infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + htm[1];
 
     createToLend();
 
@@ -46,7 +47,7 @@ function drawSettings() {
         selectList.onchange = changeCurrency;
         
 
-        var options = ['GBP', 'NOK', 'MWK', 'TZS', 'USD', currency[0]];
+        var options = [' GBP', ' NOK', ' MWK', ' TZS', ' USD', currency[0]];
         
         //populating the select-list
         var optgroup =  document.createElement('optgroup');
@@ -54,7 +55,6 @@ function drawSettings() {
 
         options.forEach(function (option) {
             var optionSelect = document.createElement('option');
-            //optionSelect.setAttribute('class', 'currency');
             selectList.appendChild(optionSelect);
             optionSelect.innerHTML += option;
             optionSelect.value = option;
@@ -69,7 +69,7 @@ function drawSettings() {
             infoDiv1.innerHTML = htm[3] + htm[3] + htm[0] + txt[0] + currency + htm[1];
             infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
             infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
-
+            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + htm[1];
             //drawSettings();
         }
     
@@ -90,7 +90,7 @@ function drawSettings() {
 
         function submitShares() {
             sharesValue = sharesBox.value;
-            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + sharesValue + currency + htm[1];
+            infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
         }
     }
 
@@ -110,7 +110,7 @@ function drawSettings() {
 
         function submitCommunity() {
             communityValue = communityBox.value;
-            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + communityValue + currency + htm[1];
+            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
         }
     }
 
@@ -130,7 +130,7 @@ function drawSettings() {
 
         function submitToLend() {
             toLend = toLendBox.value;
-            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + toLend + currency + htm[1];
+            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + htm[1];
         }
     }
 }
@@ -146,64 +146,3 @@ function drawSettings() {
 //         +           '<option value="GBP">Brittish Pound (£)</option>'
 //         +       '</select>'
 //         +   '</div>'
-
-//function setAttributes(el, attrs) {
-//    for(var key in attrs) {
-//      el.setAttribute(key, attrs[key]);
-//    }
-//  }
-
-// function createShares() {
-//     var containerbox = document.getElementById('contentbox');
-//     var inputSharesValue = document.createElement('input');
-
-//     containerbox.appendChild(selectList, inputSharesValue);
-//     selectList.setAttribute('onchange', 'changeCurrency(this)');
-
-
-//     var options = ['GBP', 'NOK', 'MWK', 'TZS', 'USD'];
-
-//     options.forEach(function (options) {
-//         var optionsSelect = document.createElement('option');
-//         optionsSelect.setAttribute('class', 'currency');
-//         selectList.appendChild(optionsSelect);
-//         optionsSelect.innerHTML += options;
-//     });
-
-//     function changeCurrency(currency) {
-//         console.log(tag);
-//         var containerbox = document.getElementById('contentbox');
-//         var disp = document.createElement('div');
-//         containerbox.appendChild(disp);
-//         disp.innerHTML = currency;
-//     }
-
-// }
-
-// function createCommunity() {
-//     var containerbox = document.getElementById('contentbox');
-//     var inputCommunitySavings = document.createElement('input');
-
-//     containerbox.appendChild(selectList, inputSharesValue);
-//     selectList.setAttribute('onchange', 'changeCurrency(this)');
-
-
-//     var options = ['GBP', 'NOK', 'MWK', 'TZS', 'USD'];
-
-//     options.forEach(function (options) {
-//         var optionsSelect = document.createElement('option');
-//         optionsSelect.setAttribute('class', 'currency');
-//         selectList.appendChild(optionsSelect);
-//         optionsSelect.innerHTML += options;
-//     });
-
-//     function changeCurrency(currency) {
-//         console.log(tag);
-//         var containerbox = document.getElementById('contentbox');
-//         var disp = document.createElement('div');
-//         containerbox.appendChild(disp);
-//         disp.innerHTML = currency;
-//     }
-
-// }
-
