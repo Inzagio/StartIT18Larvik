@@ -60,9 +60,9 @@
     .menu-ul .menu-li a:hover {
         color: greenyellow;
     }
-    .menu-ul .menu-li a:active{
+    /*.menu-ul .menu-li a:active{
         border-bottom: 2px solid green;
-    }
+    }*/
 
 #contentbox {
     padding: 0;
