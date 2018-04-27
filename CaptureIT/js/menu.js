@@ -43,28 +43,6 @@ var menu = function () {
             header.style.visibility = 'visible';
         }
 
-        // Login Box
-        loginBox = document.createElement('div');
-        loginBox.setAttribute('id', 'loginBox');
-        menuDiv.appendChild(loginBox);
-
-        loginBox.style = '\
-            z-index: 2; \
-            position: relative; \
-            left: 10px; \
-            width: 180px; \
-            background-color: skyblue; \
-            padding: 10px; \
-            transition: 0.5s;';
-
-        loginBox.innerHTML = ' \
-            <form action="" name="login"> \
-            Username:<br /> <input type="text" name="username"><br /> \
-            Password:<br /><input type="password" name="password"><br /> \
-            <input id="loginButton" type="button" value="Log In">';
-
-        loginHide();
-        document.getElementById('loginButton').addEventListener('click', loginAction);
         menuClose();
     }
 
@@ -83,19 +61,9 @@ var menu = function () {
         menuIsOpen = false;
     }
 
-    function loginShow() {
-        loginBox.style.visibility = 'visible';
-        document.forms['login']['username'].focus();
-        menuDiv.style.height = (menuHeight + loginBox.getBoundingClientRect().height + loginExtraPadding) + 'px';
-    }
-
-    function loginHide() {
-        loginBox.style.visibility = 'hidden';
-        menuDiv.style.height = menuHeight + 'px';
-    }
-
-    function loginAction() {
-        if (document.forms['login']['username'].value == '' || document.forms['login']['password'].value == '') {
+    function loginAction(form) {
+        console.log();
+        if (document.forms[form]['user'].value == '' || document.forms['login2']['pass'].value == '') {
             var errorText = document.getElementById('loginError')
             if (!errorText) {
                 errorText = document.createElement('span');
@@ -126,6 +94,5 @@ var menu = function () {
         menuClose: menuClose,
         menuSetup: menuSetup,
         loginAction: loginAction,
-        loginShow: loginShow
     }
 }();

@@ -49,11 +49,13 @@ function changeGroup() {
         '    <a href="javascript:setupStartPage()">Not from Kilimatinde?</a>' +
         '    </div>' +
         '    <br>' +
+        '    <form action="javascript:menu.loginAction(\'login\')" name="login">' +
         '    <input type="text" placeholder="Username" name="user" required>' +
         '    <br>' +
         '    <input type="password" placeholder="Password" name="pass" required>' +
         '    <br>' +
         '    <input type="submit" value="Log in" />' +
+        '    </form>' +
         '    <br>' +
         '    <a href="">Forgotten password?</a>';
 }
