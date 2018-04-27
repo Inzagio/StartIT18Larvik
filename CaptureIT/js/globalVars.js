@@ -1,6 +1,6 @@
 // JavaScript source code
 
-var isLoggedIn = true; // TODO: Set false f�r release.
+var isLoggedIn = false; // TODO: Set false f�r release.
 
 // Global values for use in calculations and displaying data
 
