@@ -7,7 +7,7 @@ function drawSettings() {
     containerbox.innerHTML = '';
 
     var htm = ['<div>', '</div>' , 'Currency: ', '<br/>'];
-    var txt = ['Currency: ', 'Shares value: ', 'Community savings amount: ', 'Save']
+    var txt = ['Currency: ', 'Shares value: ', 'Minimum savings: ', 'Save', 'Max Loan']
 
     var infoDiv1 = document.createElement('div');
     infoDiv1.className = 'infoDiv';
@@ -28,7 +28,9 @@ function drawSettings() {
     containerbox.appendChild(infoDiv3);
     infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
 
-    //createCommunity();
+    createCommunity();
+
+    var infoDiv4 = document.createElement('div');
 
     function createList() {
         var containerbox = document.getElementById('contentbox');
@@ -37,8 +39,9 @@ function drawSettings() {
     
         containerbox.appendChild(selectList);
         selectList.onchange = changeCurrency;
-   
-        var options = ['GBP', 'NOK', 'MWK', 'TZS', 'USD'];
+        
+
+        var options = ['GBP', 'NOK', 'MWK', 'TZS', 'USD', currency[0]];
         
         //populating the select-list
         var optgroup =  document.createElement('optgroup');
@@ -70,7 +73,7 @@ function drawSettings() {
         var containerbox = document.getElementById('contentbox');
         
         var sharesBox = document.createElement('input');
-        sharesBox.setAttribute('id', 'sharesInput');
+        sharesBox.setAttribute('class', 'settingsInput');
         containerbox.appendChild(sharesBox);
 
         var sharesBtn = document.createElement('button');
@@ -81,12 +84,27 @@ function drawSettings() {
 
         function submitShares() {
             sharesValue = sharesBox.value;
-            infoDiv2.innerHTML = htm[0] + txt[1] + sharesValue + currency + htm[1];
+            infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
         }
     }
 
     function createCommunity() {
+        var containerbox = document.getElementById('contentbox');
 
+        var communityBox = document.createElement('input');
+        communityBox.setAttribute('class', 'settingsInput');
+        containerbox.appendChild(communityBox);
+
+        var communityBtn = document.createElement('button');
+        communityBtn.setAttribute('class', 'settingsBtn');
+        communityBtn.innerHTML = txt[3];
+        communityBtn.onclick = submitCommunity;
+        containerbox.appendChild(communityBtn);
+
+        function submitCommunity() {
+            communityValue = communityBox.value;
+            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + communityValue + currency + htm[1];
+        }
     }
 }
 
@@ -98,7 +116,7 @@ function drawSettings() {
 //         +          '<option value="TZS">Tanzanian Shilling (Tsh)</option>'
 //         +           '<option value="NOK">Norwegian Kroner (kr)</option>'
 //         +           '<option value="MWK">Malawian kwacha (MK)</option>'
-//         +           '<option value="GBP">Brittish Pund (£)</option>'
+//         +           '<option value="GBP">Brittish Pound (£)</option>'
 //         +       '</select>'
 //         +   '</div>'
 
