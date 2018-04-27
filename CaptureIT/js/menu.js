@@ -54,7 +54,7 @@ var menu = function () {
         else {
             menuDiv.style.height = menuHeight + 'px';
             menuIsOpen = true;
-            event.stopImmediatePropagation();
+            event.stopPropagation();
             window.addEventListener('click', menuClose);
         }
     }
