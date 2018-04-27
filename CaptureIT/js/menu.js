@@ -56,7 +56,6 @@ var menu = function () {
     }
 
     function menuClose() {
-        loginHide();
         menuDiv.style.height = '0px';
         menuIsOpen = false;
     }
@@ -75,7 +74,6 @@ var menu = function () {
             return;
         }
         isLoggedIn = true;
-        loginHide();
 
         menuSetup();
         setupStatus();
