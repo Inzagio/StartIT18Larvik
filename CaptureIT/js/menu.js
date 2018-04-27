@@ -66,7 +66,7 @@ var menu = function () {
 
     function loginAction(form) {
         console.log();
-        if (document.forms[form]['user'].value == '' || document.forms['login2']['pass'].value == '') {
+        if (document.forms[form]['user'].value == '' || document.forms[form]['pass'].value == '') {
             var errorText = document.getElementById('loginError')
             if (!errorText) {
                 errorText = document.createElement('span');
