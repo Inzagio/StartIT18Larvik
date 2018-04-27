@@ -91,7 +91,7 @@ function draw_menu_items() {
 
         }
         if (index == 2) {
-            menu_a.setAttribute("onclick", "users()");
+            menu_a.setAttribute("onclick", "draw_users()");
             //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
             icons.innerHTML += "&#xE7FB";
         }

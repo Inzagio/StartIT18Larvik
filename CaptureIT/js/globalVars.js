@@ -11,3 +11,9 @@ var sharesValue = 10;
 const communityValue = 20;
 //Defines what a user is allowed to borrow (users savings * toLend)
 const toLend = 3;
+
+var users = ['Jon', 'Arve', 'Torgeir', 'Leif', 'Paul', 'Johannes'];
+
+// table html
+var tableDiv = document.createElement('div');
+var table = document.createElement('table');

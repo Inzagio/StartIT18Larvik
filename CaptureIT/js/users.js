@@ -1,10 +1,6 @@
-var users = ['Jon', 'Arve', 'Torgeir', 'Leif', 'Paul', 'Johannes'];
 
-// table html
-var tableDiv = document.createElement('div');
-var table = document.createElement('table');
 
-function users() {
+function draw_users() {
     var contentreset = document.getElementById('contentbox');
     contentreset.innerHTML = '';
     if(contentreset.innerHTML != ''){contentreset.innerHTML = '';}
