@@ -3,80 +3,67 @@
 'use strict'
 
 function drawSettings() {
+    //getting contentbox from admin.js and blanking the page
     var containerbox = document.getElementById('contentbox');
     containerbox.innerHTML = '';
 
-    //setting local variables to be used for html and text generation
-    var htm = ['<div>', '</div>' , 'Currency: ', '<br/>'];
-    var txt = ['Currency: ', 'Shares value: ', 'Minimum savings: ', 'Save', 'Max Loan (times saved amount) ']
+    //setting local variables to be used for text generation
+    var txt = ['Currency: ', 'Shares value: ', 'Minimum savings: ',
+     'Save', 'Max Loan (times saved amount) ']
 
-    var infoDiv1 = document.createElement('div');
-    infoDiv1.className = 'infoDiv';
-    containerbox.appendChild(infoDiv1);
-    infoDiv1.innerHTML = htm[3] + htm[3] + htm[0] + txt[0] + currency + htm[1];
+    //setting variables so that currency can be updated in all fields
+    var currencyDiv;
+    var sharesDiv;
+    var communityDiv;
+    var toLendDiv; 
 
+    //running all the functions to create settings
     createList();
-
-    var infoDiv2 = document.createElement('div');
-    infoDiv2.className = 'infoDiv';
-    containerbox.appendChild(infoDiv2);
-    infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
-
     createShares();
-
-    var infoDiv3 = document.createElement('div');
-    infoDiv3.className = 'infoDiv';
-    containerbox.appendChild(infoDiv3);
-    infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
-
     createCommunity();
-
-    var infoDiv4 = document.createElement('div');
-    infoDiv4.className = 'infoDiv';
-    containerbox.appendChild(infoDiv4);
-    infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + htm[1];
-
     createToLend();
+    //----------------------------------------------------------------------------------------------
 
+    //Currency
     function createList() {
-        var containerbox = document.getElementById('contentbox');
+        currencyDiv = document.createElement('div');
+        currencyDiv.className = 'infoDiv';
+        currencyDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[0] + currency + '</div>';
+        containerbox.appendChild(currencyDiv);
+
         var selectList = document.createElement('select');
         selectList.setAttribute('id', 'selectCurrencyTag');
-    
-        containerbox.appendChild(selectList);
         selectList.onchange = changeCurrency;
-        
-
-        var options = [' GBP', ' NOK', ' MWK', ' TZS', ' USD', currency[0]];
+        containerbox.appendChild(selectList);
         
         //populating the select-list
-        var optgroup =  document.createElement('optgroup');
-            optgroup.setAttribute('label', 'Currency');
-
+        var options = [' GBP', ' NOK', ' MWK', ' TZS', ' USD', currency[0]];
         options.forEach(function (option) {
             var optionSelect = document.createElement('option');
             selectList.appendChild(optionSelect);
             optionSelect.innerHTML += option;
             optionSelect.value = option;
+            selectList.value = currency;
         });
 
-        selectList.value = 'TZS';
-        
         //Changing the currency global variable and currency selected
         function changeCurrency() {
             var selectList = document.getElementById('selectCurrencyTag');
             currency = selectList.value;
-            infoDiv1.innerHTML = htm[3] + htm[3] + htm[0] + txt[0] + currency + htm[1];
-            infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
-            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
-            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + htm[1];
-            //drawSettings();
-        }
-    
+            currencyDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[0] + currency + '</div>';
+            sharesDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[1] + sharesValue + currency + '</div>';
+            communityDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[2] + communityValue + currency + '</div>';
+            toLendDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[4] + toLend + '</div>';
+        }  
     }
+    //----------------------------------------------------------------------------------------------
+
     function createShares() {
-        var containerbox = document.getElementById('contentbox');
-        
+        sharesDiv = document.createElement('div');
+        sharesDiv.className = 'infoDiv';
+        containerbox.appendChild(sharesDiv);
+        var sharesHTML = '</br>' + '</br>' + '<div>' + txt[1] + sharesValue + currency + '</div>';
+        sharesDiv.innerHTML = sharesHTML;
         var sharesBox = document.createElement('input');
         sharesBox.setAttribute('class', 'settingsInput');
         sharesBox.setAttribute('type', 'number');
@@ -90,13 +77,17 @@ function drawSettings() {
 
         function submitShares() {
             sharesValue = sharesBox.value;
-            infoDiv2.innerHTML = htm[3] + htm[3] + htm[0] + txt[1] + sharesValue + currency + htm[1];
+            sharesDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[1] + sharesValue + currency + '</div>';
         }
     }
+    //----------------------------------------------------------------------------------------------
 
     function createCommunity() {
-        var containerbox = document.getElementById('contentbox');
-
+        communityDiv = document.createElement('div');
+        communityDiv.className = 'infoDiv';
+        communityDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[2] + communityValue + currency + '</div>';
+        containerbox.appendChild(communityDiv);
+        
         var communityBox = document.createElement('input');
         communityBox.setAttribute('class', 'settingsInput');
         communityBox.setAttribute('type', 'number');
@@ -110,12 +101,16 @@ function drawSettings() {
 
         function submitCommunity() {
             communityValue = communityBox.value;
-            infoDiv3.innerHTML = htm[3] + htm[3] + htm[0] + txt[2] + communityValue + currency + htm[1];
+            communityDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[2] + communityValue + currency + '</div>';
         }
     }
+    //-----------------------------------------------------------------------------------------------
 
     function createToLend() {
-        var containerbox = document.getElementById('contentbox');
+        toLendDiv = document.createElement('div');
+        toLendDiv.className = 'infoDiv';
+        toLendDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[4] + toLend + '</div>';
+        containerbox.appendChild(toLendDiv);
 
         var toLendBox = document.createElement('input');
         toLendBox.setAttribute('class', 'settingsInput');
@@ -130,19 +125,7 @@ function drawSettings() {
 
         function submitToLend() {
             toLend = toLendBox.value;
-            infoDiv4.innerHTML = htm[3] + htm[3] + htm[0] + txt[4] + toLend + htm[1];
+            toLendDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[4] + toLend + '</div>';
         }
     }
 }
-
-//    containerbox.innerHTML = '<div class="settingsNested">'
-//   
-//         +  '<div>Currency'
-//         +  '<select onchange="start()" title="Displays avalible currencies" size="1" name="currency" id="currencyList" required>'
-//         +          '<option value="USD">US Dollars ($)</option>'
-//         +          '<option value="TZS">Tanzanian Shilling (Tsh)</option>'
-//         +           '<option value="NOK">Norwegian Kroner (kr)</option>'
-//         +           '<option value="MWK">Malawian kwacha (MK)</option>'
-//         +           '<option value="GBP">Brittish Pound (£)</option>'
-//         +       '</select>'
-//         +   '</div>'
