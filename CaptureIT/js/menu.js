@@ -48,10 +48,18 @@ var menu = function () {
         menuClose();
     }
 
-    function setBreadcrumbs(text) {
+    function setBreadcrumbs() {
         // This sets the breadcrumbs field to the supplied text
-        breadcrumbsText.innerHTML = text;
-
+        if (arguments[0] === undefined) {
+            console.log('No breadcrumbs supplied');
+            return;
+        }
+        var output = '';
+        for (let crumb of arguments) {
+            output += crumb + ' / ';
+        }
+        var regex = new RegExp(' / $');
+        breadcrumbsText.innerHTML = output.replace(regex, '');
     }
 
     function menuOpen() {
