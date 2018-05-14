@@ -11,6 +11,7 @@ function setupStatus() {
     }
 
     if (isLoggedIn) {
+        menu.setBreadcrumbs('Status');
         container.innerHTML = '<h1>Logged In</h1>';
     }
     else {

@@ -28,6 +28,13 @@ header {
     padding: 0px 0px 0px 10px;
 }
 
+#breadcrumbs {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    padding: 0px 0px 0px 10px;
+}
+
 .sidenav {
     width: 240px;
     position: absolute;
