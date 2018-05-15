@@ -1,0 +1,8 @@
+﻿.statusTable {
+    margin: 20px;
+}
+
+.statusTable th {
+    font-weight: bold;
+    text-align: center;
+}

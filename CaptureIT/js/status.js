@@ -13,6 +13,7 @@ function setupStatus() {
     if (isLoggedIn) {
         menu.setBreadcrumbs('Status');
         var currentUser = {
+            name: 'TestName',
             paidSocial: 10002,
             boughtShares: 200,
             loanSocial: 5000,
@@ -21,6 +22,7 @@ function setupStatus() {
 
         var statusTable = createStatusTable(container);
 
+        statusTable.nameField.innerHTML = currentUser.name;
         statusTable.paidSocialField.innerHTML = currentUser.paidSocial + currency;
         statusTable.boughtSharesField.innerHTML = currentUser.boughtShares + currency;
         statusTable.loanSocialField.innerHTML = currentUser.loanSocial + currency;
@@ -32,13 +34,17 @@ function setupStatus() {
 }
 
 function createStatusTable(container) {
-    var wrapper = document.createElement('div');
-    wrapper.classList.add('wrapper');
     var table = document.createElement('table');
-    container.appendChild(wrapper);
-    wrapper.appendChild(table);
+    table.classList.add('statusTable');
+    container.appendChild(table);
     var row;
     var cell;
+
+    row = table.insertRow();
+    var nameField = document.createElement('th');
+    row.appendChild(nameField);
+    nameField.setAttribute('colspan', 2);
+    nameField.style.fontWeight = 'bold';
 
     row = table.insertRow();
     cell = row.insertCell();
@@ -61,6 +67,7 @@ function createStatusTable(container) {
     var loanSharesField = row.insertCell();
 
     return {
+        nameField,
         paidSocialField,
         boughtSharesField,
         loanSocialField,
