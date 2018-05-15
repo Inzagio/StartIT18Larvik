@@ -48,8 +48,10 @@ var menu = function () {
         menuClose();
     }
 
+    /**
+     * This sets the breadcrumbs field to the supplied text
+     */
     function setBreadcrumbs() {
-        // This sets the breadcrumbs field to the supplied text
         if (arguments[0] === undefined) {
             console.log('No breadcrumbs supplied');
             return;
