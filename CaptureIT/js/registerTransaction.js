@@ -24,11 +24,11 @@ function registerTransaction() {
         ' <button onclick="showNameList()" class="dropbtn"> Name </button>' +
         ' <div id="nameDropdown" class="dropdown-content">' +
         ' <input type="text" placeholder="Search name" id="nameInput" onkeyup="filter()">' +
-        ' <a onclick="settNavn(this)"> Abdi </a>' +
-        ' <a onclick="settNavn(this)"> Hasan </a>' +
-        ' <a onclick="settNavn(this)"> Mohamed </a> ' +
-        '<a onclick="settNavn(this)"> Li </a>' +
-		'<a onclick="settNavn(this)"> Zainah </a>' +
+        ' <a onclick="putName(this)"> Abdi </a>' +
+        ' <a onclick="putName(this)"> Hasan </a>' +
+        ' <a onclick="putName(this)"> Mohamed </a> ' +
+        '<a onclick="putName(this)"> Li </a>' +
+		'<a onclick="putName(this)"> Zainah </a>' +
         '</div> ' +
 
         ' </div>' +
@@ -56,14 +56,23 @@ function registerTransaction() {
         ' <input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan from Share Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy--> ' +
         '</div> ' +
         ' <div class="box submit"> ' +
-        ' <input id="submit" type="submit" value="Submit" action="send/submit to DB linkage here"> ' +
+        ' <input id="submit" type="submit" value="Send Data to Array" onclick="sendToArray()"> ' +
+		' <button onclick="showArray()">see array in console</button>' +
         '</div> ' +
         ' </div>';
 
     var nameBox = document.getElementById("nameBox");
+	var nameDrop = document.getElementById("nameDropdown");
+    var socialCheck = document.getElementById('socialCheck');
+    var sharesBought = document.getElementById("sharesBought");
+    var socialLoan = document.getElementById('socialLoan');
+    var sharesLoan = document.getElementById('sharesLoan');
 
     setDateToday();
 }
+
+
+var personData = [];
 
 
 
@@ -93,7 +102,7 @@ function filter() {
     }
 }
 
-function settNavn(a) {
+function putName(a) {
     nameBox.innerHTML = a.innerHTML;
 }
 
@@ -101,18 +110,17 @@ function settNavn(a) {
 function alertMaxInput(inputValue) {
     if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later
         alert('This is all that´s aviable for loans at the moment');
-        inputValue.value = 100; //setter verdien som oversteg til maxbeløp
+        inputValue.value = 100; //Sets value to max aviable if more than that is chosen
     }
 }
 
 function sharesBought(inputValue) {
 
-    inputValue.value = 0; //starter på null
+    inputValue.value = 0; //starts counting from 0
 }
 
 
-// Tester dato-sak funkis - skal prøve å få denne kombinert med "kalenderen" så dagens dato blir default value
-function setDateToday() {
+// Calendar with choosable date - todays date set as standard
     var n = new Date();
     var y = n.getFullYear();
     var m = n.getMonth() + 1;
@@ -121,3 +129,21 @@ function setDateToday() {
     if (d < 10) m = '0' + d;
     document.getElementById("kalender").value = y + "-" + m + "-" + d;
 }
+
+		function sendToArray(){
+		 var newInput = {
+		 Name: nameBox.value,              
+		 PaidSocial: socialCheck.checked,
+         SharesBougth: sharesBought.value,
+                
+         LoanFromSocial: socialLoan.value,
+         LoanFromShares: sharesLoan.value
+  
+         };
+		 personData.push(newInput);
+         }
+
+       function showArray(){
+       console.log(personData);
+        }
+
