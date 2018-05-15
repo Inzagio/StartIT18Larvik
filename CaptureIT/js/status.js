@@ -11,6 +11,7 @@ function setupStatus() {
     }
 
     if (isLoggedIn) {
+        container.innerHTML = '';
         menu.setBreadcrumbs('Status');
         var currentUser = {
             name: 'TestName',
@@ -50,21 +51,25 @@ function createStatusTable(container) {
     cell = row.insertCell();
     cell.innerHTML = 'Paid into Social Funds';
     var paidSocialField = row.insertCell();
+    paidSocialField.classList.add('right');
 
     row = table.insertRow();
     cell = row.insertCell();
     cell.innerHTML = 'Bought shares';
     var boughtSharesField = row.insertCell();
+    boughtSharesField.classList.add('right');
 
     row = table.insertRow();
     cell = row.insertCell();
     cell.innerHTML = 'Loan from Social Funds';
     var loanSocialField = row.insertCell();
+    loanSocialField.classList.add('right');
 
     row = table.insertRow();
     cell = row.insertCell();
     cell.innerHTML = 'Loan from Shares';
     var loanSharesField = row.insertCell();
+    loanSharesField.classList.add('right');
 
     return {
         nameField,
