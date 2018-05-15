@@ -118,9 +118,22 @@ function sharesBought(inputValue) {
 
     inputValue.value = 0; //starts counting from 0
 }
+
+// Calendar with choosable date - todays date set as standard - 
+  function setDateToday(){
+    var n = new Date();
+    var y = n.getFullYear();
+    var m = n.getMonth() + 1;
+    var d = n.getDate();
+    if (m < 10) m = '0' + m;
+    if (d < 10) m = '0' + d;
+    document.getElementById("calendar").value = y + "-" + m + "-" + d;
+}
+
+	
 function sendToArray(){
 		 var newInput = {
-		 Name: nameBox.value,              
+		 Name: nameBox.value,    //<-- keep getting undefined value - remember to check this out! Try to link to dropdown?         
 		 PaidSocial: socialCheck.checked,
          SharesBougth: sharesBought.value,
                 
@@ -133,18 +146,5 @@ function sendToArray(){
 
        function showArray(){
        console.log(personData);
-        }
-
-// Calendar with choosable date - todays date set as standard - 
-  function calendarDate(){
-    var n = new Date();
-    var y = n.getFullYear();
-    var m = n.getMonth() + 1;
-    var d = n.getDate();
-    if (m < 10) m = '0' + m;
-    if (d < 10) m = '0' + d;
-    document.getElementById("calendar").value = y + "-" + m + "-" + d;
-}
-
-		
+        }	
 
