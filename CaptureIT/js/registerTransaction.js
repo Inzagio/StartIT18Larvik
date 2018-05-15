@@ -16,7 +16,7 @@ function registerTransaction() {
         '<div class="box choosedate">Choose date:</div>' +
         '<div class="box dato">' +
         ' <form>' +
-        ' <input id="kalender" type="date" name="chooseday">' +
+        ' <input id="calendar" type="date" name="chooseday">' +
         ' </form>' +
         '</div>' +
         '<div class="box meny">' +
@@ -118,19 +118,7 @@ function sharesBought(inputValue) {
 
     inputValue.value = 0; //starts counting from 0
 }
-
-
-// Calendar with choosable date - todays date set as standard
-    var n = new Date();
-    var y = n.getFullYear();
-    var m = n.getMonth() + 1;
-    var d = n.getDate();
-    if (m < 10) m = '0' + m;
-    if (d < 10) m = '0' + d;
-    document.getElementById("kalender").value = y + "-" + m + "-" + d;
-}
-
-		function sendToArray(){
+function sendToArray(){
 		 var newInput = {
 		 Name: nameBox.value,              
 		 PaidSocial: socialCheck.checked,
@@ -146,4 +134,17 @@ function sharesBought(inputValue) {
        function showArray(){
        console.log(personData);
         }
+
+// Calendar with choosable date - todays date set as standard - 
+  function calendarDate(){
+    var n = new Date();
+    var y = n.getFullYear();
+    var m = n.getMonth() + 1;
+    var d = n.getDate();
+    if (m < 10) m = '0' + m;
+    if (d < 10) m = '0' + d;
+    document.getElementById("calendar").value = y + "-" + m + "-" + d;
+}
+
+		
 
