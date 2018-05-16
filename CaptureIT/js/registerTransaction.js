@@ -38,7 +38,7 @@ function registerTransaction() {
         '</div>' +
 
         '<div class="box b">' +
-        ' <input id="sharesBought" onload="sharesBought(this)" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
+        ' <input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
         '</div> ' +
         '<div class="box c"> ' +
         ' <p>Loan out of social funds:</p>' +
@@ -116,10 +116,7 @@ function alertMaxInput(inputValue) {
     }
 }
 
-function sharesBought(inputValue) {
 
-    inputValue.value = 0; //starts counting from 0
-}
 
 // Calendar with choosable date - todays date set as standard - 
   function setDateToday(){
@@ -135,7 +132,7 @@ function sharesBought(inputValue) {
 	
 function sendToArray(){
 		 var newInput = {
-		 Name: nameBox.value,    //<-- keep getting undefined value - remember to check this out! Try to link to dropdown?         
+         Name: nameBox.innerHTML,    //<-- keep getting undefined value - remember to check this out! Try to link to dropdown?         
 		 PaidSocial: socialCheck.checked,
          SharesBougth: sharesBought.value,
                 
