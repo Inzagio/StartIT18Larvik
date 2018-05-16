@@ -6,8 +6,9 @@ function registerTransaction() {
     var container = document.getElementById('container');
     if (!container) {
         container = createContainer();
+        
     }
-
+    menu.setBreadcrumbs('Register Transactions');
     container.innerHTML =
         '<div class="grid wrapper">' +
         '<div class="box nm">' +
