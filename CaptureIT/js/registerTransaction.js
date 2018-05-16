@@ -61,12 +61,14 @@ function registerTransaction() {
         '</div> ' +
         ' </div>';
 
-    var nameBox = document.getElementById("nameBox");
-	var nameDrop = document.getElementById("nameDropdown");
-    var socialCheck = document.getElementById('socialCheck');
-    var sharesBought = document.getElementById("sharesBought");
-    var socialLoan = document.getElementById('socialLoan');
-    var sharesLoan = document.getElementById('sharesLoan');
+        var globalArray = [
+            nameBox = document.getElementById("nameBox"),
+            nameDrop = document.getElementById("nameDropdown"),
+            socialCheck = document.getElementById('socialCheck'),
+            sharesBought = document.getElementById("sharesBought"),
+            socialLoan = document.getElementById('socialLoan'),
+            sharesLoan = document.getElementById('sharesLoan'),
+          ];
 
     setDateToday();
 }
