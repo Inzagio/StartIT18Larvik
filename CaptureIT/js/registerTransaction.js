@@ -132,10 +132,12 @@ function alertMaxInput(inputValue) {
 	
 function sendToArray(){
 		 var newInput = {
-         Name: nameBox.innerHTML,    //<-- keep getting undefined value - remember to check this out! Try to link to dropdown?         
+         Date: calendar.value,
+         Name: nameBox.innerHTML,  
 		 PaidSocial: socialCheck.checked,
          SharesBougth: sharesBought.value,
-                
+
+        
          LoanFromSocial: socialLoan.value,
          LoanFromShares: sharesLoan.value
   
