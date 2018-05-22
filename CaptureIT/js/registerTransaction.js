@@ -8,6 +8,7 @@ function registerTransaction() {
         container = createContainer();
         
     }
+
     menu.setBreadcrumbs('Register Transactions');
     container.innerHTML =
         '<div class="grid wrapper">' +
