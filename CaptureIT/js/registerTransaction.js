@@ -6,7 +6,7 @@ function registerTransaction() {
     var container = document.getElementById('container');
     if (!container) {
         container = createContainer();
-        
+
     }
 
     menu.setBreadcrumbs('Register Transactions');
@@ -30,16 +30,16 @@ function registerTransaction() {
         ' <a onclick="putName(this)"> Hasan </a>' +
         ' <a onclick="putName(this)"> Mohamed </a> ' +
         '<a onclick="putName(this)"> Li </a>' +
-		'<a onclick="putName(this)"> Zainah </a>' +
+        '<a onclick="putName(this)"> Zainah </a>' +
         '</div> ' +
 
         ' </div>' +
         '</div>' +
         '<div class="box a"> ' +
-        '<label class="switch"> '+ 
-        '<input id="socialCheck" type="checkbox">'+
-        '<span class="slider round"></span>'+
-        '</label>'+ 
+        '<label class="switch"> ' +
+        '<input id="socialCheck" type="checkbox">' +
+        '<span class="slider round"></span>' +
+        '</label>' +
         ' Paid social ' +
         '</div>' +
 
@@ -63,18 +63,18 @@ function registerTransaction() {
         '</div> ' +
         ' <div class="box submit"> ' +
         ' <input id="submit" type="submit" value="Send Data to Array" onclick="sendToArray()"> ' +
-		' <button onclick="showArray()">see array in console</button>' +
+        ' <button onclick="showArray()">see array in console</button>' +
         '</div> ' +
         ' </div>';
 
-        var globalArray = [
-            nameBox = document.getElementById("nameBox"),
-            nameDrop = document.getElementById("nameDropdown"),
-            socialCheck = document.getElementById('socialCheck'),
-            sharesBought = document.getElementById("sharesBought"),
-            socialLoan = document.getElementById('socialLoan'),
-            sharesLoan = document.getElementById('sharesLoan'),
-          ];
+    var globalArray = [
+        nameBox = document.getElementById("nameBox"),
+        nameDrop = document.getElementById("nameDropdown"),
+        socialCheck = document.getElementById('socialCheck'),
+        sharesBought = document.getElementById("sharesBought"),
+        socialLoan = document.getElementById('socialLoan'),
+        sharesLoan = document.getElementById('sharesLoan'),
+    ];
 
     setDateToday();
 }
@@ -110,9 +110,11 @@ function filter() {
     }
 }
 
-function putName(a) {
+    function putName(a) {
     nameBox.innerHTML = a.innerHTML;
+
 }
+
 
 
 function alertMaxInput(inputValue) {
@@ -125,7 +127,7 @@ function alertMaxInput(inputValue) {
 
 
 // Calendar with choosable date - todays date set as standard - 
-  function setDateToday(){
+function setDateToday() {
     var n = new Date();
     var y = n.getFullYear();
     var m = n.getMonth() + 1;
@@ -135,23 +137,33 @@ function alertMaxInput(inputValue) {
     document.getElementById("calendar").value = y + "-" + m + "-" + d;
 }
 
-	
-function sendToArray(){
-		 var newInput = {
-         Date: calendar.value,
-         Name: nameBox.innerHTML,  
-		 PaidSocial: socialCheck.checked,
-         SharesBougth: sharesBought.value,
 
-        
-         LoanFromSocial: socialLoan.value,
-         LoanFromShares: sharesLoan.value
-  
-         };
-		 personData.push(newInput);
-         }
+function valueCheck() {
+    //Alert if check is not ticked or name is not chosen
+    //not working - checking more tomorrow 
+    if (nameBox.innerHTML == null) { alert('Choose name to submit data'); }
+    if (!socialCheck.checked) { alert('Please check '); }
+}
 
-       function showArray(){
-       console.log(personData);
-        }	
+
+function sendToArray() {
+    var newInput = {
+        Date: calendar.value,
+        Name: nameBox.innerHTML,
+        PaidSocial: socialCheck.checked,
+        SharesBougth: sharesBought.value,
+
+
+        LoanFromSocial: socialLoan.value,
+        LoanFromShares: sharesLoan.value
+
+    };
+    valueCheck();
+   personData.push(newInput);
+
+}
+
+function showArray() {
+    console.log(personData);
+}
 
