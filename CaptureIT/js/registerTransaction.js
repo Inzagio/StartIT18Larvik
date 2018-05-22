@@ -13,7 +13,7 @@ function registerTransaction() {
     container.innerHTML =
         '<div class="grid wrapper">' +
         '<div class="box nm">' +
-        '<p class="box nameBox" id="nameBox"></p>' +
+        '<div class="box nameBox" id="nameBox"></div>' +
         '</div>' +
         '<div class="box choosedate">Choose date:</div>' +
         '<div class="box dato">' +

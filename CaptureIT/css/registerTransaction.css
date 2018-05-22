@@ -35,14 +35,11 @@
             grid-area: nm;
             font-size: 20px;
             height: 28px;
-            padding: 10px;
             border: 1px solid rgb(192,192,192);
             text-align: center;
             margin-top: 30px;
             background-color: white;
-
-            
-        }
+        } 
 
         .meny {
             grid-area: meny;
@@ -135,7 +132,7 @@
 
         /* Search field */
         #nameInput {
-            background-image: url('');
+
             background-repeat: no-repeat;
             font-size: 16px;
             padding: 14px 20px 12px 45px;
@@ -149,7 +146,7 @@
 
         .nameBox {
                 width: 100%;
-                transform: translate(-0%, -70%);
+                transform: translate(-5%, -13%);
         }
 
 
