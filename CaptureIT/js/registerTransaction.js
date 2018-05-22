@@ -141,7 +141,8 @@ function setDateToday() {
 function valueCheck() {
     //Alert if check is not ticked or name is not chosen
     //not working - checking more tomorrow 
-    if (nameBox.innerHTML == null) { alert('Choose name to submit data'); }
+    console.log(nameBox.innerHTML == '')
+    if (nameBox.innerHTML == '') { alert('Choose name to submit data'); }
     if (!socialCheck.checked) { alert('Please check '); }
 }
 
