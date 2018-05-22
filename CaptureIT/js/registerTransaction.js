@@ -35,7 +35,11 @@ function registerTransaction() {
         ' </div>' +
         '</div>' +
         '<div class="box a"> ' +
-        '<input id="socialCheck" type="checkbox"> Paid social ' +
+        '<label class="switch"> '+ 
+        '<input id="socialCheck" type="checkbox">'+
+        '<span class="slider round"></span>'+
+        '</label>'+ 
+        ' Paid social ' +
         '</div>' +
 
         '<div class="box b">' +
