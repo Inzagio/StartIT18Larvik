@@ -40,7 +40,7 @@ function registerTransaction() {
         '<input id="socialCheck" type="checkbox">' +
         '<span class="slider round"></span>' +
         '</label>' +
-        ' Paid social ' +
+        ' <div id="paidText">' + 'Paid social ' +'</div>'+
         '</div>' +
 
         '<div class="box b">' +
@@ -111,7 +111,9 @@ function filter() {
 }
 
     function putName(a) {
-    nameBox.innerHTML = a.innerHTML;
+        nameBox.innerHTML = a.innerHTML;
+        nameBox.classList.remove('alertText');
+       
 
 }
 
@@ -139,11 +141,21 @@ function setDateToday() {
 
 
 function valueCheck() {
-    //Alert if check is not ticked or name is not chosen
-    //not working - checking more tomorrow 
-    console.log(nameBox.innerHTML == '')
-    if (nameBox.innerHTML == '') { alert('Choose name to submit data'); }
-    if (!socialCheck.checked) { alert('Please check '); }
+    //Show a text if name is not chosen
+    if (nameBox.innerHTML == '') {
+        nameBox.classList.add('alertText');
+        nameBox.innerHTML = 'Choose name';
+    };
+    //show a text if social is not checked
+    if (!socialCheck.checked) {
+        paidText.classList.add('alertText');
+        paidText.innerHTML = 'Pay Social';
+    }
+        else{
+        paidText.classList.remove('alertText');
+        paidText.classList.add('okText');
+        paidText.innerHTML = 'Paid Social';
+    }
 }
 
 

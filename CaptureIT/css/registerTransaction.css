@@ -1,4 +1,10 @@
-﻿
+﻿        .alertText{
+            color: red;
+        }
+
+        .okText{
+            color:green;
+        }
 
         .grid {
             display: grid;
