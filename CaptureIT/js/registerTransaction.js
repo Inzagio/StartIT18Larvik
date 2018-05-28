@@ -1,5 +1,7 @@
 ﻿
 
+ var nameDrop = document.getElementById("nameDropdown");
+ var personData = [];
 
 function registerTransaction() {
     // Creates container element if it has been removed.
@@ -66,44 +68,25 @@ function registerTransaction() {
         ' <button onclick="showArray()">see array in console</button>' +
         '</div> ' +
         ' </div>';
-
-    var globalArray = [
-        nameBox = document.getElementById("nameBox"),
-        nameDrop = document.getElementById("nameDropdown"),
-        socialCheck = document.getElementById('socialCheck'),
-        sharesBought = document.getElementById("sharesBought"),
-        socialLoan = document.getElementById('socialLoan'),
-        sharesLoan = document.getElementById('sharesLoan'),
-    ];
-
-    setDateToday();
+		 setDateToday();
+  
 }
-
-
-var personData = [];
-
-
+	
 
 function showNameList() {
-    document.getElementById("nameDropdown").classList.toggle("show");
+    nameDropdown.classList.toggle("show");
 }
 
 function filter() {
-
-    var input, filter, ul, li, a, i;
-
-    input = document.getElementById("nameInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("nameDropdown");
-    a = div.getElementsByTagName("a");
-
-
+   var input = document.getElementById("nameInput");
+   var filter = input.value.toUpperCase();
+   var a = nameDropdown.getElementsByTagName("a");
+   var i;
 
     for (i = 0; i < a.length; i++) {
         if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
             a[i].style.display = "";
         }
-
         else {
             a[i].style.display = "none";
         }
@@ -113,11 +96,8 @@ function filter() {
     function putName(a) {
         nameBox.innerHTML = a.innerHTML;
         nameBox.classList.remove('alertText');
-       
-
+    
 }
-
-
 
 function alertMaxInput(inputValue) {
     if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later
@@ -142,19 +122,24 @@ function setDateToday() {
 
 function valueCheck() {
     //Show a text if name is not chosen
+	var valueNotEmpty = '';
     if (nameBox.innerHTML == '') {
         nameBox.classList.add('alertText');
         nameBox.innerHTML = 'Choose name';
+		valueNotEmpty = false;
     };
     //show a text if social is not checked
     if (!socialCheck.checked) {
         paidText.classList.add('alertText');
         paidText.innerHTML = 'Pay Social';
+		valueNotEmpty = false;
     }
         else{
         paidText.classList.remove('alertText');
         paidText.classList.add('okText');
         paidText.innerHTML = 'Paid Social';
+		valueNotEmpty = true;
+		return valueNotEmpty;
     }
 }
 
@@ -165,14 +150,11 @@ function sendToArray() {
         Name: nameBox.innerHTML,
         PaidSocial: socialCheck.checked,
         SharesBougth: sharesBought.value,
-
-
         LoanFromSocial: socialLoan.value,
         LoanFromShares: sharesLoan.value
-
-    };
+      };
     valueCheck();
-   personData.push(newInput);
+	if (valueNotEmpty){personData.push(newInput)};
 
 }
 
