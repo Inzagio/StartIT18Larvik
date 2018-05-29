@@ -1,6 +1,4 @@
-﻿
-
- var nameDrop = document.getElementById("nameDropdown");
+﻿ var nameDrop = document.getElementById("nameDropdown");
  var personData = [];
 
 function registerTransaction() {
@@ -119,10 +117,10 @@ function setDateToday() {
     document.getElementById("calendar").value = y + "-" + m + "-" + d;
 }
 
-
+var valueNotEmpty = '';
 function valueCheck() {
     //Show a text if name is not chosen
-	var valueNotEmpty = '';
+	
     if (nameBox.innerHTML == '') {
         nameBox.classList.add('alertText');
         nameBox.innerHTML = 'Choose name';
