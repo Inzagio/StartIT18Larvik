@@ -46,15 +46,18 @@ function createTransactionTable() {
     headerRow.appendChild(loanSharesHeader);
 
     // Fill table data
-    for (let person of personData) {
-        let row = table.insertRow();
-        row.insertCell().innerHTML = person['Date'];
-        row.insertCell().innerHTML = person['Name'];
-        row.insertCell().innerHTML = person['PaidSocial'];
-        row.insertCell().innerHTML = person['SharesBougth'];
-        row.insertCell().innerHTML = person['LoanFromSocial'];
-        row.insertCell().innerHTML = person['LoanFromShares'];
-    }
+    db.orderBy('Date').get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (item) {
+            let person = item.data();
+            let row = table.insertRow();
+            row.insertCell().innerHTML = person['Date'];
+            row.insertCell().innerHTML = person['Name'];
+            row.insertCell().innerHTML = person['PaidSocial'];
+            row.insertCell().innerHTML = person['SharesBougth'];
+            row.insertCell().innerHTML = person['LoanFromSocial'];
+            row.insertCell().innerHTML = person['LoanFromShares'];
+        });
+    });
 
     return table;
 }
