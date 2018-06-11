@@ -1,5 +1,5 @@
 ﻿ var nameDrop = document.getElementById("nameDropdown");
- var personData = [];
+ //var personData = [];
 
 
 
@@ -65,7 +65,7 @@ function registerTransaction() {
         ' <input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan from Share Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy--> ' +
         '</div> ' +
         ' <div class="box submit"> ' +
-        ' <input id="submit" type="submit" value="Send Data to Array" onclick="sendToArray()"> ' +
+        ' <input id="submit" type="submit" value="Submit to FirestoreDatabase" onclick="submit()"> ' +
         ' <button onclick="showArray()">see array in console</button>' +
         '</div> ' +
         ' </div>';
@@ -73,6 +73,24 @@ function registerTransaction() {
   
 }
 	
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA7ZbZNG7bvIWJZcfpyooWB4AhKuAdQOsc",
+    authDomain: "registertransaction.firebaseapp.com",
+    databaseURL: "https://registertransaction.firebaseio.com",
+    projectId: "registertransaction",
+    storageBucket: "registertransaction.appspot.com",
+    messagingSenderId: "589304248924"
+  };
+  firebase.initializeApp(config);
+
+//Grab collection from firestore database
+const db = firebase.firestore().collection('registerTransaction');
+	
+
+var nameDrop = document.getElementById("nameDropdown");
+//var personData = [];
+       
 
 function showNameList() {
     nameDropdown.classList.toggle("show");
@@ -107,8 +125,6 @@ function alertMaxInput(inputValue) {
     }
 }
 
-
-
 // Calendar with choosable date - todays date set as standard - 
 function setDateToday() {
     var n = new Date();
@@ -120,10 +136,9 @@ function setDateToday() {
     document.getElementById("calendar").value = y + "-" + m + "-" + d;
 }
 
-var valueNotEmpty = '';
-function valueCheck() {
+    var valueNotEmpty = '';
+    function valueCheck() {
     //Show a text if name is not chosen
-	
     if (nameBox.innerHTML == '') {
         nameBox.classList.add('alertText');
         nameBox.innerHTML = 'Choose name';
@@ -144,8 +159,8 @@ function valueCheck() {
     }
 }
 
-
-function sendToArray() {
+	/*
+    function sendToArray() {
     var newInput = {
         Date: calendar.value,
         Name: nameBox.innerHTML,
@@ -154,12 +169,33 @@ function sendToArray() {
         LoanFromSocial: socialLoan.value,
         LoanFromShares: sharesLoan.value
       };
-    valueCheck();
+     valueCheck();
 	if (valueNotEmpty){personData.push(newInput)};
+   }*/
+   function submit(){
+				 //hente ut verdier fra felt
+				let Name = nameBox.innerHTML;
+				let PaidSocial = socialCheck.checked;
+				let SharesBougth =  sharesBought.value;
+				let LoanFromSocial = socialLoan.value;
+				let LoanFromShares = sharesLoan.value;
+				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares );
+				}
 
-}
+	function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares  ){
+				let newInput =
+					{
+					 Date: calendar.value,
+					 Name: Name ,
+					 PaidSocial: PaidSocial ,
+					 SharesBougth: SharesBougth,
+					 LoanFromSocial: LoanFromSocial,
+					 LoanFromShares: LoanFromShares
+					 };	
+					  valueCheck();
+					if (valueNotEmpty){db.add(newInput)}; 
+			 }
 
-function showArray() {
-    console.log(personData);
-}
-
+    function showArray() {
+    console.log(db);
+    }
