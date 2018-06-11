@@ -1,6 +1,9 @@
 ﻿ var nameDrop = document.getElementById("nameDropdown");
  var personData = [];
 
+
+
+
 function registerTransaction() {
     // Creates container element if it has been removed.
     var container = document.getElementById('container');
