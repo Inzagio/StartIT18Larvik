@@ -26,7 +26,7 @@ function registerTransaction() {
         '</div>' +
         '<div class="box meny">' +
         ' <div class="dropdown">' +
-        ' <button onclick="showNameList()" class="dropbtn"> Name </button>' +
+        ' <button class="dropbtn"> Name </button>' +
         ' <div id="nameDropdown" class="dropdown-content">' +
         ' <input type="text" placeholder="Search name" id="nameInput" onkeyup="filter()">' +
         ' <a onclick="putName(this)"> Abdi </a>' +
@@ -90,12 +90,6 @@ const db = firebase.firestore().collection('registerTransaction');
 	
 
 var nameDrop = document.getElementById("nameDropdown");
-
-       
-
-function showNameList() {
-    nameDropdown.classList.toggle("show");
-}
 
 function filter() {
    var input = document.getElementById("nameInput");
