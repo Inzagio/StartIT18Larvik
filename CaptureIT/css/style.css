@@ -1,5 +1,5 @@
 ﻿* {
-    font-family: Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', helvetica, arial;
 }
 
 body {
@@ -11,6 +11,10 @@ header {
     color: #000000;
     border-bottom: rgb(136, 209, 205) 1px solid;
     margin: -8px;
+}
+
+a {
+    text-decoration: none;
 }
 
 #headerTekst {
@@ -40,7 +44,7 @@ header {
     z-index: 1;
     left: 0px;
     top: 45px;
-    background-color: rgb(121, 216, 219);
+    background-color: rgb(63, 187, 233);
     transition: 0.3s;
     margin-left: 0px;
     overflow: hidden;
@@ -50,14 +54,14 @@ header {
         padding: 15px 8px 8px 15px;
         text-decoration: none;
         font-size: 20px;
-        color: #000000;
+        color: white;
         display: block;
         transition: 0.3s;
         height: 28px;
     }
 
         .sidenav a:hover {
-            color: #ffffff;
+            font-size: 22px;
         }
 
     .sidenav .closebtn {
@@ -74,6 +78,10 @@ header {
     max-width: 600px;    
 }
 
+#footer {
+    visibility: hidden;
+}
+
 @media screen and (max-height: 450px) {
         .sidenav a {
             font-size: 18px;
@@ -81,7 +89,7 @@ header {
 }
 
 #startpage {
-    font-family: "Trebuchet MS", helvetica, arial;
+    font-family: 'Trebuchet MS', helvetica, arial;
     margin: auto;
     text-align: center;
 }
@@ -91,6 +99,7 @@ header {
     width: 50vh;
 }
 #startheader {
+    margin-top: -3vh;
     font-size: 8vh;
 }
 #head1 {
@@ -101,7 +110,8 @@ header {
 }
 
 #startparagraph {
-    margin-top: 3vh;
+    margin-top: -3vh;
+    margin-bottom: 1vh;
     color: rgb(85, 72, 79);
     font-weight: bold;
     font-size: 2.7vh;
@@ -109,12 +119,18 @@ header {
 
 #startselect {
     color: rgb(165, 135, 135);
-    margin-top: 2vh;
     padding-right: 6vh;
     padding-left: 6vh;
     padding-top: 2px;
     padding-bottom: 2px;
     font-size: 2.3vh;
+}
+
+#startlocation {
+    margin-top: -4vh;
+    margin-bottom: 1vh;
+    font-size: 5vh;
+    color: rgb(85, 72, 79);
 }
 
 #startfield1 {
@@ -134,6 +150,7 @@ header {
 
 #startbutton {
     margin-top: 5px;
+    margin-bottom: -1vh; 
     color: white;
     font-size: 2.7vh;
     font-weight: bold;
