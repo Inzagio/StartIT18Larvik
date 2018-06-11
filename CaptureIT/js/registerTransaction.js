@@ -1,11 +1,17 @@
-﻿    var nameDrop = document.getElementById("nameDropdown");
+﻿ var nameDrop = document.getElementById("nameDropdown");
+ 
 
-	function registerTransaction() {
+
+
+
+function registerTransaction() {
     // Creates container element if it has been removed.
     var container = document.getElementById('container');
     if (!container) {
         container = createContainer();
+
     }
+
     menu.setBreadcrumbs('Register Transactions');
     container.innerHTML =
         '<div class="grid wrapper">' +
@@ -60,96 +66,102 @@
         '</div> ' +
         ' <div class="box submit"> ' +
         ' <input id="submit" type="submit" value="Submit to FirestoreDatabase" onclick="submit()"> ' +
-        ' <button onclick="showDB()">See Database in Console</button>' +
+        ' <button onclick="showArray()">see array in console</button>' +
         '</div> ' +
         ' </div>';
 		 setDateToday();
-    	}
+  
+}
 	
-			// Initialize Firebase
-        const config = {
-            apiKey: "AIzaSyA7ZbZNG7bvIWJZcfpyooWB4AhKuAdQOsc",
-            authDomain: "registertransaction.firebaseapp.com",
-			databaseURL: "https://registertransaction.firebaseio.com",
-			projectId: "registertransaction",
-			storageBucket: "registertransaction.appspot.com",
-			messagingSenderId: "589304248924"	
-		 };
-		firebase.initializeApp(config);
-		firebase.firestore().settings( { timestampsInSnapshots: true })
-		
-		//Grab collection from firestore database
-		const db = firebase.firestore().collection('registerTransaction');
-		const nameDrop = document.getElementById("nameDropdown");
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA7ZbZNG7bvIWJZcfpyooWB4AhKuAdQOsc",
+    authDomain: "registertransaction.firebaseapp.com",
+    databaseURL: "https://registertransaction.firebaseio.com",
+    projectId: "registertransaction",
+    storageBucket: "registertransaction.appspot.com",
+    messagingSenderId: "589304248924"
 	
+  };
+  firebase.initializeApp(config);
+  firebase.firestore().settings( { timestampsInSnapshots: true })
+//Grab collection from firestore database
+const db = firebase.firestore().collection('registerTransaction');
+	
+
+var nameDrop = document.getElementById("nameDropdown");
+
        
-		function showNameList() {
-			nameDropdown.classList.toggle("show");
-		}
 
-		function filter() {
-			const input = document.getElementById("nameInput");
-			let filter = input.value.toUpperCase();
-			let a = nameDropdown.getElementsByTagName("a");
-			let i;
+function showNameList() {
+    nameDropdown.classList.toggle("show");
+}
 
-			for (i = 0; i < a.length; i++) {
-			 if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                 a[i].style.display = "";
-             }
-			else {
-				 a[i].style.display = "none";
-			}
-		  }
-		}
+function filter() {
+   var input = document.getElementById("nameInput");
+   var filter = input.value.toUpperCase();
+   var a = nameDropdown.getElementsByTagName("a");
+   var i;
 
-		function putName(a) {
-			nameBox.innerHTML = a.innerHTML;
-			nameBox.classList.remove('alertText');
-		}
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        }
+        else {
+            a[i].style.display = "none";
+        }
+    }
+}
 
-		function alertMaxInput(inputValue) {
-			if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later
-			alert('This is all that´s aviable for loans at the moment');
-			inputValue.value = 100; //Sets value to max aviable if more than that is chosen
-			}
-		}
+    function putName(a) {
+        nameBox.innerHTML = a.innerHTML;
+        nameBox.classList.remove('alertText');
+    
+}
 
-		// Calendar with choosable date - todays date set as standard - 
-		function setDateToday() {
-			var n = new Date();
-			var y = n.getFullYear();
-			var m = n.getMonth() + 1;
-			var d = n.getDate();
-				if (m < 10) m = '0' + m;
-				if (d < 10) m = '0' + d;
-				document.getElementById("calendar").value = y + "-" + m + "-" + d;
-			}
+function alertMaxInput(inputValue) {
+    if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later
+        alert('This is all that´s aviable for loans at the moment');
+        inputValue.value = 100; //Sets value to max aviable if more than that is chosen
+    }
+}
 
-		var valueNotEmpty = '';
-		function valueCheck() { //Show a text if no name is chosen
-			 if (nameBox.innerHTML == '') {
-				nameBox.classList.add('alertText');
-				nameBox.innerHTML = 'Choose name';
-				valueNotEmpty = false;
-			 };
-		
-			if (!socialCheck.checked) { //show a text if social is not checked
-				paidText.classList.add('alertText');
-				paidText.innerHTML = 'Pay Social';
-				valueNotEmpty = false;
-			}
-			else{
-				paidText.classList.remove('alertText');
-				paidText.classList.add('okText');
-				paidText.innerHTML = 'Paid Social';
-				valueNotEmpty = true;
-				return valueNotEmpty;
-			}
-		}
+// Calendar with choosable date - todays date set as standard - 
+function setDateToday() {
+    var n = new Date();
+    var y = n.getFullYear();
+    var m = n.getMonth() + 1;
+    var d = n.getDate();
+    if (m < 10) m = '0' + m;
+    if (d < 10) m = '0' + d;
+    document.getElementById("calendar").value = y + "-" + m + "-" + d;
+}
+
+    var valueNotEmpty = '';
+    function valueCheck() {
+    //Show a text if name is not chosen
+    if (nameBox.innerHTML == '') {
+        nameBox.classList.add('alertText');
+        nameBox.innerHTML = 'Choose name';
+		valueNotEmpty = false;
+    };
+    //show a text if social is not checked
+    if (!socialCheck.checked) {
+        paidText.classList.add('alertText');
+        paidText.innerHTML = 'Pay Social';
+		valueNotEmpty = false;
+    }
+        else{
+        paidText.classList.remove('alertText');
+        paidText.classList.add('okText');
+        paidText.innerHTML = 'Paid Social';
+		valueNotEmpty = true;
+		return valueNotEmpty;
+    }
+}
 
 	
-			function submit(){
+   function submit(){
 				 //grab values from inputs
 				let Name = nameBox.innerHTML;
 				let PaidSocial = socialCheck.checked;
@@ -157,9 +169,9 @@
 				let LoanFromSocial = socialLoan.value;
 				let LoanFromShares = sharesLoan.value;
 				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares );
-			}
+				}
 
-			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares  ){
+	function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares  ){
 				let newInput =
 					{
 					 Date: calendar.value,
@@ -173,10 +185,10 @@
 					if (valueNotEmpty){db.add(newInput)}; 
 			 }
 
-		    function showDB() {
-				db.get().then((show) => { 
-				show.forEach((person) => {
-				console.log(person.data());
-				})
+		  function showArray() {
+			db.get().then((show) => { 
+			show.forEach((person) => {
+			console.log(person.data());
 			})
-			}
+		})
+		}
