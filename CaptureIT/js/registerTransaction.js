@@ -1,4 +1,4 @@
-﻿			function registerTransaction() { // Creates container element if it has been removed.
+			function registerTransaction() { // Creates container element if it has been removed.
 			var container = document.getElementById('container');
 			if (!container) {
 			 container = createContainer();
