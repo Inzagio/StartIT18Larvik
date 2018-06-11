@@ -81,9 +81,10 @@ function registerTransaction() {
     projectId: "registertransaction",
     storageBucket: "registertransaction.appspot.com",
     messagingSenderId: "589304248924"
+	
   };
   firebase.initializeApp(config);
-
+  firebase.firestore().settings( { timestampsInSnapshots: true })
 //Grab collection from firestore database
 const db = firebase.firestore().collection('registerTransaction');
 	
@@ -173,7 +174,7 @@ function setDateToday() {
 	if (valueNotEmpty){personData.push(newInput)};
    }*/
    function submit(){
-				 //hente ut verdier fra felt
+				 //grab values from inputs
 				let Name = nameBox.innerHTML;
 				let PaidSocial = socialCheck.checked;
 				let SharesBougth =  sharesBought.value;
@@ -196,6 +197,10 @@ function setDateToday() {
 					if (valueNotEmpty){db.add(newInput)}; 
 			 }
 
-    function showArray() {
-    console.log(db);
-    }
+		  function showArray() {
+			db.get().then((show) => { 
+			show.forEach((person) => {
+			console.log(person.data());
+			})
+		})
+		}
