@@ -10,6 +10,24 @@ var menu = function () {
     var loginBox;
     var menuIsOpen;
 
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            var uid = user.uid;
+
+            isLoggedIn = true;
+            menuSetup();
+            setupStatus();
+        } else {
+            isLoggedIn = false;
+
+            menuSetup();
+            setupStatus();
+        }
+    });
+
+
     document.addEventListener('DOMContentLoaded', menuOnLoad);
     function menuOnLoad() {
         menuDiv = document.getElementById('menu');
@@ -95,17 +113,32 @@ var menu = function () {
             errorText.innerHTML = 'You need to enter a username and password!';
             return;
         }
-        isLoggedIn = true;
 
-        menuSetup();
-        setupStatus();
+        firebase.auth().signInWithEmailAndPassword(document.forms[form]['user'].value, document.forms[form]['pass'].value).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+        });
+
+        //isLoggedIn = true;
+
+        //menuSetup();
+        //setupStatus();
     }
 
     function logout() {
-        isLoggedIn = false;
-        menuSetup();
+        firebase.auth().signOut().catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+        });
+
+        //isLoggedIn = false;
+        //menuSetup();
         menuClose();
-        setupStatus(); // Gå til start siden når man logger ut.
+        //setupStatus(); // Gå til start siden når man logger ut.
     }
 
     return { // Public methods
