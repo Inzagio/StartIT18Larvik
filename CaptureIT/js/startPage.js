@@ -46,8 +46,8 @@ function changeGroup() {
                     <span id="head1">Capture</span><span id="head2">IT</span>\
                 </h1>\
                 <div>\
-                    <h2>Kilimatinde</h2>\
-                    <a href="javascript:setupStartPage()">Not from Kilimatinde?</a>\
+                    <h2 id="startlocation">Kilimatinde</h2>\
+                    <a id="returnlink" href="javascript:setupStartPage()">Not from Kilimatinde?</a>\
                 </div>\
                 <br>\
                     <form action="javascript:menu.loginAction(\'login\')" name="login">\
@@ -58,6 +58,6 @@ function changeGroup() {
                                     <input id="startbutton" type="submit" value="Log in" />\
                                     </form>\
                                     <br>\
-                                        <a href="">Forgotten password?</a>\
+                                        <a id="forgotpass" href="">Forgotten password?</a>\
 </div>';
 }

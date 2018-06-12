@@ -2,10 +2,11 @@
 'use strict';
 
 var menuItems = [
-    '<a href="javascript:void(0)" onclick="menu.logout()"><b>Logout</b></a>',
-    '<a href="javascript:void(0)" onclick="setupStatus();">Status</a>',
-    '<a href="javascript:void(0)" onclick="registerTransaction();">Register Transaction</a>',
-    '<a href="javascript:void(0)" onclick="admin_panel()">Admin</a>'
+    '<a href="javascript:registerTransaction();">Register Transaction</a>',
+    '<a href="javascript:setupStatus();">Status</a>',
+    '<a href="javascript:setupTransactionList();">Transaction List</a>',
+    '<a href="javascript:admin_panel()">Admin</a>',
+    '<a href="javascript:menu.logout()"><b>Logout</b></a>'
 ];
 
 const defaultItems = menuItems.slice();

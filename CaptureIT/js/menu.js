@@ -6,6 +6,7 @@ var menu = function () {
     var menuDiv;
     var menuButton;
     var menuHeight;
+    var breadcrumbsText;
     var loginBox;
     var menuIsOpen;
 
@@ -13,6 +14,7 @@ var menu = function () {
     function menuOnLoad() {
         menuDiv = document.getElementById('menu');
         menuButton = document.getElementById('menuButton');
+        breadcrumbsText = document.getElementById('breadcrumbs');
 
         // Load initial items
         menuSetup();
@@ -44,6 +46,22 @@ var menu = function () {
         }
 
         menuClose();
+    }
+
+    /**
+     * This sets the breadcrumbs field to the supplied text
+     */
+    function setBreadcrumbs() {
+        if (arguments[0] === undefined) {
+            console.log('No breadcrumbs supplied');
+            return;
+        }
+        var output = '';
+        for (let crumb of arguments) {
+            output += crumb + ' / ';
+        }
+        var regex = new RegExp(' / $');
+        breadcrumbsText.innerHTML = output.replace(regex, '');
     }
 
     function menuOpen() {
@@ -95,6 +113,7 @@ var menu = function () {
         menuOpen: menuOpen,
         menuClose: menuClose,
         menuSetup: menuSetup,
+        setBreadcrumbs: setBreadcrumbs,
         loginAction: loginAction,
     }
 }();

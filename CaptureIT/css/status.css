@@ -1,0 +1,23 @@
+﻿.statusTable {
+    margin: 20px;
+}
+
+.statusTable th {
+    font-weight: bold;
+    text-align: center;
+}
+
+.statusTable .right {
+    text-align: right;
+}
+
+.transactionTable {
+    margin: 20px;
+    border-collapse: collapse;
+}
+
+.transactionTable td, .transactionTable th {
+    border: 1px black solid;
+    text-align: center;
+    padding: 4px;
+}

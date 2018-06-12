@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css/graph.css" />
     <link rel="stylesheet" href="css/registerTransaction.css" />
     <link rel="stylesheet" href="css/settings.css" />
+    <link rel="stylesheet" href="css/status.css" />
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
     <script src="js/globalVars.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/menu.js"></script>
@@ -21,14 +24,14 @@
     <script src="js/users.js"></script>
     <script src="js/graph.js"></script>
     <script src="js/registerTransaction.js"></script>
+    <script src="js/transactionList.js"></script>
 </head>
 <body>
     <header>
-            <span id="menuButton" onclick="menu.menuOpen()">&#9776; Menu</span>
+            <span id="menuButton" onclick="menu.menuOpen()">&#9776; Menu</span><span id="breadcrumbs"></span>
             <div id="menu" class="sidenav">
                 <!-- Menyelementer legges i menuItems.js -->
             </div>
-        </div>
     </header>
 
     <section id="showcase">
@@ -37,7 +40,7 @@
         </div>
     </section>
 
-    <footer>
+    <footer id="footer">
         <p>Capture-IT</p>
     </footer>
 

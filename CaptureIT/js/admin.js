@@ -3,7 +3,7 @@
  *
  *
  * @version 0.1
- * @author  Trym Kristian Bjørnvik
+ * @author  Trym Kristian Bjï¿½rnvik
  * @updated 24-04-2018
  *
  *
@@ -18,7 +18,7 @@ function admin_panel() {
     render_nav_admin();
     draw_menu_items();
     draw_content();
-    //addIcons();
+    
 }
 // Creates the wrapper element and replaces the container element in index.html with the created wrapper
 function wrapper() {
@@ -29,7 +29,7 @@ function wrapper() {
     var container = document.getElementById('container');
     container.innerHTML = '';
     container.appendChild(wrapper);
-    //var replacedNode = showcase.replaceChild(wrapper, container);
+   
 }
 
 // Draws the navigation bar used for the admin panel
@@ -49,13 +49,11 @@ function draw_content() {
     box.setAttribute("id", "contentbox");
     wrapper.appendChild(box);
 }
-var items = ["Dashboard", "Statistics", "Users", "Settings"];
+var items = ["Dashboard", "Statistics", "Users", "Settings","ChartTest"];
 //Draws the menu items
 function draw_menu_items() {
     var menu = document.getElementById("admin-navigation");
-    //var items = ["Dashboard", "Statistics", "Users", "Settings"];
-    //var icons = ["", "&#xE8B8;", "&#xE8B8;", "&#xE8B8;"];
-    //var icons = "settings";
+  
     var menu_ul = document.createElement("ul");
     menu_ul.setAttribute("class", "menu-ul");
     menu.appendChild(menu_ul);
@@ -77,47 +75,33 @@ function draw_menu_items() {
         var icons = document.createElement("i");
         icons.setAttribute("class", "material-icons");
         menu_a.appendChild(icons);
-        //menu_a.setAttribute("onclick", "callMyStuff('" + items + "')");
+    
         if (index == 0) {
             menu_a.setAttribute("onclick", "draw_dashboard()");
-            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
             icons.innerHTML += "&#xE871;";
            
         }
         if (index == 1) {
             menu_a.setAttribute("onclick", "graph_draw()");
-            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
             icons.innerHTML += "&#xE85C";
 
         }
         if (index == 2) {
             menu_a.setAttribute("onclick", "draw_users()");
-            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
             icons.innerHTML += "&#xE7FB";
         }
         if (index == 3) {
             menu_a.setAttribute("onclick", "drawSettings()");
-            //menu_a.setAttribute("onclick", "callMyStuff(" + items[index] + ")");
             icons.innerHTML += "&#xE8B8;";
+        }
+        if (index == 4){
+            menu_a.setAttribute("onclick", "drawCanvas()");
         }
     }
 }
-//function callMyStuff(items) {
-//    if (items[index] == 0) {
 
-//    }
-//    if (items[index] == 1) {
-//        graph_draw();
-//    }
-//    if (items == "Users") {
-//        users();
-//    }
-//    if (items == "Settings") {
-//        drawSettings();
-//    }
-
-//}
 function draw_dashboard() {
    var contbox = document.getElementById("contentbox");
     contbox.innerHTML = "Hei pepelord";
 }
+
