@@ -46,7 +46,7 @@ function createTransactionTable() {
     headerRow.appendChild(loanSharesHeader);
 
     // Fill table data
-    db.orderBy('Date').get().then(function (querySnapshot) {
+    db.orderBy('Date').orderBy('Name').get().then(function (querySnapshot) {
         querySnapshot.forEach(function (item) {
             let person = item.data();
             let row = table.insertRow();
