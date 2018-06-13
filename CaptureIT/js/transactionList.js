@@ -45,6 +45,11 @@ function createTransactionTable() {
     loanSharesHeader.innerHTML = 'Loan from Shares';
     headerRow.appendChild(loanSharesHeader);
 
+    var editLoan = document.createElement('th');
+    editLoan.innerHTML = 'Edit/delete';
+    headerRow.appendChild(editLoan);
+    
+
     // Fill table data
     db.orderBy('Date').orderBy('Name').get().then(function (querySnapshot) {
         querySnapshot.forEach(function (item) {
@@ -56,8 +61,11 @@ function createTransactionTable() {
             row.insertCell().innerHTML = person['SharesBougth'];
             row.insertCell().innerHTML = person['LoanFromSocial'];
             row.insertCell().innerHTML = person['LoanFromShares'];
+            let cellEditLoan = row.insertCell();
+            
+            cellEditLoan.innerHTML = '<button onclick="editItem"> Edit </button>'
         });
     });
-
     return table;
 }
+
