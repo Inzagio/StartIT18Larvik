@@ -3,10 +3,7 @@
 document.addEventListener('DOMContentLoaded', setupStartPage);
 function setupStartPage() {
 
-    var container = document.getElementById('container');
-    if (!container) {
-        container = createContainer();
-    }
+    var container = getContainer();
 
     if (!isLoggedIn) { // Basic startskjerm hvis man ikke er logget inn.
         container.innerHTML =
@@ -37,7 +34,7 @@ function setupStartPage() {
 }
 
 function changeGroup() {
-    var container = document.getElementById('container');
+    var container = getContainer();
     container.innerHTML =
    ' <div id="startpage">\
         <img id="startlogo" src="img/renewgen_logo.svg" alt="ReNewGen">\

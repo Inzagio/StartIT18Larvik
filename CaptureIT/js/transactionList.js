@@ -5,10 +5,7 @@ var confirmBox;
 
 function setupTransactionList() {
     // Creates container element if it has been removed.
-    var container = document.getElementById('container');
-    if (!container) {
-        container = createContainer();
-    }
+    var container = getContainer();
 
     container.innerHTML = '<br />Loading Data...';
     menu.setBreadcrumbs('Transaction List');
@@ -29,7 +26,7 @@ function getTransactions() {
 function createTransactionTable(container) {
     var container = document.getElementById('container');
     if (!container) {
-        container = createContainer();
+        container = getContainer();
     }
     container.innerHTML = '';
     var table = document.createElement('table');

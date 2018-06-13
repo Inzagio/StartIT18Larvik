@@ -10,11 +10,11 @@ var menu = function () {
     var loginBox;
     var menuIsOpen;
 
-
+    var currentUser;
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            var uid = user.uid;
+            currentUser = user;
 
             isLoggedIn = true;
             menuSetup();
@@ -148,5 +148,6 @@ var menu = function () {
         menuSetup: menuSetup,
         setBreadcrumbs: setBreadcrumbs,
         loginAction: loginAction,
+        currentUser: currentUser,
     }
 }();
