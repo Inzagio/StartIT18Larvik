@@ -8,7 +8,7 @@
     grid-column: 2;
     border-collapse: collapse;
 }
-tr:hover { 
+.statusTable tr:hover { 
     background-color: #c6e2ec; 
 }
 .statusTable td {
