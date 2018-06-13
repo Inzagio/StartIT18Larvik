@@ -4,7 +4,7 @@
  *
  * @version 0.1
  * @author  Trym Kristian Bj�rnvik
- * @updated 24-04-2018
+ * @updated 13-06-2018
  *
  *
  */
@@ -13,7 +13,7 @@
 
 
 // JavaScript source code
-document.addEventListener('DOMContentLoaded',renderCard());
+document.addEventListener('DOMContentLoaded', renderCard());
 
 // This builds an element using the following syntax  
 // yourletName = element_builder('HTMLTAG',{attribute:'value', attribute:'value'});
@@ -23,18 +23,18 @@ function element_builder(type, attrs) {
     let elem = document.createElement(type);
     if (attrs) {
         Object.getOwnPropertyNames(attrs).forEach(function (attribute) {
-            elem.setAttribute(attribute.replace('_','-'), attrs[attribute]);
+            elem.setAttribute(attribute.replace('_', '-'), attrs[attribute]);
         });
     }
     return elem;
 }
 
-function admin_panel(){
+function admin_panel() {
     renderCard();
-   
-    
+
+
 }
-function resetContainer(){
+function resetContainer() {
     let externalContainerArea = document.getElementById('container');
     while (externalContainerArea.firstChild) {
         externalContainerArea.removeChild(externalContainerArea.firstChild);
@@ -43,14 +43,14 @@ function resetContainer(){
 
 //Renders the navigation cards. 
 function renderCard() {
-   resetContainer();
-   const showcase = document.getElementById('showcase'); 
-   const container = document.getElementById('container');
-    let mainNav = element_builder('div', { class: 'container text', id:'mainNav'});
-    let row = element_builder('div', { class: 'row my-3', id:'mainNavRow' });
-    showcase.appendChild(container);
-    container.appendChild(row);
-    
+    resetContainer();
+
+    const container = document.getElementById('container');
+    let mainNav = element_builder('div', { class: 'container text', id: 'mainNav' });
+    let row = element_builder('div', { class: 'row my-3', id: 'mainNavRow' });
+    container.appendChild(mainNav);
+    mainNav.appendChild(row);
+
     // The commented i refers to if this was created using a for loop and if statements.  
     // i == 0
     renderCardContent('fa-users', 'Users', userTabs);
@@ -66,7 +66,7 @@ function renderCard() {
 function createCards() {
     let container = document.getElementById('mainNav');
     let row = document.getElementById('mainNavRow');
-    
+
     let col = element_builder('div', { class: "col-md-4" });
     let card = element_builder('div', { class: 'card text-center bg-light my-2' });
     let cardBlock = element_builder('div', { class: 'card-block mt-2' });
@@ -79,11 +79,11 @@ function createCards() {
     card.appendChild(cardBlock);
     cardBlock.appendChild(icons);
     cardBlock.appendChild(cardTitle);
-    
+
     //Returns the card content object
     return {
         col: col,
-        card: card, 
+        card: card,
         cardBlock: cardBlock,
         cardTitle: cardTitle,
         icons: icons
