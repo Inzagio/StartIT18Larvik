@@ -58,33 +58,6 @@ function createTransactionTable(container) {
     loanSharesHeader.innerHTML = 'Loan from Shares';
     headerRow.appendChild(loanSharesHeader);
 
-<<<<<<< HEAD
-    var editLoan = document.createElement('th');
-    editLoan.innerHTML = 'Edit/delete';
-    headerRow.appendChild(editLoan);
-    
-
-    // Fill table data
-    db.orderBy('Date').orderBy('Name').get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (item) {
-            let person = item.data();
-            let row = table.insertRow();
-            row.insertCell().innerHTML = person['Date'];
-            row.insertCell().innerHTML = person['Name'];
-            row.insertCell().innerHTML = person['PaidSocial'];
-            row.insertCell().innerHTML = person['SharesBougth'];
-            row.insertCell().innerHTML = person['LoanFromSocial'];
-            row.insertCell().innerHTML = person['LoanFromShares'];
-            let cellEditLoan = row.insertCell();
-            
-            cellEditLoan.innerHTML = '<button onclick="editItem"> Edit </button>'
-        });
-    });
-    return table;
-}
-
-=======
-
     container.appendChild(table);
 
     confirmBox = document.createElement('div');
@@ -135,4 +108,3 @@ function deleteTransactionConfirm(id) {
 function hideTransactionConfirm() {
     confirmBox.style.visibility = 'hidden';
 }
->>>>>>> 3c61977f2ccf2f6653b6c405b3e197eec2ae517b
