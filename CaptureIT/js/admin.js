@@ -35,9 +35,9 @@ function admin_panel(){
     
 }
 function resetContainer(){
-    let dynamicContent = document.getElementById('container');
-    while (dynamicContent.firstChild) {
-        dynamicContent.removeChild(dynamicContent.firstChild);
+    let externalContainerArea = document.getElementById('container');
+    while (externalContainerArea.firstChild) {
+        externalContainerArea.removeChild(externalContainerArea.firstChild);
     }
 }
 
@@ -102,7 +102,10 @@ function renderCardContent(css, title, optionalFunction) {
 
 // Reset the content in Dynamic Content Area
 function resetContent() {
-    
+    let dynamicContent = document.getElementById('dynamicContentArea');
+    while (dynamicContent.firstChild) {
+        dynamicContent.removeChild(dynamicContent.firstChild);
+    }
 }
 
 
