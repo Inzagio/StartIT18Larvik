@@ -1,9 +1,4 @@
-﻿#container {
-    padding-top: 10px;
-    display: grid;
-    grid-template-columns: auto auto auto;
-}
-.statusTable {
+﻿.statusTable {
     margin: 20px;
     grid-column: 2;
     border-collapse: collapse;
