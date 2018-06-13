@@ -11,10 +11,10 @@ function element_builder(type, attrs) {
 }
 
 
-function setDynamicContentArea(){
-    var container = document.getElementById('mainContent');
-    container.appendChild(dynamicContentArea);
-}
+// function setDynamicContentArea(){
+//     var container = document.getElementById('mainContent');
+//     container.appendChild(dynamicContentArea);
+// }
 
 //Tabs with panes
 function userTabs() {
@@ -125,9 +125,6 @@ function renderUserListTable(doc) {
     let tabContent = element_builder('div', { class: 'tab-content' });
     let tabPane = element_builder('div', { id: 'users', class: 'container tab-pane' });
     createTable();
-    
-   
-
 }
 
 function createTable(){
