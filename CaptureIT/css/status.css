@@ -1,7 +1,7 @@
 ﻿.statusTable {
     margin: 20px;
-    grid-column: 2;
     border-collapse: collapse;
+    width: 90%;
 }
 .statusTable tr:hover { 
     background-color: #c6e2ec; 
@@ -29,4 +29,11 @@
     border: 1px black solid;
     text-align: center;
     padding: 4px;
+}
+/* Responsive layout */
+@media screen and (min-width: 700px) {
+    .statusTable {
+        margin-left: 23vw;
+        width: 50%;
+    }
 }
