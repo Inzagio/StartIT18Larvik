@@ -18,15 +18,10 @@ function setupTransactionList() {
 
 function getTransactions() {
     db.orderBy('Date').orderBy('Name').get().then(function (querySnapshot) {
-        //transactionData = [];
         var table = createTransactionTable();
         querySnapshot.forEach(function (item, index) {
-            //transactionData.push(item);
             showRow(table, item, index);
         });
-
-        //transactionData.forEach(function (item) {
-        //});
     });
 }
 
