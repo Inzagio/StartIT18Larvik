@@ -1,5 +1,19 @@
-﻿.statusTable {
+﻿#container {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.statusTable {
     margin: 20px;
+    grid-column: 2;
+    border-collapse: collapse;
+}
+.statusTable tr:hover { 
+    background-color: #c6e2ec; 
+}
+.statusTable td {
+    border-bottom: groove 1px;
+    padding-top: 15px;
 }
 
 .statusTable th {
