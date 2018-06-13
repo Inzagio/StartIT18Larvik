@@ -30,10 +30,10 @@ function element_builder(type, attrs) {
 }
 
 function admin_panel() {
+    menu.setBreadcrumbs('Admin Console');
     renderCard();
-
-
 }
+
 function resetContainer() {
     let externalContainerArea = document.getElementById('container');
     while (externalContainerArea.firstChild) {
