@@ -120,7 +120,7 @@ function renderRegisterUsers() {
 
 
 //User list table
-function renderUserListTable(doc) {
+function renderUserListTable(item) {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let tabContent = element_builder('div', { class: 'tab-content' });
     let tabPane = element_builder('div', { id: 'users', class: 'container tab-pane' });
@@ -176,7 +176,7 @@ function submitUserForm(event) {
 
 //Save user to firebase
 function saveUserRegistered(username, email) {
-    db.add({
+    dbUsers.add({
         username: username,
         email: email
     })
@@ -184,7 +184,7 @@ function saveUserRegistered(username, email) {
 }
 
 getRealTimeUpdate = function () {
-    db.onSnapshot(function (doc) {
+    dbUser.onSnapshot(function (doc) {
         if (doc && doc.exists) {
             const myData = doc.data();
             email.innerHTML = doc.data().email;
