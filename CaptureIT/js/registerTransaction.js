@@ -103,7 +103,8 @@
 				nameBox.innerHTML = 'Choose name';
 				valueNotEmpty = false;
 			};
-				if (!socialCheck.checked) { //show a text if social is not checked
+				        //-- remove comment markers if this part is wanted later on afterall.//
+				/*if (!socialCheck.checked) { //show a text if social is not checked  
 				paidText.classList.add('alertText');
 				paidText.innerHTML = 'Pay Social';
 				valueNotEmpty = false;
@@ -114,7 +115,7 @@
 				paidText.innerHTML = 'Paid Social';
 				valueNotEmpty = true;
 				return valueNotEmpty;
-			}
+			}*/
 		}	
 
 	
