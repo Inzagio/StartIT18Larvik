@@ -137,18 +137,15 @@
             font-size: 16px;
             padding: 14px 20px 12px 45px;
             border: none;
-            border-bottom: 2px solid black;
-        }
-
-        nameInput:focus {
-            outline: 3px solid lightgray;
+            border-bottom: 2px solid gray;
         }
 
         .nameBox {
                 width: 100%;
 				height: 50px;
-				border: 2px solid black;
-                transform: translate(-5%, -13%);
+				border: 1px solid lightgray;
+                transform: translate(-2px, -7px);
+
 				
         }
 
