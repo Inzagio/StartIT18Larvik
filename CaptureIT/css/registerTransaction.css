@@ -15,14 +15,10 @@
                 "choose choose"
                 "dato dato" 
                 "aaa aaa"
-                "bbb bbb" 
                 "ccc ccc" 
-                "ddd ddd" 
                 "eee eee" 
-                "fff fff" 
                 "sub sub";
         }
-
         .wrapper {
             display: grid;
             border-radius: 5px;
@@ -55,25 +51,13 @@
             text-align: center;
         }
 
-        #choose {
-            text-align: center;
-            width: 100%;
-            color: gray;
-        }
-
         .dato {
             grid-area: dato;
             text-align: center;
         }
-
-      
         .a {
             grid-area: aaa;
             text-align: center;
-        }
-
-        .b {
-            grid-area: bbb;
         }
 
         .c {
@@ -81,20 +65,10 @@
             text-align: center;
         }
 
-        .d {
-            grid-area: ddd;
-            padding-top: 12px;
-        }
-
         .e {
             grid-area: eee;
             text-align: center;
-        }
-
-        .f {
-            grid-area: fff;
-            padding-top: 12px;
-        }
+        }  
 
         .submit {
             grid-area: sub;
@@ -112,7 +86,6 @@
             margin-top: 20px;
             width: 40%;
         }
-
         /* Dropdown Button*/
         .dropbtn {
             background-color: #21ABA5;
@@ -125,12 +98,10 @@
             width: 100%;
             border-radius: 10px;
         }
-
-            /* Dropdown hover */
-            .dropbtn:hover, .dropbtn:focus {
-                background-color: lightgrey;
-            }
-
+          /* Dropdown hover */
+        .dropbtn:hover, .dropbtn:focus {
+           background-color: lightgrey;
+         }
         /* Search field */
         #nameInput {
             background-repeat: no-repeat;
@@ -141,16 +112,12 @@
         }
 
         .nameBox {
-                width: 100%;
-				height: 50px;
-				border: 1px solid lightgray;
-                transform: translate(-2px, -7px);
-
-				
+            width: 100%;
+			height: 50px;
+			border: 1px solid lightgray;
+            transform: translate(-2px, -7px);		
         }
-
-
-        /* Innholde på droppdownen */
+        /* Dropdown Content */
         .dropdown-content {
             display: none;
             position: absolute;
@@ -158,36 +125,26 @@
             border: 1px solid #ddd;
             z-index: 1;
         }
-
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                display: block;
-                text-decoration: none;
-            }
-
+        .dropdown-content a {
+            color: black;
+             padding: 12px 16px;
+             display: block;
+             text-decoration: none;
+        }
         .dropdown a:hover {
             background-color: #f1f1f1;
         }
-
         .show {
             display: block;
         }
-
         .dropdown:hover .dropdown-content {
             display: block;
             background-color: white;
         }
 
-
-        .sharesLoan {
-            text-align: center;
-        }
-
-
         #socialLoan {
             text-align: center;
-            width: 100%;
+            width: 100%;	
         }
 
         #sharesLoan {
@@ -207,12 +164,8 @@
                 grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "sub sub";
             }
 
-            .d, .f {
-                padding-top: 23px;
-            }
-
-            #submit {
-                padding: 16px;
+        #submit {
+            padding: 16px;
             }
         }
 
@@ -229,7 +182,6 @@
             width: 48px;
             height: 23px;
           }
-          
           .switch input {display:none;}
           
           .slider {
@@ -269,14 +221,10 @@
             -ms-transform: translateX(26px);
             transform: translateX(26px);
           }
-          
           /* Rounded sliders */
           .slider.round {
             border-radius: 34px;
           }
-          
           .slider.round:before {
             border-radius: 50%;
           }
-
-
