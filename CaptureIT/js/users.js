@@ -10,12 +10,6 @@ function element_builder(type, attrs) {
     return elem;
 }
 
-
-// function setDynamicContentArea(){
-//     var container = document.getElementById('mainContent');
-//     container.appendChild(dynamicContentArea);
-// }
-
 //Tabs with panes
 function userTabs() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
@@ -30,6 +24,7 @@ function userTabs() {
 
         if (i == 0) {
             tabNavAnchor.setAttribute('href', '#registerUser');
+            tabNavAnchor.setAttribute('id', 'regUser');
             tabNavAnchor.innerHTML = 'Register User';
             tabNavAnchor.addEventListener('click', function (e) {
                 resetContent();
@@ -38,6 +33,7 @@ function userTabs() {
         }
         if (i == 1) {
             tabNavAnchor.setAttribute('href', '#users');
+            tabNavAnchor.setAttribute('id', 'showUsers');
             tabNavAnchor.innerHTML = 'User list';
             tabNavAnchor.addEventListener('click', function (e) {
                 resetContent();
@@ -51,35 +47,36 @@ function userTabs() {
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
 function renderRegisterUsers() {
-
+    let navHead = document.getElementById('regUser');
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let tabContent = element_builder('div', { class: 'tab-content' });
     let tabPane = element_builder('div', { id: 'registerUser', class: 'container tab-pane active' });
 
     let form = element_builder('form', { id: 'registerUsersForm' });
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
+    
     //Labels
     let labelForName = element_builder('label', { for: 'inputUsername', class: 'noselect' });
-    //  let labelFullName = element_builder('label', { for: 'inputFullname', class: 'noselect' });
     let labelForEmail = element_builder('label', { for: 'inputEmail', class: 'noselect' });
+    
     //Inputs
-    //  let inputFullName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputFullname', placeholder: 'Full name', required: 'true' });
     let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true' });
     let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'Provide a valid e-mail', required: 'true' })
+    
     // Submit button
     let submitButton = element_builder('button', { type: 'submit', class: 'btn btn-primary' });
     submitButton.innerHTML = 'Register user';
 
-    // labelFullName.innerHTML = 'Full Name';
-    labelForName.innerHTML = 'Username';
-    labelForEmail.innerHTML = 'E-mail';
-
+  
     dynamicContentArea.appendChild(tabContent);
+    //navHead.appendChild(tabPane);
     tabContent.appendChild(tabPane);
     tabPane.appendChild(form);
+   
+    // Form appends
     form.appendChild(divFormGroupName);
-    // divFormGroupName.appendChild(labelFullName);
-    // divFormGroupName.appendChild(inputFullName);
+    labelForName.innerHTML = 'Username';
+    labelForEmail.innerHTML = 'E-mail';
     divFormGroupName.appendChild(labelForName);
     divFormGroupName.appendChild(inputName);
     divFormGroupName.appendChild(labelForEmail);
@@ -120,10 +117,12 @@ function renderRegisterUsers() {
 
 
 //User list table
-function renderUserListTable(item) {
+function renderUserListTable() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
-    let tabContent = element_builder('div', { class: 'tab-content' });
     let tabPane = element_builder('div', { id: 'users', class: 'container tab-pane' });
+    let tabContent = element_builder('div', { class: 'tab-content' });
+    dynamicContentArea.appendChild(tabPane);
+    tabPane.appendChild(tabContent);
     createTable();
 }
 

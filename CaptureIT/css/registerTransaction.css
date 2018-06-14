@@ -42,8 +42,9 @@
             height: 28px;
             border: 1px solid rgb(192,192,192);
             text-align: center;
-            margin-top: 30px;
+            margin-top: 35px;
             background-color: white;
+            box-shadow: unset;
         } 
 
         .meny {
