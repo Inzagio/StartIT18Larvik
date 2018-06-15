@@ -188,17 +188,5 @@ function saveUserRegistered(Username, Email) {
     console.log('Data saved', Username, Email);
 }
 
-// function getData() {
-//     firebase.firestore().collection('users').get().then(function (querySnapshot) {
-//         querySnapshot.forEach(function (doc) {
-//             console.log(doc.id);
-//             console.log(doc.data());
-
-//         });
-//     })
-//         .catch(function (error) {
-//             console.log("Error retrieving data", error);
-//         });
-// }
 
 
