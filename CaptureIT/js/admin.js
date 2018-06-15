@@ -64,7 +64,6 @@ function renderCard() {
 }
 
 function createCards() {
-    let container = document.getElementById('mainNav');
     let row = document.getElementById('mainNavRow');
 
     let col = element_builder('div', { class: "col-md-4" });

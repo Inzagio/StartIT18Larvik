@@ -14,4 +14,4 @@ firebase.firestore().settings({ timestampsInSnapshots: true })
 //Grab collection from firestore database
 const db = firebase.firestore().collection('registerTransaction');
 const dbUsers = firebase.firestore().collection('users');
-const dbVillageSettings = firebase.firestore().doc('village/katmandu/settings');
+//const dbVillageSettings = firebase.firestore().doc('village');
