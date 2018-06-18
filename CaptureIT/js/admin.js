@@ -55,7 +55,7 @@ function renderCard() {
     // i == 0
     renderCardContent('fa-users', 'Users', userTabs);
     // i == 1
-    renderCardContent('fa-chart-area', 'Statistics', null);
+    renderCardContent('fa-chart-area', 'Statistics', graphDrawChooser);
     // i == 2
     renderCardContent('fa-cog', 'Settings', null);
 
