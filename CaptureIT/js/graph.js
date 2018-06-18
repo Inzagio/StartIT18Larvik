@@ -4,7 +4,7 @@ var Graph;
 var graphAddPerson;
 var graphData;
 function graphDrawChooser() {
-    var html = document.getElementById('container');
+    var html = document.getElementById('dynamicContentArea');
     console.log(html);
     html.innerHTML =
         '<div class="graphCSS">'
