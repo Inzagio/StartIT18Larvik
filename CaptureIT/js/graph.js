@@ -82,13 +82,13 @@ function drawGraph() {
     function graphPush(tag) {
         console.log(Graph.data.datasets[0].data.length);
         Graph.data.labels[1] = ('Febuary');
-        Graph.data.labels[2] = ('Marsh');
+        Graph.data.labels[2] = ('March');
         Graph.data.labels[3] = ('April');
         Graph.data.labels[4] = ('May');
         Graph.data.labels[5] = ('June');
         Graph.data.labels[6] = ('July');
         Graph.data.labels[7] = ('August');
-        Graph.data.labels[8] = ('Septenber');
+        Graph.data.labels[8] = ('September');
         Graph.data.labels[9] = ('October');
         Graph.data.labels[10] = ('November');
         Graph.data.labels[11] = ('December');
