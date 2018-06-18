@@ -52,15 +52,15 @@ function createStatusTable(container) {
 
     row = table.insertRow();
     cell = row.insertCell();
-    cell.innerHTML = 'Bought shares';
-    var boughtSharesField = row.insertCell();
-    boughtSharesField.classList.add('right');
-
-    row = table.insertRow();
-    cell = row.insertCell();
     cell.innerHTML = 'Loan from Social Funds';
     var loanSocialField = row.insertCell();
     loanSocialField.classList.add('right');
+
+    row = table.insertRow();
+    cell = row.insertCell();
+    cell.innerHTML = 'Bought shares';
+    var boughtSharesField = row.insertCell();
+    boughtSharesField.classList.add('right');
 
     row = table.insertRow();
     cell = row.insertCell();

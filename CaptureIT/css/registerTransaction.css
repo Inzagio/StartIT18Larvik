@@ -15,8 +15,11 @@
                 "choose choose"
                 "dato dato" 
                 "aaa aaa"
+                "bbb bbb"
                 "ccc ccc" 
-                "eee eee" 
+                "ddd ddd"
+                "eee eee"
+                "fff fff" 
                 "sub sub";
         }
         .wrapper {
@@ -26,6 +29,12 @@
             padding: 30px 10px 30px 10px;
             font-family: Arial;
             min-width: 200px;
+        }
+
+        #choose{
+            text-align: center;
+            width: 100%;
+            color: gray;
         }
 
         .box {
@@ -60,15 +69,27 @@
             text-align: center;
         }
 
+        .b{
+            grid-area: bbb;
+        }
+
         .c {
             grid-area: ccc;
             text-align: center;
+        }
+        .d{
+            grid-area: ddd;
+            padding-top: 12px;
         }
 
         .e {
             grid-area: eee;
             text-align: center;
         }  
+        .f{
+            grid-area: fff;
+            padding-top: 12px;
+        }
 
         .submit {
             grid-area: sub;
@@ -142,6 +163,10 @@
             background-color: white;
         }
 
+        .shareLoan {
+            text-align: center;
+        }
+
         #socialLoan {
             text-align: center;
             width: 100%;	
@@ -162,6 +187,10 @@
                 display: grid;
                 grid-template-columns: 2fr 2fr;
                 grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "sub sub";
+            }
+
+            .d.f{
+                padding-top: 23px;
             }
 
         #submit {
