@@ -13,18 +13,22 @@ function element_builder(type, attrs) {
 //Tabs with panes
 function userTabs() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
-    let tabNav = element_builder('nav', { class: 'nav nav-tabs', role: 'tablist' });
+    let tabNav = element_builder('ul', { class: 'nav nav-tabs', role: 'tablist' });
     dynamicContentArea.appendChild(tabNav);
 
     for (let i = 0; i < 2; i++) {
-        let tabNavItem = element_builder('nav', { class: 'nav-item' });
+        let tabNavItem = element_builder('li', { class: 'nav-item' });
         let tabNavAnchor = element_builder('a', { class: 'nav-link', data_toggle: 'tab' });
         tabNav.appendChild(tabNavItem);
         tabNavItem.appendChild(tabNavAnchor);
 
         if (i == 0) {
             tabNavAnchor.setAttribute('href', '#registerUser');
-            tabNavAnchor.setAttribute('id', 'regUser');
+            tabNavAnchor.setAttribute('class', 'nav-link active');
+            tabNavAnchor.setAttribute('id', 'reg-tab');
+            tabNavAnchor.setAttribute('role', 'tab');
+            tabNavAnchor.setAttribute('aria-controls', 'registerUser');
+            tabNavAnchor.setAttribute('aria-selected', 'true');
             tabNavAnchor.innerHTML = 'Register User';
             tabNavAnchor.addEventListener('click', function (e) {
                 resetContent();
@@ -33,11 +37,15 @@ function userTabs() {
         }
         if (i == 1) {
             tabNavAnchor.setAttribute('href', '#users');
-            tabNavAnchor.setAttribute('id', 'showUsers');
+            tabNavAnchor.setAttribute('id', 'showusers-tab');
+            tabNavAnchor.setAttribute('role', 'tab');
+            tabNavAnchor.setAttribute('aria-controls', 'users');
+            tabNavAnchor.setAttribute('aria-selected', 'false');
             tabNavAnchor.innerHTML = 'User list';
             tabNavAnchor.addEventListener('click', function (e) {
                 resetContent();
                 renderUserListTable();
+                getUsers();
             });
         }
     }
@@ -47,32 +55,33 @@ function userTabs() {
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
 function renderRegisterUsers() {
-    let navHead = document.getElementById('regUser');
+
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let tabContent = element_builder('div', { class: 'tab-content' });
-    let tabPane = element_builder('div', { id: 'registerUser', class: 'container tab-pane active' });
+    let tabPane = element_builder('div', { id: 'registerUser', class: 'tab-pane fade show active' });
 
     let form = element_builder('form', { id: 'registerUsersForm' });
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
-    
+
     //Labels
     let labelForName = element_builder('label', { for: 'inputUsername', class: 'noselect' });
     let labelForEmail = element_builder('label', { for: 'inputEmail', class: 'noselect' });
-    
+
     //Inputs
     let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true' });
     let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'Provide a valid e-mail', required: 'true' })
-    
+
     // Submit button
     let submitButton = element_builder('button', { type: 'submit', class: 'btn btn-primary' });
     submitButton.innerHTML = 'Register user';
 
-  
+
     dynamicContentArea.appendChild(tabContent);
-    //navHead.appendChild(tabPane);
+    // navHead.appendChild(tabPane);
     tabContent.appendChild(tabPane);
     tabPane.appendChild(form);
-   
+
+
     // Form appends
     form.appendChild(divFormGroupName);
     labelForName.innerHTML = 'Username';
@@ -109,62 +118,60 @@ function renderRegisterUsers() {
 }
 
 
-//If there is an error loading database data
-// function errData(err) {
-//     console.log('Error!');
-//     console.log(err);
-// }
-
+function getUsers() {
+    dbUsers.orderBy('Username').orderBy('Email').get().then(function (querySnapshot) {
+        let table = createTable();
+        querySnapshot.forEach(function (item, index) {
+            renderUsersTable(table, item, index);
+        });
+    });
+}
 
 //User list table
 function renderUserListTable() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
+    let tabContent = element_builder('div', { class: 'tab-content', id: 'tabContent' });
     let tabPane = element_builder('div', { id: 'users', class: 'container tab-pane' });
-    let tabContent = element_builder('div', { class: 'tab-content' });
-    dynamicContentArea.appendChild(tabPane);
-    tabPane.appendChild(tabContent);
-    createTable();
+    dynamicContentArea.appendChild(tabContent);
+    tabContent.appendChild(tabPane);
 }
 
-function createTable(){
-    let table = element_builder('table');
-
+function createTable() {
+    let table = element_builder('table', {id: 'usersTable'});
+    
     let headRow = table.insertRow();
-    let dateAdd = element_builder('th');
-    dateAdd.innerHTML = 'User Created';
-    headRow.appendChild(dateAdd);
-
+ 
     let usernameHeader = element_builder('th');
     usernameHeader.innerHTML = 'Username';
+    
     headRow.appendChild(usernameHeader);
-
+    
     let emailHeader = element_builder('th');
     emailHeader.innerHTML = 'E-Mail';
     headRow.appendChild(emailHeader);
 
-    db.orderBy('Date').orderBy('Username').get().then(function (querySnapshot){
-        querySnapshot.forEach(function (item){
-            let user = item.data();
-            let row = table.insertRow();
-            row.insertCell().innerHTML = user['Date'];
-            row.insertCell().innerHTML = user['Username'];
-            row.insertCell().innerHTML = user['Email'];
-        })
-    })
     dynamicContentArea.appendChild(table);
+    return table;
 }
 
+function renderUsersTable(table, item, index) {
+    let user = item.data();
+    var row = table.rows[index + 1] ? table.rows[index + 1] : table.insertRow();
+    row.insertCell().innerHTML = user['Username'];
+    row.insertCell().innerHTML = user['Email'];
+}
 // Returns the value from input - Used for submitUserForm
 function getInputVal(id) {
     return document.getElementById(id).value;
 }
 
+
 //Submit the registration form to the database
 function submitUserForm(event) {
     event.preventDefault();
-    let username = getInputVal('inputUsername');
-    let email = getInputVal('inputEmail');
-    saveUserRegistered(username, email);
+    let Username = getInputVal('inputUsername');
+    let Email = getInputVal('inputEmail');
+    saveUserRegistered(Username, Email);
     //Reset after 1,5 seconds
     setTimeout(function () {
         document.getElementById('registerUsersForm').reset();
@@ -174,29 +181,13 @@ function submitUserForm(event) {
 // Database write and read functions
 
 //Save user to firebase
-function saveUserRegistered(username, email) {
+function saveUserRegistered(Username, Email) {
     dbUsers.add({
-        username: username,
-        email: email
+        Username: Username,
+        Email: Email
     })
-    console.log('Data saved', username, email);
+    console.log('Data saved', Username, Email);
 }
 
-getRealTimeUpdate = function () {
-    dbUser.onSnapshot(function (doc) {
-        if (doc && doc.exists) {
-            const myData = doc.data();
-            email.innerHTML = doc.data().email;
-            username.innerHTML = doc.data().username;
-            console.log(username, email);
-        }
 
-    });
-}
-//Reads from database
-// var values;
-// db.on('value', gotData, errData);
-// function gotData(data) {
-//     let users = data.val();
-//     values = Object.values(users);
-//}
+

@@ -55,7 +55,7 @@ function renderCard() {
     // i == 0
     renderCardContent('fa-users', 'Users', userTabs);
     // i == 1
-    renderCardContent('fa-chart-area', 'Statistics', null);
+    renderCardContent('fa-chart-area', 'Statistics', graphDrawChooser);
     // i == 2
     renderCardContent('fa-cog', 'Settings', null);
 
@@ -64,7 +64,6 @@ function renderCard() {
 }
 
 function createCards() {
-    let container = document.getElementById('mainNav');
     let row = document.getElementById('mainNavRow');
 
     let col = element_builder('div', { class: "col-md-4" });
