@@ -1,8 +1,5 @@
 			function registerTransaction() { // Creates container element if it has been removed.
-			var container = document.getElementById('container');
-			if (!container) {
-			 container = createContainer();
-		}
+			var container = getContainer();
 
 			menu.setBreadcrumbs('Register Transactions');
 			container.innerHTML =
@@ -60,19 +57,6 @@
 				 setDateToday();  
 		}
 	
-			// Initialize Firebase
-			const config = {
-			apiKey: "AIzaSyA7ZbZNG7bvIWJZcfpyooWB4AhKuAdQOsc",
-			authDomain: "registertransaction.firebaseapp.com",
-			databaseURL: "https://registertransaction.firebaseio.com",
-			projectId: "registertransaction",
-			storageBucket: "registertransaction.appspot.com",
-			messagingSenderId: "589304248924"
-		};
-			firebase.initializeApp(config);
-			firebase.firestore().settings( { timestampsInSnapshots: true })
-			//Grab collection from firestore database
-			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
 
 			function filter() {
@@ -119,7 +103,8 @@
 				nameBox.innerHTML = 'Choose name';
 				valueNotEmpty = false;
 			};
-				if (!socialCheck.checked) { //show a text if social is not checked
+				        //-- place comment markers if this part is desired removed later on //
+				if (!socialCheck.checked) { //show a text if social is not checked  
 				paidText.classList.add('alertText');
 				paidText.innerHTML = 'Pay Social';
 				valueNotEmpty = false;

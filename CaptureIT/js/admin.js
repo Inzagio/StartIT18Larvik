@@ -4,7 +4,7 @@
  *
  * @version 0.1
  * @author  Trym Kristian Bj�rnvik
- * @updated 24-04-2018
+ * @updated 13-06-2018
  *
  *
  */
@@ -13,95 +13,99 @@
 
 
 // JavaScript source code
+document.addEventListener('DOMContentLoaded', renderCard());
+
+// This builds an element using the following syntax  
+// yourletName = element_builder('HTMLTAG',{attribute:'value', attribute:'value'});
+// eg let pepe = element_builder('div',{id:'mainContent', data_toggle:'tab'})
+// Remember to appendChild. e.g if this is the first element created, append it to document.body
+function element_builder(type, attrs) {
+    let elem = document.createElement(type);
+    if (attrs) {
+        Object.getOwnPropertyNames(attrs).forEach(function (attribute) {
+            elem.setAttribute(attribute.replace('_', '-'), attrs[attribute]);
+        });
+    }
+    return elem;
+}
+
 function admin_panel() {
-    wrapper();
-    render_nav_admin();
-    draw_menu_items();
-    draw_content();
-    
-}
-// Creates the wrapper element and replaces the container element in index.html with the created wrapper
-function wrapper() {
-    var wrapper = document.createElement("div");
-
-    wrapper.setAttribute("id", "wrapper");
-    wrapper.classList.add("wrapperAdmin");
-    var container = document.getElementById('container');
-    container.innerHTML = '';
-    container.appendChild(wrapper);
-   
+    menu.setBreadcrumbs('Admin Console');
+    renderCard();
 }
 
-// Draws the navigation bar used for the admin panel
-function render_nav_admin() {
-    var wrapper = document.getElementById("wrapper");
-
-    var menu = document.createElement("div");
-    menu.setAttribute("id", "admin-navigation");
-    wrapper.appendChild(menu);
-
-}
-
-// Draw the area which we will put in the panel elements, e.g statistics, users, settings and main dashboard. 
-function draw_content() {
-    var wrapper = document.getElementById("wrapper");
-    var box = document.createElement("div");
-    box.setAttribute("id", "contentbox");
-    wrapper.appendChild(box);
-}
-var items = ["Dashboard", "Statistics", "Users", "Settings","ChartTest"];
-//Draws the menu items
-function draw_menu_items() {
-    var menu = document.getElementById("admin-navigation");
-  
-    var menu_ul = document.createElement("ul");
-    menu_ul.setAttribute("class", "menu-ul");
-    menu.appendChild(menu_ul);
-
-
-    // This will create a list of 4 items, based on the items array and give them an anchor tag with an onclick function - FUNCTION NAME IS PLACEHOLDER!!!
-
-    for (var index = 0; index < items.length; index++) {
-        var menu_li = document.createElement("li");
-        menu_li.setAttribute("class", "menu-li");
-        menu_ul.appendChild(menu_li);
-
-
-        var menu_a = document.createElement("a");
-        menu_li.appendChild(menu_a);
-        menu_a.innerHTML += items[index];
-        menu_a.setAttribute("href", "#");
-        menu_a.setAttribute("class", "admin-anchor");
-        var icons = document.createElement("i");
-        icons.setAttribute("class", "material-icons");
-        menu_a.appendChild(icons);
-    
-        if (index == 0) {
-            menu_a.setAttribute("onclick", "draw_dashboard()");
-            icons.innerHTML += "&#xE871;";
-           
-        }
-        if (index == 1) {
-            menu_a.setAttribute("onclick", "graph_draw()");
-            icons.innerHTML += "&#xE85C";
-
-        }
-        if (index == 2) {
-            menu_a.setAttribute("onclick", "draw_users()");
-            icons.innerHTML += "&#xE7FB";
-        }
-        if (index == 3) {
-            menu_a.setAttribute("onclick", "drawSettings()");
-            icons.innerHTML += "&#xE8B8;";
-        }
-        if (index == 4){
-            menu_a.setAttribute("onclick", "drawCanvas()");
-        }
+function resetContainer() {
+    let externalContainerArea = document.getElementById('container');
+    while (externalContainerArea.firstChild) {
+        externalContainerArea.removeChild(externalContainerArea.firstChild);
     }
 }
 
-function draw_dashboard() {
-   var contbox = document.getElementById("contentbox");
-    contbox.innerHTML = "Hei pepelord";
+//Renders the navigation cards. 
+function renderCard() {
+    resetContainer();
+
+    const container = document.getElementById('container');
+    let mainNav = element_builder('div', { class: 'container text', id: 'mainNav' });
+    let row = element_builder('div', { class: 'row my-3', id: 'mainNavRow' });
+    container.appendChild(mainNav);
+    mainNav.appendChild(row);
+
+    // The commented i refers to if this was created using a for loop and if statements.  
+    // i == 0
+    renderCardContent('fa-users', 'Users', userTabs);
+    // i == 1
+    renderCardContent('fa-chart-area', 'Statistics', graphDrawChooser);
+    // i == 2
+    renderCardContent('fa-cog', 'Settings', null);
+
+    let dynamicContentArea = element_builder('div', { class: 'container', id: 'dynamicContentArea' });
+    container.appendChild(dynamicContentArea);
 }
+
+function createCards() {
+    let row = document.getElementById('mainNavRow');
+
+    let col = element_builder('div', { class: "col-md-4" });
+    let card = element_builder('div', { class: 'card text-center bg-light my-2' });
+    let cardBlock = element_builder('div', { class: 'card-block mt-2' });
+    let cardTitle = element_builder('h3', { class: 'card-title' }); //Insert text on this node
+    let icons = document.createElement('i');
+
+    //Append to content to parent elements
+    row.appendChild(col);
+    col.appendChild(card);
+    card.appendChild(cardBlock);
+    cardBlock.appendChild(icons);
+    cardBlock.appendChild(cardTitle);
+
+    //Returns the card content object
+    return {
+        col: col,
+        card: card,
+        cardBlock: cardBlock,
+        cardTitle: cardTitle,
+        icons: icons
+    };
+}
+
+function renderCardContent(css, title, optionalFunction) {
+    let obj = createCards();
+    obj.icons.setAttribute('class', 'fas ' + css + ' fa-3x');
+    obj.cardTitle.innerHTML += title;
+    obj.cardBlock.addEventListener('click', function (e) {
+        resetContent();
+        if (optionalFunction) optionalFunction();
+    });
+}
+
+// Reset the content in Dynamic Content Area
+function resetContent() {
+    let dynamicContent = document.getElementById('dynamicContentArea');
+    while (dynamicContent.firstChild) {
+        dynamicContent.removeChild(dynamicContent.firstChild);
+    }
+}
+
+
 

@@ -1,21 +1,34 @@
-// JavaScript source code
+﻿// JavaScript source code
+
+var transactionData = [];
+var confirmBox;
 
 function setupTransactionList() {
     // Creates container element if it has been removed.
-    var container = document.getElementById('container');
-    if (!container) {
-        container = createContainer();
-    }
+    var container = getContainer();
 
-    container.innerHTML = '';
+    container.innerHTML = '<br />Loading Data...';
     menu.setBreadcrumbs('Transaction List');
 
-    // Shows table on page
-    var table = createTransactionTable();
-    container.appendChild(table);
+    getTransactions();
 }
 
-function createTransactionTable() {
+function getTransactions() {
+    db.orderBy('Date').orderBy('Name').get().then(function (querySnapshot) {
+        var table = createTransactionTable();
+        querySnapshot.forEach(function (item, index) {
+            showRow(table, item, index);
+        });
+    });
+}
+
+// Shows table on page
+function createTransactionTable(container) {
+    var container = document.getElementById('container');
+    if (!container) {
+        container = getContainer();
+    }
+    container.innerHTML = '';
     var table = document.createElement('table');
     table.classList.add('transactionTable');
 
@@ -45,19 +58,53 @@ function createTransactionTable() {
     loanSharesHeader.innerHTML = 'Loan from Shares';
     headerRow.appendChild(loanSharesHeader);
 
-    // Fill table data
-    db.orderBy('Date').get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (item) {
-            let person = item.data();
-            let row = table.insertRow();
-            row.insertCell().innerHTML = person['Date'];
-            row.insertCell().innerHTML = person['Name'];
-            row.insertCell().innerHTML = person['PaidSocial'];
-            row.insertCell().innerHTML = person['SharesBougth'];
-            row.insertCell().innerHTML = person['LoanFromSocial'];
-            row.insertCell().innerHTML = person['LoanFromShares'];
-        });
-    });
+    container.appendChild(table);
+
+    confirmBox = document.createElement('div');
+    confirmBox.style = 'position: fixed; \
+        top: 0; left: 0; bottom: 0; right: 0; \
+        margin: auto; \
+        padding: 5px; \
+        width: 250px; \
+        height: 60px; \
+        background-color: rgb(63, 187, 233); \
+        color: white; \
+        visibility: hidden';
+    container.appendChild(confirmBox);
 
     return table;
+}
+
+// Fill table data
+function showRow(table, item, index) {
+    let person = item.data();
+    var row = table.rows[index + 1] ? table.rows[index + 1] : table.insertRow();;
+    row.insertCell().innerHTML = person['Date'];
+    row.insertCell().innerHTML = person['Name'];
+    row.insertCell().innerHTML = person['PaidSocial'];
+    row.insertCell().innerHTML = person['SharesBougth'];
+    row.insertCell().innerHTML = person['LoanFromSocial'];
+    row.insertCell().innerHTML = person['LoanFromShares'];
+    row.insertCell().innerHTML = `<button onClick="javascript:deleteTransactionConfirm('${item.id}');">❌</button>`;
+}
+
+function deleteTransaction(id) {
+    console.log(id);
+    db.doc(id).delete();
+
+    hideTransactionConfirm();
+    var container = document.getElementById('container');
+
+    getTransactions();
+}
+
+function deleteTransactionConfirm(id) {
+    confirmBox.innerHTML = 'Are you sure you want to remove this transaction?<br />';
+    confirmBox.innerHTML += `<button onClick="javascript:deleteTransaction('${id}');">Yes</button>`;
+    confirmBox.innerHTML += '<button onClick="javascript:hideTransactionConfirm();">No</button>';
+    confirmBox.style.visibility = 'visible';
+}
+
+function hideTransactionConfirm() {
+    confirmBox.style.visibility = 'hidden';
 }

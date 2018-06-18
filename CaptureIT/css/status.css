@@ -1,5 +1,14 @@
 ﻿.statusTable {
     margin: 20px;
+    border-collapse: collapse;
+    width: 90%;
+}
+.statusTable tr:hover { 
+    background-color: #c6e2ec; 
+}
+.statusTable td {
+    border-bottom: groove 1px;
+    padding-top: 15px;
 }
 
 .statusTable th {
@@ -20,4 +29,11 @@
     border: 1px black solid;
     text-align: center;
     padding: 4px;
+}
+/* Responsive layout */
+@media screen and (min-width: 700px) {
+    .statusTable {
+        margin-left: 23vw;
+        width: 50%;
+    }
 }
