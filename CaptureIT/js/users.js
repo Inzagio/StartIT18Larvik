@@ -137,14 +137,15 @@ function renderUserListTable() {
 }
 
 function createTable() {
-    let table = element_builder('table');
-
+    let table = element_builder('table', {id: 'usersTable'});
+    
     let headRow = table.insertRow();
-
+ 
     let usernameHeader = element_builder('th');
     usernameHeader.innerHTML = 'Username';
+    
     headRow.appendChild(usernameHeader);
-
+    
     let emailHeader = element_builder('th');
     emailHeader.innerHTML = 'E-Mail';
     headRow.appendChild(emailHeader);
@@ -188,17 +189,5 @@ function saveUserRegistered(Username, Email) {
     console.log('Data saved', Username, Email);
 }
 
-// function getData() {
-//     firebase.firestore().collection('users').get().then(function (querySnapshot) {
-//         querySnapshot.forEach(function (doc) {
-//             console.log(doc.id);
-//             console.log(doc.data());
-
-//         });
-//     })
-//         .catch(function (error) {
-//             console.log("Error retrieving data", error);
-//         });
-// }
 
 
