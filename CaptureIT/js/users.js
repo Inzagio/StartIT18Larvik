@@ -137,14 +137,15 @@ function renderUserListTable() {
 }
 
 function createTable() {
-    let table = element_builder('table');
-
+    let table = element_builder('table', {id: 'usersTable'});
+    
     let headRow = table.insertRow();
-
+ 
     let usernameHeader = element_builder('th');
     usernameHeader.innerHTML = 'Username';
+    
     headRow.appendChild(usernameHeader);
-
+    
     let emailHeader = element_builder('th');
     emailHeader.innerHTML = 'E-Mail';
     headRow.appendChild(emailHeader);
