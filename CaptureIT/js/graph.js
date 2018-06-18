@@ -5,7 +5,6 @@ var graphAddPerson;
 var graphData;
 function graphDrawChooser() {
     var html = document.getElementById('dynamicContentArea');
-    console.log(html);
     html.innerHTML =
         '<div class="graphCSS">'
         + '<select class"graphCSS" id="graphSelect">'
@@ -80,7 +79,6 @@ function drawGraph() {
     });
     graphPush();
     function graphPush(tag) {
-        console.log(Graph.data.datasets[0].data.length);
         Graph.data.labels[1] = ('Febuary');
         Graph.data.labels[2] = ('March');
         Graph.data.labels[3] = ('April');
@@ -152,7 +150,6 @@ function graphAdd() {
     graphData = [0];
     dbUsers.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-            console.log(doc.id);
             graphData.push(doc.id);
         });
             graphAddData();
