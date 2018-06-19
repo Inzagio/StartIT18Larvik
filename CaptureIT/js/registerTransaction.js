@@ -29,16 +29,16 @@
 				'<div class="box a"> ' +
 
 				'<label class="switch"> ' +
-				'<input id="payOrLoanCheck" type="checkbox">' +
+				'<input type="checkbox" onclick="tick(this.checked)">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
-				'<div>' + ' Loan or Pay' +'</div>'+
+				'<div id="loanPay">' + ' Loan ' +'</div>'+
 
 				'<label class="switch"> ' +
 				'<input id="socialCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
-				'<div id="paidText">' + 'Paid social ' +'</div>'+
+				'<div id="paidText">' + 'Payd social ' +'</div>'+
 
 				'</div>' +
 				'<div class="box b">' +
@@ -102,6 +102,10 @@
 				if (m < 10) m = '0' + m;
 			    if (d < 10) m = '0' + d;
 			document.getElementById("calendar").value = y + "-" + m + "-" + d;
+			}
+
+			const tick = (a) => {
+			loanPay.innerHTML=a?"Pay":"Loan";
 			}
 
 			var valueNotEmpty = '';
