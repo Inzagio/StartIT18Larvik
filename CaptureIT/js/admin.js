@@ -66,8 +66,8 @@ function renderCard() {
 function createCards() {
     let row = document.getElementById('mainNavRow');
 
-    let col = element_builder('div', { class: "col-md-4" });
-    let card = element_builder('div', { class: 'card text-center bg-light my-2' });
+    let col = element_builder('div', { class: "col-sm-4" });
+    let card = element_builder('div', { class: 'card text-center bg-light my-2'});
     let cardBlock = element_builder('div', { class: 'card-block mt-2' });
     let cardTitle = element_builder('h3', { class: 'card-title' }); //Insert text on this node
     let icons = document.createElement('i');
