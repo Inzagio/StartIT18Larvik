@@ -29,20 +29,20 @@
 				'<div class="box a"> ' +
 
 				'<label class="switch"> ' +
-				'<input id="socialCheck" type="checkbox">' +
+				'<input id="payOrLoanCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
-				'<div id="paidText">' + ' Loan or Pai' +'</div>'+
+				'<div>' + ' Loan or Pay' +'</div>'+
 
 				'<label class="switch"> ' +
 				'<input id="socialCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
-
 				'<div id="paidText">' + 'Paid social ' +'</div>'+
+
 				'</div>' +
 				'<div class="box b">' +
-				'<input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
+				'<input style="margin-top: 50px" id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
 				'</div>' +
 				'<div class="box c"> ' +
 				'<p>Loan out of social funds:</p>' +
@@ -134,9 +134,11 @@
 				let LoanFromSocial = socialLoan.value;
 				let LoanFromShares = sharesLoan.value;
 				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares );
+
+				document.getElementById().value("nameBox", "sosialCheck", "sharesBought", "socialLoan", "sharesLoan").reset();
 				}
 
-			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares  ){
+			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares){
 				let newInput =
 					{
 					 Date: calendar.value,
@@ -157,3 +159,4 @@
 					})
 				})
 			}
+

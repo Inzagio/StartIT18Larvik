@@ -214,7 +214,7 @@
             display: inline-block;
             width: 48px;
             height: 23px;
-
+            margin-top: 10px;
           }
           .switch input {display:none;}
           
