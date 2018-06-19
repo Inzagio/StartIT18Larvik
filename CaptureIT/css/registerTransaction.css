@@ -5,6 +5,10 @@
         .okText{
             color:green;
         }
+
+        /* .paidText{
+            margin-left: 30px;
+        } */
         
         /* Grid */
         .grid {
@@ -23,7 +27,7 @@
                 "fff fff" 
                 "sub sub";
         }
-        
+
         .wrapper {
             display: grid;
             border-radius: 5px;
@@ -210,6 +214,7 @@
             display: inline-block;
             width: 48px;
             height: 23px;
+
           }
           .switch input {display:none;}
           

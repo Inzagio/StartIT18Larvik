@@ -27,10 +27,18 @@
 				'</div>' +
 				'</div>' +
 				'<div class="box a"> ' +
+
 				'<label class="switch"> ' +
 				'<input id="socialCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
+				'<div id="paidText">' + ' Loan or Pai' +'</div>'+
+
+				'<label class="switch"> ' +
+				'<input id="socialCheck" type="checkbox">' +
+				'<span class="slider round"></span>' +
+				'</label>' +
+
 				'<div id="paidText">' + 'Paid social ' +'</div>'+
 				'</div>' +
 				'<div class="box b">' +
