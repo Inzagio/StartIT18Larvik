@@ -1,16 +1,22 @@
-﻿        .alertText{
+﻿        /* Alerter to Paid social text*/
+        .alertText{
             color: red;
         }
 
         .okText{
             color:green;
         }
-
-        /* .paidText{
-            margin-left: 30px;
-        } */
         
         /* Grid */
+        .wrapper {
+            display: grid;
+            border-radius: 5px;
+            margin: 5%;
+            padding: 30px 10px 30px 10px;
+            font-family: Arial;
+            min-width: 200px;
+        }
+
         .grid {
             display: grid;
             grid-gap: 20px;
@@ -26,15 +32,6 @@
                 "eee eee"
                 "fff fff" 
                 "sub sub";
-        }
-
-        .wrapper {
-            display: grid;
-            border-radius: 5px;
-            margin: 5%;
-            padding: 30px 10px 30px 10px;
-            font-family: Arial;
-            min-width: 200px;
         }
 
         .box {
@@ -104,20 +101,6 @@
         .submit {
             grid-area: sub;
             text-align: center;
-        }
-
-        /* Submit button */
-
-        #submit {
-            background-color: #21ABA5;
-            color: white;
-            padding: 5%;
-            font-size: 16px;
-            cursor: pointer;
-            border: 1px solid #21ABA5;
-            border-radius: 10px;
-            margin-top: 20px;
-            width: 40%;
         }
 
         /* Dropdown Button*/
@@ -265,3 +248,17 @@
           .slider.round:before {
             border-radius: 50%;
           }
+          
+        /* Submit button */
+
+        #submit {
+            background-color: #21ABA5;
+            color: white;
+            padding: 5%;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #21ABA5;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 40%;
+        }
