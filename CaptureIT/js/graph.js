@@ -6,14 +6,12 @@ var graphData;
 function graphDrawChooser() {
     var html = document.getElementById('dynamicContentArea');
     html.innerHTML =
-        '<div class="graphCSS">'
-        + '<select class"graphCSS" id="graphSelect">'
+         '<select class"graphCSS" id="graphSelect">'
         + '<option value="ALL">All</option>'
         + '</select>'
         + '<button onclick="graphAdd()">Add</button>'
         + '<button onclick="graphRemoveData()">Remove</button>'
-        + '<canvas id="myChart"></canvas>';
-        + '</div>'
+        + '<canvas width="400" height="400" id="myChart"></canvas>';
     dbUsers.get().then(function (querySnapshot) {
         let i = 1;
         querySnapshot.forEach(function (doc) {
@@ -66,7 +64,7 @@ function drawGraph() {
             },
             layout: {
                 padding: {
-                    left: 50,
+                    left: 0,
                     right: 0,
                     bottom: 0,
                     top: 0
