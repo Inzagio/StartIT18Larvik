@@ -5,7 +5,8 @@
         .okText{
             color:green;
         }
-
+        
+        /* Grid */
         .grid {
             display: grid;
             grid-gap: 20px;
@@ -22,6 +23,7 @@
                 "fff fff" 
                 "sub sub";
         }
+        
         .wrapper {
             display: grid;
             border-radius: 5px;
@@ -29,12 +31,6 @@
             padding: 30px 10px 30px 10px;
             font-family: Arial;
             min-width: 200px;
-        }
-
-        #choose{
-            text-align: center;
-            width: 100%;
-            color: gray;
         }
 
         .box {
@@ -96,6 +92,8 @@
             text-align: center;
         }
 
+        /* Submit button */
+
         #submit {
             background-color: #21ABA5;
             color: white;
@@ -107,6 +105,7 @@
             margin-top: 20px;
             width: 40%;
         }
+
         /* Dropdown Button*/
         .dropbtn {
             background-color: #21ABA5;
@@ -119,11 +118,13 @@
             width: 100%;
             border-radius: 10px;
         }
+
           /* Dropdown hover */
         .dropbtn:hover, .dropbtn:focus {
            background-color: lightgrey;
          }
-        /* Search field */
+        
+         /* Search field */
         #nameInput {
             background-repeat: no-repeat;
             font-size: 16px;
@@ -138,6 +139,7 @@
 			border: 1px solid lightgray;
             transform: translate(-2px, -7px);		
         }
+
         /* Dropdown Content */
         .dropdown-content {
             display: none;
@@ -146,18 +148,22 @@
             border: 1px solid #ddd;
             z-index: 1;
         }
+
         .dropdown-content a {
             color: black;
              padding: 12px 16px;
              display: block;
              text-decoration: none;
         }
+
         .dropdown a:hover {
             background-color: #f1f1f1;
         }
+
         .show {
             display: block;
         }
+
         .dropdown:hover .dropdown-content {
             display: block;
             background-color: white;
@@ -182,7 +188,6 @@
             width: 100%;
         }
 
-        @media (min-width: 520px) {
             .grid {
                 display: grid;
                 grid-template-columns: 2fr 2fr;
@@ -192,11 +197,6 @@
             .d.f{
                 padding-top: 23px;
             }
-
-        #submit {
-            padding: 16px;
-            }
-        }
 
         @media (min-width: 720px) {
             .wrapper {
@@ -250,10 +250,12 @@
             -ms-transform: translateX(26px);
             transform: translateX(26px);
           }
+
           /* Rounded sliders */
           .slider.round {
             border-radius: 34px;
           }
+
           .slider.round:before {
             border-radius: 50%;
           }
