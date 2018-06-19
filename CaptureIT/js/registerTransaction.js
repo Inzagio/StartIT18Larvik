@@ -38,12 +38,7 @@
 				'<input id="socialCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
-<<<<<<< HEAD
-				'<div id="paidText">' + 'Payd social ' +'</div>'+
-
-=======
 				'<div id="paidText">' + 'Paid social ' +'</div>'+
->>>>>>> bcaae6270cb013174af835fbffac7c09ab6f0b73
 				'</div>' +
 				'<div class="box b">' +
 				'<input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
@@ -144,9 +139,7 @@
                 
 				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares );
                 $('input').not("#calendar").not("#submit").val('');
-                $(".nameBox").text('');
-                
-                
+				$(".nameBox").text('');    
             }
 
 			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares  ){

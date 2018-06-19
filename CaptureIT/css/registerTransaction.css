@@ -91,6 +91,16 @@
             padding-top: 12px;
         }
 
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "sub sub";
+        }
+
+        .d.f{
+            padding-top: 23px;
+        }
+
         .submit {
             grid-area: sub;
             text-align: center;
@@ -190,17 +200,8 @@
         #sharesBought {
             text-align: center;
             width: 100%;
+            margin-top: 60px;
         }
-
-            .grid {
-                display: grid;
-                grid-template-columns: 2fr 2fr;
-                grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "sub sub";
-            }
-
-            .d.f{
-                padding-top: 23px;
-            }
 
         @media (min-width: 720px) {
             .wrapper {
