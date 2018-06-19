@@ -39,10 +39,9 @@
 				'<span class="slider round"></span>' +
 				'</label>' +
 				'<div id="paidText">' + 'Paid social ' +'</div>'+
-
 				'</div>' +
 				'<div class="box b">' +
-				'<input style="margin-top: 50px" id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
+				'<input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
 				'</div>' +
 				'<div class="box c"> ' +
 				'<p>Loan out of social funds:</p>' +
@@ -132,13 +131,16 @@
 				let PaidSocial = socialCheck.checked;
 				let SharesBougth =  sharesBought.value;
 				let LoanFromSocial = socialLoan.value;
-				let LoanFromShares = sharesLoan.value;
+                let LoanFromShares = sharesLoan.value;
+                
 				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares );
+                $('input').not("#calendar").not("#submit").val('');
+                $(".nameBox").text('');
+                
+                
+            }
 
-				document.getElementById().value("nameBox", "sosialCheck", "sharesBought", "socialLoan", "sharesLoan").reset();
-				}
-
-			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares){
+			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares  ){
 				let newInput =
 					{
 					 Date: calendar.value,
@@ -159,4 +161,3 @@
 					})
 				})
 			}
-
