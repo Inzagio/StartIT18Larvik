@@ -27,10 +27,18 @@
 				'</div>' +
 				'</div>' +
 				'<div class="box a"> ' +
+
 				'<label class="switch"> ' +
 				'<input id="socialCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
+				'<div id="paidText">' + ' Loan or Pai' +'</div>'+
+
+				'<label class="switch"> ' +
+				'<input id="socialCheck" type="checkbox">' +
+				'<span class="slider round"></span>' +
+				'</label>' +
+
 				'<div id="paidText">' + 'Paid social ' +'</div>'+
 				'</div>' +
 				'<div class="box b">' +
@@ -40,14 +48,14 @@
 				'<p>Loan out of social funds:</p>' +
 				'</div>' +
 				'<div class="box d">' +
-				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan from Social Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy-->' +
+				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Social Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy-->' +
 				'<br /> ' +
 				'</div> ' +
 				'<div class="box e">' +
 				'<p>Loan out of Shares funds:</p>' +
 				'</div>' +
 				'<div class="box f">' +
-				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan from Share Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy--> ' +
+				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Share Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy--> ' +
 				'</div>' +
 				'<div class="box submit"> ' +
 				'<input id="submit" type="submit" value="Submit to FirestoreDatabase" onclick="submit()"> ' +

@@ -33,9 +33,23 @@
 }
 
 @media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
+and (min-device-width : 280px) 
+and (max-device-width : 650px) {
     .fas {
-        font-size: 64px;
+        display: none;
     }
+    
+    h3{
+        font-size: 12px;
+    }
+   .my-2{
+      margin-bottom: 0 !important; 
+   }
+   #registerUsersForm label{
+      display: none;
+   }
+   #inputUsername{
+       margin-bottom: 1rem;
+   }
 }
+

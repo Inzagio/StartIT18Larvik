@@ -6,6 +6,11 @@
             color:green;
         }
 
+        /* .paidText{
+            margin-left: 30px;
+        } */
+        
+        /* Grid */
         .grid {
             display: grid;
             grid-gap: 20px;
@@ -15,10 +20,14 @@
                 "choose choose"
                 "dato dato" 
                 "aaa aaa"
+                "bbb bbb"
                 "ccc ccc" 
-                "eee eee" 
+                "ddd ddd"
+                "eee eee"
+                "fff fff" 
                 "sub sub";
         }
+
         .wrapper {
             display: grid;
             border-radius: 5px;
@@ -60,20 +69,34 @@
             text-align: center;
         }
 
+        .b{
+            grid-area: bbb;
+        }
+
         .c {
             grid-area: ccc;
             text-align: center;
+        }
+        .d{
+            grid-area: ddd;
+            padding-top: 12px;
         }
 
         .e {
             grid-area: eee;
             text-align: center;
         }  
+        .f{
+            grid-area: fff;
+            padding-top: 12px;
+        }
 
         .submit {
             grid-area: sub;
             text-align: center;
         }
+
+        /* Submit button */
 
         #submit {
             background-color: #21ABA5;
@@ -86,6 +109,7 @@
             margin-top: 20px;
             width: 40%;
         }
+
         /* Dropdown Button*/
         .dropbtn {
             background-color: #21ABA5;
@@ -98,11 +122,13 @@
             width: 100%;
             border-radius: 10px;
         }
+
           /* Dropdown hover */
         .dropbtn:hover, .dropbtn:focus {
            background-color: lightgrey;
          }
-        /* Search field */
+        
+         /* Search field */
         #nameInput {
             background-repeat: no-repeat;
             font-size: 16px;
@@ -117,6 +143,7 @@
 			border: 1px solid lightgray;
             transform: translate(-2px, -7px);		
         }
+
         /* Dropdown Content */
         .dropdown-content {
             display: none;
@@ -125,21 +152,29 @@
             border: 1px solid #ddd;
             z-index: 1;
         }
+
         .dropdown-content a {
             color: black;
              padding: 12px 16px;
              display: block;
              text-decoration: none;
         }
+
         .dropdown a:hover {
             background-color: #f1f1f1;
         }
+
         .show {
             display: block;
         }
+
         .dropdown:hover .dropdown-content {
             display: block;
             background-color: white;
+        }
+
+        .shareLoan {
+            text-align: center;
         }
 
         #socialLoan {
@@ -157,17 +192,15 @@
             width: 100%;
         }
 
-        @media (min-width: 520px) {
             .grid {
                 display: grid;
                 grid-template-columns: 2fr 2fr;
                 grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "sub sub";
             }
 
-        #submit {
-            padding: 16px;
+            .d.f{
+                padding-top: 23px;
             }
-        }
 
         @media (min-width: 720px) {
             .wrapper {
@@ -181,6 +214,7 @@
             display: inline-block;
             width: 48px;
             height: 23px;
+
           }
           .switch input {display:none;}
           
@@ -221,10 +255,12 @@
             -ms-transform: translateX(26px);
             transform: translateX(26px);
           }
+
           /* Rounded sliders */
           .slider.round {
             border-radius: 34px;
           }
+
           .slider.round:before {
             border-radius: 50%;
           }
