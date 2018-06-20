@@ -72,7 +72,7 @@ var database = function () {
     }
 
     function addUser(Username, Email, name, password) {
-        admin.auth().createUser({
+        firebase.auth().createUser({
             email: Email,
             emailVerified: false,
             password: password,
