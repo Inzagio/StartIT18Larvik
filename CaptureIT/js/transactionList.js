@@ -10,14 +10,12 @@ function setupTransactionList() {
     container.innerHTML = '<br />Loading Data...';
     menu.setBreadcrumbs('Transaction List');
 
-    getTransactions();
-}
-
-function getTransactions() {
-    db.orderBy('Date').orderBy('Name').get().then(function (querySnapshot) {
-        var table = createTransactionTable();
-        querySnapshot.forEach(function (item, index) {
-            showRow(table, item, index);
+    database.getUserInfo(currentUser.uid).then(result => {
+        database.getTransactions(result.data().place).then(querySnapshot => {
+            var table = createTransactionTable();
+            querySnapshot.forEach(function (item, index) {
+                showRow(table, item, index);
+            });
         });
     });
 }
@@ -79,13 +77,15 @@ function createTransactionTable(container) {
 function showRow(table, item, index) {
     let person = item.data();
     var row = table.rows[index + 1] ? table.rows[index + 1] : table.insertRow();;
-    row.insertCell().innerHTML = person['Date'];
-    row.insertCell().innerHTML = person['Name'];
-    row.insertCell().innerHTML = person['PaidSocial'];
-    row.insertCell().innerHTML = person['SharesBougth'];
-    row.insertCell().innerHTML = person['LoanFromSocial'];
-    row.insertCell().innerHTML = person['LoanFromShares'];
-    row.insertCell().innerHTML = `<button onClick="javascript:deleteTransactionConfirm('${item.id}');">❌</button>`;
+    person.user.get().then(name => {
+        row.insertCell().innerHTML = person['date'].toDate().toISOString().split('T', 1)[0];
+        row.insertCell().innerHTML = name.data().name;
+        row.insertCell().innerHTML = person['paidSocial'];
+        row.insertCell().innerHTML = person['sharesBougth'];
+        row.insertCell().innerHTML = person['loanSocial'];
+        row.insertCell().innerHTML = person['loanShares'];
+        row.insertCell().innerHTML = `<button onClick="javascript:deleteTransactionConfirm('${item.id}');">❌</button>`;
+    });
 }
 
 function deleteTransaction(id) {
