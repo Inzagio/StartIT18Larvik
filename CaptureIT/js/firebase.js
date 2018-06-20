@@ -96,16 +96,17 @@ var database = function () {
                 .catch(function (error) {
                     console.log("Error creating new user:", error);
                 });
-        }
+        });
+    }
 
 
     return {
-            getPlaces: getPlaces,
-            getUsers: getUsers,
-            getUserInfo: getUserInfo,
-            registerTransaction: registerTransaction,
-            getTransactionsUser: getTransactionsUser,
-            getTransactions: getTransactions,
-            addUser: addUser
-        }
-    } ();
+        getPlaces: getPlaces,
+        getUsers: getUsers,
+        getUserInfo: getUserInfo,
+        registerTransaction: registerTransaction,
+        getTransactionsUser: getTransactionsUser,
+        getTransactions: getTransactions,
+        addUser: addUser
+    }
+}();
