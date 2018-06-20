@@ -43,9 +43,9 @@ var database = function () {
         return db.collection('users').doc(uid).get();
     }
 
-    function registerTransaction(date, user, paidSocial, sharesBougth, loanFromSocial, loanFromShares) {
-        var loanShares = loanFromShares;
-        var loanSocial = loanFromSocial;
+    function registerTransaction(date, user, paidSocial, sharesBougth, loanFromSocial, loanFromShares, paySocial, payShares) {
+        var loanShares = loanFromShares - payShares;
+        var loanSocial = loanFromSocial - paySocial;
         var place = user.data().place;
         return db.add({
             date: date,
@@ -76,6 +76,7 @@ var database = function () {
         getUsers: getUsers,
         getUserInfo: getUserInfo,
         registerTransaction: registerTransaction,
+        getTransactionsUser: getTransactionsUser,
         getTransactions: getTransactions
     }
 }();
