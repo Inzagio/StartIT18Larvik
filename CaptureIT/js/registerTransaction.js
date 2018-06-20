@@ -4,15 +4,18 @@
 			menu.setBreadcrumbs('Register Transactions');
 			container.innerHTML =
 				'<div class="grid wrapper">' +
+
 				'<div class="box nm">' +
 				'<div class="box nameBox" id="nameBox"></div>' +
 				'</div>' +
 				'<div class="box choosedate">Choose date:</div>' +
+
 				'<div class="box dato">' +
 				'<form>' +
 				'<input id="calendar" type="date" name="chooseday">' +
 				'</form>' +
 				'</div>' +
+
 				'<div class="box meny">' +
 				'<div class="dropdown">' +
 				'<button class="dropbtn"> Name </button>' +
@@ -26,42 +29,52 @@
 				'</div> ' +
 				'</div>' +
 				'</div>' +
-				'<div class="box a"> ' +
 
+				'<div class="box a"> ' +
 				'<label class="switch"> ' +
 				'<input id="socialCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
 				'<div id="paidText">' + 'Paid social ' +'</div>'+
 				'</div>' +
+
 				'<div class="box b">' +
 				'<input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
 				'</div>' +
+
 				'<div class="box c"> ' +
-				'<p> Loan out of social funds: </p>' +
-				'<br>'+
-				'<p> By back social funds: </p>' +
-				'</div>' +
+				'<p> Loan out of Social Funds: </p>' +
+				'</div>'+
+
 				'<div class="box d">' +
 				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Social Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy-->' +
-				'<br>'+
-				'<br>'+
-				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="By back funds " min="0" max="100">' +
+				'</div>' +
+
+				'<div class="box e">' +
+				'<p> Pay Back Social Funds: </p>' +
+				'</div>' +
+
+				'<div class="box f">' +
+				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Funds " min="0" max="100">' +
 				'<br /> ' +
 				'</div> ' +
 
+				'<div class="box g">' +
+				'<p>Loan out of Shares Funds:</p>' +
+				'</div>' +
 
-				'<div class="box e">' +
-				'<p>Loan out of Shares funds:</p>' +
-				'<br>'+
-				'<p> By back Shares:</p>' +
-				'</div>' +
-				'<div class="box f">' +
+				'<div class="box h">' +
 				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Share Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy--> ' +
-				'<br>' +
-				'<br>' +
-				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Share Funds" min="0" max="100"> ' +
 				'</div>' +
+
+				'<div class="box i">' +
+				'<p> Pay Back Shares:</p>' +
+				'</div>' +
+
+				'<div class="box j">' +
+				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Shares" min="0" max="100"> ' +
+				'</div>' +
+
 				'<div class="box submit"> ' +
 				'<input id="submit" type="submit" value="Submit to FirestoreDatabase" onclick="submit()"> ' +
 				'<button onclick="showArray()">see array in console</button>' +
