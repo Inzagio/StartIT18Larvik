@@ -55,7 +55,7 @@
 				'</div>' +
 
 				'<div class="box f">' +
-				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Funds " min="0" max="100">' +
+				'<input id="paySocial type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Funds " min="0" max="100">' +
 				'<br /> ' +
 				'</div> ' +
 
@@ -72,7 +72,7 @@
 				'</div>' +
 
 				'<div class="box j">' +
-				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Shares" min="0" max="100"> ' +
+				'<input id="payShares" type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Shares" min="0" max="100"> ' +
 				'</div>' +
 
 				'<div class="box submit"> ' +
