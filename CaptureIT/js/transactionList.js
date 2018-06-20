@@ -10,8 +10,8 @@ function setupTransactionList() {
     container.innerHTML = '<br />Loading Data...';
     menu.setBreadcrumbs('Transaction List');
 
-    database.getUserInfo(currentUser.uid).then(result => {
-        database.getTransactions(result.data().place).then(querySnapshot => {
+    database.getUserInfo(currentUser.uid).then(user => {
+        database.getTransactions(user.data().place).then(querySnapshot => {
             var table = createTransactionTable();
             querySnapshot.forEach(function (item, index) {
                 showRow(table, item, index);
