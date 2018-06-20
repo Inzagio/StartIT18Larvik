@@ -64,11 +64,15 @@ function renderRegisterUsers() {
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
 
     //Labels
-    let labelForName = element_builder('label', { for: 'inputUsername', class: 'noselect' });
+    let labelForFirstName = element_builder('label', { for: 'labelForFirstName', class: 'noselect' });
+    let labelForLastName = element_builder('label', { for: 'labelForLastName', class: 'noselect' });
+    let labelForUsername = element_builder('label', { for: 'inputUsername', class: 'noselect' });
     let labelForEmail = element_builder('label', { for: 'inputEmail', class: 'noselect' });
 
     //Inputs
-    let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true' });
+    let inputFirstName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputFirstName', placeholder: 'First Name', required: 'true' });
+    let inputLastName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputLastName', placeholder: 'Last Name', required: 'true' });
+    let inputUsername = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true' });
     let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'Provide a valid e-mail', required: 'true' })
 
     // Submit button
@@ -84,10 +88,20 @@ function renderRegisterUsers() {
 
     // Form appends
     form.appendChild(divFormGroupName);
-    labelForName.innerHTML = 'Username';
+    labelForFirstName.innerHTML = 'First Name';
+    labelForLastName.innerHTML = 'Last Name';
+    labelForUsername.innerHTML = 'Username';
     labelForEmail.innerHTML = 'E-mail';
-    divFormGroupName.appendChild(labelForName);
-    divFormGroupName.appendChild(inputName);
+    
+    divFormGroupName.appendChild(labelForFirstName);
+    divFormGroupName.appendChild(inputFirstName);
+    
+    divFormGroupName.appendChild(labelForLastName);
+    divFormGroupName.appendChild(inputLastName);
+    
+    divFormGroupName.appendChild(labelForUsername);
+    divFormGroupName.appendChild(inputUsername);
+    
     divFormGroupName.appendChild(labelForEmail);
     divFormGroupName.appendChild(inputEmail);
 
@@ -171,7 +185,9 @@ function submitUserForm(event) {
     event.preventDefault();
     let Username = getInputVal('inputUsername');
     let Email = getInputVal('inputEmail');
-    saveUserRegistered(Username, Email);
+    let FirstName = getInputVal('inputFirstName');
+    let LastName = getInputVal('inputLastName');
+    saveUserRegistered(Username, Email, FirstName, LastName);
     //Reset after 1,5 seconds
     setTimeout(function () {
         document.getElementById('registerUsersForm').reset();
@@ -181,12 +197,14 @@ function submitUserForm(event) {
 // Database write and read functions
 
 //Save user to firebase
-function saveUserRegistered(Username, Email) {
+function saveUserRegistered(Username, Email, FirstName, LastName) {
     dbUsers.add({
         Username: Username,
+        FirstName: FirstName,
+        LastName:LastName,
         Email: Email
     })
-    console.log('Data saved', Username, Email);
+    console.log('Data saved', Username, Email, FirstName, LastName);
 }
 
 

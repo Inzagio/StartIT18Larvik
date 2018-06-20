@@ -45,11 +45,6 @@ and (max-device-width : 650px) {
    .my-2{
       margin-bottom: 0 !important; 
    }
-   #registerUsersForm label{
-      display: none;
-   }
-   #inputUsername{
-       margin-bottom: 1rem;
-   }
+   
 }
 
