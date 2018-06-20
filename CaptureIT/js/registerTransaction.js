@@ -29,12 +29,6 @@
 				'<div class="box a"> ' +
 
 				'<label class="switch"> ' +
-				'<input type="checkbox" onclick="tick(this.checked)">' +
-				'<span class="slider round"></span>' +
-				'</label>' +
-				'<div id="loanPay">' + ' Loan ' +'</div>'+
-
-				'<label class="switch"> ' +
 				'<input id="socialCheck" type="checkbox">' +
 				'<span class="slider round"></span>' +
 				'</label>' +
@@ -44,17 +38,29 @@
 				'<input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
 				'</div>' +
 				'<div class="box c"> ' +
-				'<p>Loan out of social funds:</p>' +
+				'<p> Loan out of social funds: </p>' +
+				'<br>'+
+				'<p> By back social funds: </p>' +
 				'</div>' +
 				'<div class="box d">' +
 				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Social Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy-->' +
+				'<br>'+
+				'<br>'+
+				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="By back funds " min="0" max="100">' +
 				'<br /> ' +
 				'</div> ' +
+
+
 				'<div class="box e">' +
 				'<p>Loan out of Shares funds:</p>' +
+				'<br>'+
+				'<p> By back Shares:</p>' +
 				'</div>' +
 				'<div class="box f">' +
 				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Share Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy--> ' +
+				'<br>' +
+				'<br>' +
+				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Share Funds" min="0" max="100"> ' +
 				'</div>' +
 				'<div class="box submit"> ' +
 				'<input id="submit" type="submit" value="Submit to FirestoreDatabase" onclick="submit()"> ' +
@@ -101,10 +107,6 @@
 				if (m < 10) m = '0' + m;
 			    if (d < 10) m = '0' + d;
 			document.getElementById("calendar").value = y + "-" + m + "-" + d;
-			}
-
-			const tick = (a) => {
-			loanPay.innerHTML=a?"Pay":"Loan";
 			}
 
 			var valueNotEmpty = '';

@@ -85,7 +85,7 @@
         }  
         .f{
             grid-area: fff;
-            padding-top: 12px;
+
         }
 
         .grid {
@@ -183,7 +183,6 @@
         #sharesBought {
             text-align: center;
             width: 100%;
-            margin-top: 60px;
         }
 
         @media (min-width: 720px) {
