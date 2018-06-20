@@ -43,17 +43,17 @@ var database = function () {
         return db.collection('users').doc(uid).get();
     }
 
-    function registerTransaction(date, uid, paidSocial, sharesBougth, loanFromSocial, loanFromShares, place) {
+    function registerTransaction(date, user, paidSocial, sharesBougth, loanFromSocial, loanFromShares, place) {
         var loanShares = loanFromShares;
         var loanSocial = loanFromSocial;
         return db.add({
             date: date,
-            user: `users/${uid}`,
+            user: uid,
             paidSocial: paidSocial,
             sharesBougth: sharesBougth,
             loanShares: loanShares,
             loanSocial: loanSocial,
-            place: `places/${place}`
+            place: place
         });
     }
 
