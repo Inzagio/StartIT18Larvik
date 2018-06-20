@@ -72,37 +72,40 @@ var database = function () {
     }
 
     function addUser(Username, Email, name, password) {
-        firebase.auth().createUser({
-            email: Email,
-            emailVerified: false,
-            password: password,
-            displayName: name,
-            disabled: false
-        })
-            .then(function (userRecord) {
-                // See the UserRecord reference doc for the contents of userRecord.
-                db.collection('users').doc(userRecord.uid).set({
-                    Username: Username,
-                    Email: Email,
-                    name: name
-                });
-                console.log("Successfully created new user:", userRecord.uid);
-                console.log('Data saved', Username, Email);
-
+        database.getUserInfo(currentUser.uid).then(user => {
+            let place = user.data().place;
+            firebase.auth().createUser({
+                email: Email,
+                emailVerified: false,
+                password: password,
+                displayName: name,
+                disabled: false
             })
-            .catch(function (error) {
-                console.log("Error creating new user:", error);
-            });
-    }
+                .then(function (userRecord) {
+                    // See the UserRecord reference doc for the contents of userRecord.
+                    db.collection('users').doc(userRecord.uid).set({
+                        Username: Username,
+                        Email: Email,
+                        name: name,
+                        place: place
+                    });
+                    console.log("Successfully created new user:", userRecord.uid);
+                    console.log('Data saved', Username, Email);
+
+                })
+                .catch(function (error) {
+                    console.log("Error creating new user:", error);
+                });
+        }
 
 
     return {
-        getPlaces: getPlaces,
-        getUsers: getUsers,
-        getUserInfo: getUserInfo,
-        registerTransaction: registerTransaction,
-        getTransactionsUser: getTransactionsUser,
-        getTransactions: getTransactions,
-        addUser: addUser
-    }
-}();
+            getPlaces: getPlaces,
+            getUsers: getUsers,
+            getUserInfo: getUserInfo,
+            registerTransaction: registerTransaction,
+            getTransactionsUser: getTransactionsUser,
+            getTransactions: getTransactions,
+            addUser: addUser
+        }
+    } ();
