@@ -91,8 +91,8 @@ var database = function () {
                 name: name,
                 place: place
             })
-                .then({
-                    console.log("Successfully created new user:", userRecord.uid);
+                .then((userRecord) => {
+                    console.log("Successfully created new user:", userRecord.id);
                     console.log('Data saved', Username, Email);
                 })
                 .catch(function (error) {
