@@ -55,75 +55,52 @@ function userTabs() {
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
 function renderRegisterUsers() {
-
     let dynamicContentArea = document.getElementById('dynamicContentArea');
+    let successAlert = element_builder('div', { class: 'alert alert-success', role: 'alert', id: 'alertUserReg' });
+    dynamicContentArea.appendChild(successAlert);
+
     let tabContent = element_builder('div', { class: 'tab-content' });
     let tabPane = element_builder('div', { id: 'registerUser', class: 'tab-pane fade show active' });
-
     let form = element_builder('form', { id: 'registerUsersForm' });
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
 
-    //Labels
-    let labelForFirstName = element_builder('label', { for: 'labelForFirstName', class: 'noselect' });
-    let labelForLastName = element_builder('label', { for: 'labelForLastName', class: 'noselect' });
-    let labelForUsername = element_builder('label', { for: 'inputUsername', class: 'noselect' });
-    let labelForEmail = element_builder('label', { for: 'inputEmail', class: 'noselect' });
-
     //Inputs
-    let inputFirstName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputFirstName', placeholder: 'First Name', required: 'true' });
-    let inputLastName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputLastName', placeholder: 'Last Name', required: 'true' });
+    // let inputFirstName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputFirstName', placeholder: 'First Name', required: 'true' });
+    // let inputLastName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputLastName', placeholder: 'Last Name', required: 'true' });
+    let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputName', placeholder: 'Name', required: 'true' });
     let inputUsername = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true' });
-    let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'Provide a valid e-mail', required: 'true' })
+    let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'E-Mail', required: 'true' })
 
     // Submit button
-    let submitButton = element_builder('button', { type: 'submit', class: 'btn btn-primary' });
+    let submitButton = element_builder('button', { type: 'submit', class: 'btn btn-primary', id: 'regUserBtn' });
     submitButton.innerHTML = 'Register user';
 
 
     dynamicContentArea.appendChild(tabContent);
-    // navHead.appendChild(tabPane);
     tabContent.appendChild(tabPane);
     tabPane.appendChild(form);
 
 
     // Form appends
     form.appendChild(divFormGroupName);
-    labelForFirstName.innerHTML = 'First Name';
-    labelForLastName.innerHTML = 'Last Name';
-    labelForUsername.innerHTML = 'Username';
-    labelForEmail.innerHTML = 'E-mail';
-    
-    divFormGroupName.appendChild(labelForFirstName);
-    divFormGroupName.appendChild(inputFirstName);
-    
-    divFormGroupName.appendChild(labelForLastName);
-    divFormGroupName.appendChild(inputLastName);
-    
-    divFormGroupName.appendChild(labelForUsername);
+    // divFormGroupName.appendChild(inputFirstName);
+    // divFormGroupName.appendChild(inputLastName);
+    divFormGroupName.appendChild(inputName);
     divFormGroupName.appendChild(inputUsername);
-    
-    divFormGroupName.appendChild(labelForEmail);
     divFormGroupName.appendChild(inputEmail);
 
     // Creates the two password fields, one for pw input and one for repeating it, conforms with regular UX on reg forms
     for (let i = 0; i < 2; i++) {
         let divFormGroupPassword = element_builder('div', { class: 'form-group noselect' });
-        let labelForPassword = element_builder('label', { for: 'formGroupPassword', class: 'noselect' });
         let inputPassword = element_builder('input', { type: 'password', class: 'form-control', placeholder: 'Password', required: 'true' });
-        labelForPassword.innerHTML = 'Password';
 
         form.appendChild(divFormGroupPassword);
-        divFormGroupPassword.appendChild(labelForPassword);
         divFormGroupPassword.appendChild(inputPassword);
-
         if (i == 0) {
-            labelForPassword.setAttribute('id', 'password');
-
+            inputPassword.setAttribute('id', 'pwRegUser');
         }
         if (i == 1) {
-            labelForPassword.setAttribute('id', 'confirmPassword');
             inputPassword.setAttribute('placeholder', 'Confirm Password');
-            labelForPassword.innerHTML = 'Confirm Password';
         }
     }
     // To do - Compare passwords and validate form
@@ -132,14 +109,6 @@ function renderRegisterUsers() {
 }
 
 
-function getUsers() {
-    dbUsers.orderBy('Username').orderBy('Email').get().then(function (querySnapshot) {
-        let table = createTable();
-        querySnapshot.forEach(function (item, index) {
-            renderUsersTable(table, item, index);
-        });
-    });
-}
 
 //User list table
 function renderUserListTable() {
@@ -150,16 +119,14 @@ function renderUserListTable() {
     tabContent.appendChild(tabPane);
 }
 
+//Creates a table for displaying current registered users
 function createTable() {
-    let table = element_builder('table', {id: 'usersTable'});
-    
+    let table = element_builder('table', { id: 'usersTable' });
     let headRow = table.insertRow();
- 
     let usernameHeader = element_builder('th');
+
     usernameHeader.innerHTML = 'Username';
-    
     headRow.appendChild(usernameHeader);
-    
     let emailHeader = element_builder('th');
     emailHeader.innerHTML = 'E-Mail';
     headRow.appendChild(emailHeader);
@@ -174,6 +141,7 @@ function renderUsersTable(table, item, index) {
     row.insertCell().innerHTML = user['Username'];
     row.insertCell().innerHTML = user['Email'];
 }
+
 // Returns the value from input - Used for submitUserForm
 function getInputVal(id) {
     return document.getElementById(id).value;
@@ -185,27 +153,51 @@ function submitUserForm(event) {
     event.preventDefault();
     let Username = getInputVal('inputUsername');
     let Email = getInputVal('inputEmail');
-    let FirstName = getInputVal('inputFirstName');
-    let LastName = getInputVal('inputLastName');
-    saveUserRegistered(Username, Email, FirstName, LastName);
+    // let FirstName = getInputVal('inputFirstName');
+    // let LastName = getInputVal('inputLastName');
+    let password = getInputVal('pwRegUser');
+    let name = getInputVal('inputName');
+    console.log(password);
+
+
+    let regBtn = document.getElementById('regUserBtn');
+    regBtn.setAttribute('class', 'btn btn-success');
+
+    let alert = document.getElementById('alertUserReg');
+    alert.innerHTML = 'Successfully registered';
+    alert.style.visibility = 'visible';
+    database.addUser(Username, Email, name, password);
     //Reset after 1,5 seconds
     setTimeout(function () {
+        regBtn.setAttribute('class', 'btn btn-primary');
         document.getElementById('registerUsersForm').reset();
+
     }, 1500);
 }
 
 // Database write and read functions
 
-//Save user to firebase
-function saveUserRegistered(Username, Email, FirstName, LastName) {
-    dbUsers.add({
-        Username: Username,
-        FirstName: FirstName,
-        LastName:LastName,
-        Email: Email
-    })
-    console.log('Data saved', Username, Email, FirstName, LastName);
+//Read users from firebase
+function getUsers() {
+    dbUsers.orderBy('Username').orderBy('Email').get().then(function (querySnapshot) {
+        let table = createTable();
+        querySnapshot.forEach(function (item, index) {
+            renderUsersTable(table, item, index);
+        });
+    });
 }
+
+
+//Save user to firebase
+// function saveUserRegistered(Username, Email, FirstName, LastName) {
+//     dbUsers.add({
+//         Username: Username,
+//         FirstName: FirstName,
+//         LastName:LastName,
+//         Email: Email
+//     })
+//     console.log('Data saved', Username, Email, FirstName, LastName);
+// }
 
 
 

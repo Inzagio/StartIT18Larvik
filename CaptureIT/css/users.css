@@ -23,6 +23,9 @@
 #registerUsersForm label{
     display: none;
  }
- #inputUsername, #inputFirstName, #inputLastName{
+ #inputUsername, #inputFirstName, #inputLastName, #inputName{
      margin-bottom: 1rem;
+ }
+ #alertUserReg{
+     visibility: hidden;
  }
