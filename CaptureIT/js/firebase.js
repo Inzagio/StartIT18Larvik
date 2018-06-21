@@ -74,24 +74,26 @@ var database = function () {
     function addUser(Username, Email, name, password) {
         database.getUserInfo(currentUser.uid).then(user => {
             let place = user.data().place;
-            firebase.auth().createUser({
-                email: Email,
-                emailVerified: false,
-                password: password,
-                displayName: name,
-                disabled: false
+            //firebase.auth().createUser({
+            //    email: Email,
+            //    emailVerified: false,
+            //    password: password,
+            //    displayName: name,
+            //    disabled: false
+            //})
+            //    .then(function (userRecord) {
+            // See the UserRecord reference doc for the contents of userRecord.
+            //db.collection('users').doc(userRecord.uid).set({
+
+            db.collection('users').add({
+                Username: Username,
+                Email: Email,
+                name: name,
+                place: place
             })
-                .then(function (userRecord) {
-                    // See the UserRecord reference doc for the contents of userRecord.
-                    db.collection('users').doc(userRecord.uid).set({
-                        Username: Username,
-                        Email: Email,
-                        name: name,
-                        place: place
-                    });
+                .then({
                     console.log("Successfully created new user:", userRecord.uid);
                     console.log('Data saved', Username, Email);
-
                 })
                 .catch(function (error) {
                     console.log("Error creating new user:", error);
