@@ -11,7 +11,7 @@ function element_builder(type, attrs) {
 }
 
 //Tabs with panes
-function userTabs() {
+function tabCreation() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let tabNav = element_builder('ul', { class: 'nav nav-tabs', role: 'tablist' });
     dynamicContentArea.appendChild(tabNav);
@@ -31,8 +31,8 @@ function userTabs() {
             tabNavAnchor.setAttribute('aria-selected', 'true');
             tabNavAnchor.innerHTML = 'Register User';
             tabNavAnchor.addEventListener('click', function (e) {
-                resetContent();
-                renderRegisterUsers();
+                // resetContent();
+                // renderRegisterUsers();
             });
         }
         if (i == 1) {
@@ -43,52 +43,47 @@ function userTabs() {
             tabNavAnchor.setAttribute('aria-selected', 'false');
             tabNavAnchor.innerHTML = 'User list';
             tabNavAnchor.addEventListener('click', function (e) {
-                resetContent();
-                renderUserListTable();
-                getUsers();
+                // resetContent();
+                // renderUserListTable();
+                // getUsers();
             });
         }
     }
-
+    makeTabs();
 }
-
+function makeTabs(){
+    let dynamicContentArea = document.getElementById('dynamicContentArea');
+    let successAlert = element_builder('div', { class: 'alert alert-success', role: 'alert', id: 'alertUserReg' });
+    
+    let tabContent = element_builder('div', { class: 'tab-content', id:'tabContent' });
+    let tabPaneReg = element_builder('div', {class: 'tab-pane fade show active', id: 'registerUserTab', role:'tabpanel', aria_labelledby:'reg-tab' });
+    let tabPaneUser = element_builder('div', {class: 'tab-pane fade', id: 'UserTab', role:'tabpanel', aria_labelledby:'users-tab' });
+    dynamicContentArea.appendChild(tabContent);
+    tabContent.appendChild(tabPaneReg);
+    tabContent.appendChild(tabPaneUser);
+    tabPaneReg.appendChild(successAlert);
+    renderRegisterUsers();
+}
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
 function renderRegisterUsers() {
-    let dynamicContentArea = document.getElementById('dynamicContentArea');
-    let successAlert = element_builder('div', { class: 'alert alert-success', role: 'alert', id: 'alertUserReg' });
-    dynamicContentArea.appendChild(successAlert);
+    let tabPaneReg = document.getElementById('registerUserTab');
 
-    let tabContent = element_builder('div', { class: 'tab-content' });
-    let tabPane = element_builder('div', { id: 'registerUser', class: 'tab-pane fade show active' });
     let form = element_builder('form', { id: 'registerUsersForm' });
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
-
     //Inputs
-    // let inputFirstName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputFirstName', placeholder: 'First Name', required: 'true' });
-    // let inputLastName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputLastName', placeholder: 'Last Name', required: 'true' });
     let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputName', placeholder: 'Name', required: 'true' });
     let inputUsername = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true' });
     let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'E-Mail', required: 'true' })
-
     // Submit button
     let submitButton = element_builder('button', { type: 'submit', class: 'btn btn-primary', id: 'regUserBtn' });
     submitButton.innerHTML = 'Register user';
-
-
-    dynamicContentArea.appendChild(tabContent);
-    tabContent.appendChild(tabPane);
-    tabPane.appendChild(form);
-
-
+    tabPaneReg.appendChild(form);
     // Form appends
     form.appendChild(divFormGroupName);
-    // divFormGroupName.appendChild(inputFirstName);
-    // divFormGroupName.appendChild(inputLastName);
     divFormGroupName.appendChild(inputName);
     divFormGroupName.appendChild(inputUsername);
     divFormGroupName.appendChild(inputEmail);
-
     // Creates the two password fields, one for pw input and one for repeating it, conforms with regular UX on reg forms
     for (let i = 0; i < 2; i++) {
         let divFormGroupPassword = element_builder('div', { class: 'form-group noselect' });
@@ -153,12 +148,8 @@ function submitUserForm(event) {
     event.preventDefault();
     let Username = getInputVal('inputUsername');
     let Email = getInputVal('inputEmail');
-    // let FirstName = getInputVal('inputFirstName');
-    // let LastName = getInputVal('inputLastName');
     let password = getInputVal('pwRegUser');
     let name = getInputVal('inputName');
-    console.log(password);
-
 
     let regBtn = document.getElementById('regUserBtn');
     regBtn.setAttribute('class', 'btn btn-success');
@@ -171,7 +162,7 @@ function submitUserForm(event) {
     setTimeout(function () {
         regBtn.setAttribute('class', 'btn btn-primary');
         document.getElementById('registerUsersForm').reset();
-
+        alert.style.visibility = 'hidden';
     }, 1500);
 }
 

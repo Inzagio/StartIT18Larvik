@@ -53,7 +53,7 @@ function renderCard() {
 
     // The commented i refers to if this was created using a for loop and if statements.  
     // i == 0
-    renderCardContent('fa-users', 'Users', userTabs);
+    renderCardContent('fa-users', 'Users', tabCreation);
     // i == 1
     renderCardContent('fa-chart-area', 'Statistics', graphDrawChooser);
     // i == 2
