@@ -151,13 +151,19 @@ function createTable() {
     let userTab = document.getElementById('userTab');
     let table = element_builder('table', { id: 'usersTable' });
     let headRow = table.insertRow();
-    let usernameHeader = element_builder('th');
 
+    let nameHeader = element_builder('th');
+    nameHeader.innerHTML = 'Name';
+    headRow.appendChild(nameHeader);
+
+    let usernameHeader = element_builder('th');
     usernameHeader.innerHTML = 'Username';
     headRow.appendChild(usernameHeader);
+    
     let emailHeader = element_builder('th');
     emailHeader.innerHTML = 'E-Mail';
     headRow.appendChild(emailHeader);
+    
 
     userTab.appendChild(table);
     return table;
@@ -166,6 +172,7 @@ function createTable() {
 function renderUsersTable(table, item, index) {
     let user = item.data();
     var row = table.rows[index + 1] ? table.rows[index + 1] : table.insertRow();
+    row.insertCell().innerHTML = user['name'];
     row.insertCell().innerHTML = user['Username'];
     row.insertCell().innerHTML = user['Email'];
 }
@@ -203,7 +210,7 @@ function submitUserForm(event) {
 
 //Read users from firebase
 function getUsers() {
-    dbUsers.orderBy('Username').orderBy('Email').get().then(function (querySnapshot) {
+    dbUsers.orderBy('name').orderBy('Username').orderBy('Email').get().then(function (querySnapshot) {
         let table = createTable();
         querySnapshot.forEach(function (item, index) {
             renderUsersTable(table, item, index);
