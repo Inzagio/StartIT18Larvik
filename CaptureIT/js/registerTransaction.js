@@ -55,7 +55,7 @@
 				'</div>' +
 
 				'<div class="box f">' +
-				'<input id="paySocial type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Funds " min="0" max="100">' +
+				'<input id="paySocial" type="number"  placeholder="Pay Back SocialFunds" ' +
 				'<br /> ' +
 				'</div> ' +
 
@@ -72,18 +72,19 @@
 				'</div>' +
 
 				'<div class="box j">' +
-				'<input id="payShares" type="number" oninput="alertMaxInput(this)" placeholder="Pay Back Shares" min="0" max="100"> ' +
+				'<input id="payShares" type="number"  placeholder="Pay Back Shares" ' +
 				'</div>' +
 
 				'<div class="box submit"> ' +
-				'<input id="submit" type="submit" value="Submit to FirestoreDatabase" onclick="submit()"> ' +
-				'<button onclick="showArray()">see array in console</button>' +
+				'<input id="submit" type="submit" value="Submit" onclick="submit()"> ' +
+				'<button onclick="showArray()">DB in console</button>' +
 				'</div>' +
 				'</div>';
 				 setDateToday();  
 		}
-	
+			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
+
 
 			function filter() {
 				var input = document.getElementById("nameInput");
@@ -129,11 +130,11 @@
 				nameBox.innerHTML = 'Choose name';
 				valueNotEmpty = false;
 			};
-				        //-- place comment markers if this part is desired removed later on //
+				        
 				if (!socialCheck.checked) { //show a text if social is not checked  
 				paidText.classList.add('alertText');
 				paidText.innerHTML = 'Pay Social';
-				valueNotEmpty = false;
+				valueNotEmpty = true; //Lets user submit data even if social is not paid - in case of paying back loan
 			}
 				else{
 				paidText.classList.remove('alertText');
@@ -148,16 +149,18 @@
 			function submit(){  //grab values from inputs
 				let Name = nameBox.innerHTML;
 				let PaidSocial = socialCheck.checked;
-				let SharesBougth =  sharesBought.value;
+				let SharesBougth   =  sharesBought.value;
 				let LoanFromSocial = socialLoan.value;
                 let LoanFromShares = sharesLoan.value;
-                
-				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares );
+				
+				
+
+				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares,paySocial,payShares);
                 $('input').not("#calendar").not("#submit").val('');
 				$(".nameBox").text('');    
             }
 
-			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares  ){
+			function addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares, paySocial, payShares){
 				let newInput =
 					{
 					 Date: calendar.value,
@@ -165,7 +168,9 @@
 					 PaidSocial: PaidSocial ,
 					 SharesBougth: SharesBougth,
 					 LoanFromSocial: LoanFromSocial,
-					 LoanFromShares: LoanFromShares
+					 LoanFromShares: LoanFromShares,
+					 PaySocial: paySocial.value,
+					 PayShares: payShares.value
 					 };	
 					  valueCheck();
 					if (valueNotEmpty){db.add(newInput)}; 

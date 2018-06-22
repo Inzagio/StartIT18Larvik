@@ -1,18 +1,18 @@
 
-
 var Graph;
 var graphAddPerson;
 var graphData;
 function graphDrawChooser() {
     var html = document.getElementById('dynamicContentArea');
     html.innerHTML =
-        '<select class="graphCSS" id="graphSelect">'
+        '<div id="graphCSS" class="graphCSS">'
+        + '<select id="graphSelect">'
         + '<option value="ALL">All</option>'
         + '</select>'
-        + '<button id="button" onclick="graphAdd()">Add</button>'
-        + '<button onclick="graphRemoveData()">Remove</button>'
+        + '  <button id="button" onclick="graphAdd()">Add</button>  '
+        + '<button onclick="graphRemoveData()">Remove</button>  '
         + '<select onchange="graphPushLable()" id="graphSelectLength"></select>';
-   
+        + '</div>'
     if ($(window).width() < 650) {
         html.innerHTML += '<canvas height="100%" width="100%" id="myChart"></canvas>';
     }

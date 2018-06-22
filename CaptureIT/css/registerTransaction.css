@@ -193,16 +193,25 @@
             width: 100%;	
         }
 
+		#paySocial{
+			text-align: center;
+            width: 100%;	
+		}
+
         #sharesLoan {
             text-align: center;
             width: 100%;
         }
 
+		#payShares{
+			text-align: center;
+            width: 100%;
+		}
+
         #sharesBought {
             text-align: center;
             width: 100%;
             margin-top: 10px;
-
         }
 
         @media (min-width: 720px) {
