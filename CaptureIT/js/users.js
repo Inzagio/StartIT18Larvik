@@ -11,58 +11,93 @@ function element_builder(type, attrs) {
 }
 
 //Tabs with panes
+// function tabCreation() {
+//     let dynamicContentArea = document.getElementById('dynamicContentArea');
+//     let tabNav = element_builder('ul', { class: 'nav nav-tabs', role: 'tablist' });
+//     dynamicContentArea.appendChild(tabNav);
+
+//     for (let i = 0; i < 2; i++) {
+//         let tabNavItem = element_builder('li', { class: 'nav-item' });
+//         let tabNavAnchor = element_builder('a', { class: 'nav-link', data_toggle: 'tab' });
+//         tabNav.appendChild(tabNavItem);
+//         tabNavItem.appendChild(tabNavAnchor);
+
+//         if (i == 0) {
+//             tabNavAnchor.setAttribute('href', '#registerUser');
+//             tabNavAnchor.setAttribute('class', 'nav-link active');
+//             tabNavAnchor.setAttribute('id', 'reg-tab');
+//             tabNavAnchor.setAttribute('role', 'tab');
+//             tabNavAnchor.setAttribute('aria-controls', 'registerUser');
+//             tabNavAnchor.setAttribute('aria-selected', 'true');
+//             tabNavAnchor.innerHTML = 'Register User';
+//             tabNavAnchor.addEventListener('click', function (e) {
+               
+//             });
+//         }
+//         if (i == 1) {
+//             tabNavAnchor.setAttribute('href', '#users');
+//             tabNavAnchor.setAttribute('id', 'showusers-tab');
+//             tabNavAnchor.setAttribute('role', 'tab');
+//             tabNavAnchor.setAttribute('aria-controls', 'users');
+//             tabNavAnchor.setAttribute('aria-selected', 'false');
+//             tabNavAnchor.innerHTML = 'User list';
+//             tabNavAnchor.addEventListener('click', function (e) {
+            
+//             });
+//         }
+//     }
+//     makeTabs();
+// }
 function tabCreation() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
-    let tabNav = element_builder('ul', { class: 'nav nav-tabs', role: 'tablist' });
+    let tabNav = element_builder('ul', { class: 'nav nav-tabs', id:'tabNavAdmin', role: 'tablist' });
     dynamicContentArea.appendChild(tabNav);
 
     for (let i = 0; i < 2; i++) {
         let tabNavItem = element_builder('li', { class: 'nav-item' });
-        let tabNavAnchor = element_builder('a', { class: 'nav-link', data_toggle: 'tab' });
+        let tabNavAnchor = element_builder('a', { class: 'nav-link', data_toggle: 'tab', role:'tab' });
         tabNav.appendChild(tabNavItem);
         tabNavItem.appendChild(tabNavAnchor);
 
         if (i == 0) {
-            tabNavAnchor.setAttribute('href', '#registerUser');
+            tabNavAnchor.setAttribute('href', '#registerUserTab');
             tabNavAnchor.setAttribute('class', 'nav-link active');
             tabNavAnchor.setAttribute('id', 'reg-tab');
-            tabNavAnchor.setAttribute('role', 'tab');
             tabNavAnchor.setAttribute('aria-controls', 'registerUser');
             tabNavAnchor.setAttribute('aria-selected', 'true');
             tabNavAnchor.innerHTML = 'Register User';
             tabNavAnchor.addEventListener('click', function (e) {
-                // resetContent();
-                // renderRegisterUsers();
+               
             });
         }
         if (i == 1) {
-            tabNavAnchor.setAttribute('href', '#users');
+            tabNavAnchor.setAttribute('href', '#userTab');
             tabNavAnchor.setAttribute('id', 'showusers-tab');
-            tabNavAnchor.setAttribute('role', 'tab');
             tabNavAnchor.setAttribute('aria-controls', 'users');
             tabNavAnchor.setAttribute('aria-selected', 'false');
             tabNavAnchor.innerHTML = 'User list';
             tabNavAnchor.addEventListener('click', function (e) {
-                // resetContent();
-                // renderUserListTable();
-                // getUsers();
+            
             });
         }
     }
     makeTabs();
 }
+
 function makeTabs(){
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let successAlert = element_builder('div', { class: 'alert alert-success', role: 'alert', id: 'alertUserReg' });
     
-    let tabContent = element_builder('div', { class: 'tab-content', id:'tabContent' });
-    let tabPaneReg = element_builder('div', {class: 'tab-pane fade show active', id: 'registerUserTab', role:'tabpanel', aria_labelledby:'reg-tab' });
-    let tabPaneUser = element_builder('div', {class: 'tab-pane fade', id: 'UserTab', role:'tabpanel', aria_labelledby:'users-tab' });
+    let tabContent = element_builder('div', { class: 'tab-content'});
+    let tabPaneReg = element_builder('div', {class: 'tab-pane active', id: 'registerUserTab', role:'tabpanel', aria_labelledby:'reg-tab' });
+    let tabPaneUser = element_builder('div', {class: 'tab-pane' , id: 'userTab', role:'tabpanel', aria_labelledby:'users-tab' });
     dynamicContentArea.appendChild(tabContent);
     tabContent.appendChild(tabPaneReg);
     tabContent.appendChild(tabPaneUser);
     tabPaneReg.appendChild(successAlert);
     renderRegisterUsers();
+    getUsers();
+    //($('#tabContent a[href="#registerUserTab"]').tab('show')
 }
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
@@ -107,15 +142,13 @@ function renderRegisterUsers() {
 
 //User list table
 function renderUserListTable() {
-    let dynamicContentArea = document.getElementById('dynamicContentArea');
-    let tabContent = element_builder('div', { class: 'tab-content', id: 'tabContent' });
-    let tabPane = element_builder('div', { id: 'users', class: 'container tab-pane' });
     dynamicContentArea.appendChild(tabContent);
     tabContent.appendChild(tabPane);
 }
 
 //Creates a table for displaying current registered users
 function createTable() {
+    let userTab = document.getElementById('userTab');
     let table = element_builder('table', { id: 'usersTable' });
     let headRow = table.insertRow();
     let usernameHeader = element_builder('th');
@@ -126,7 +159,7 @@ function createTable() {
     emailHeader.innerHTML = 'E-Mail';
     headRow.appendChild(emailHeader);
 
-    dynamicContentArea.appendChild(table);
+    userTab.appendChild(table);
     return table;
 }
 
