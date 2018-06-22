@@ -1,16 +1,22 @@
-﻿        .alertText{
+﻿        /* Alerter to Paid social text*/
+        .alertText{
             color: red;
         }
 
         .okText{
             color:green;
         }
-
-        /* .paidText{
-            margin-left: 30px;
-        } */
         
         /* Grid */
+        .wrapper {
+            display: grid;
+            border-radius: 5px;
+            margin: 5%;
+            padding: 30px 10px 30px 10px;
+            font-family: Arial;
+            min-width: 200px;
+        }
+
         .grid {
             display: grid;
             grid-gap: 20px;
@@ -25,16 +31,11 @@
                 "ddd ddd"
                 "eee eee"
                 "fff fff" 
+                "ggg ggg"
+                "hhh hhh"
+                "iii iii"
+                "jjj jjj"
                 "sub sub";
-        }
-
-        .wrapper {
-            display: grid;
-            border-radius: 5px;
-            margin: 5%;
-            padding: 30px 10px 30px 10px;
-            font-family: Arial;
-            min-width: 200px;
         }
 
         .box {
@@ -90,24 +91,34 @@
             grid-area: fff;
             padding-top: 12px;
         }
+        .g{
+            grid-area: ggg;
+            text-align: center;
+        }
+        .h{
+            grid-area: hhh;
+        }
+        .i{
+            grid-area: iii;
+            text-align: center;
+        }
+        .j{
+            grid-area: jjj;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "ggg hhh" "iii jjj" "sub sub";
+        }
+
+        .d.f{
+            padding-top: 23px;
+        }
 
         .submit {
             grid-area: sub;
             text-align: center;
-        }
-
-        /* Submit button */
-
-        #submit {
-            background-color: #21ABA5;
-            color: white;
-            padding: 5%;
-            font-size: 16px;
-            cursor: pointer;
-            border: 1px solid #21ABA5;
-            border-radius: 10px;
-            margin-top: 20px;
-            width: 40%;
         }
 
         /* Dropdown Button*/
@@ -182,25 +193,26 @@
             width: 100%;	
         }
 
+		#paySocial{
+			text-align: center;
+            width: 100%;	
+		}
+
         #sharesLoan {
             text-align: center;
             width: 100%;
         }
 
+		#payShares{
+			text-align: center;
+            width: 100%;
+		}
+
         #sharesBought {
             text-align: center;
             width: 100%;
+            margin-top: 10px;
         }
-
-            .grid {
-                display: grid;
-                grid-template-columns: 2fr 2fr;
-                grid-template-areas: "meny nm" "choose dato" "aaa bbb" "ccc ddd" "eee fff" "sub sub";
-            }
-
-            .d.f{
-                padding-top: 23px;
-            }
 
         @media (min-width: 720px) {
             .wrapper {
@@ -214,7 +226,7 @@
             display: inline-block;
             width: 48px;
             height: 23px;
-
+            margin-top: 10px;
           }
           .switch input {display:none;}
           
@@ -264,3 +276,17 @@
           .slider.round:before {
             border-radius: 50%;
           }
+          
+        /* Submit button */
+
+        #submit {
+            background-color: #21ABA5;
+            color: white;
+            padding: 5%;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #21ABA5;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 40%;
+        }

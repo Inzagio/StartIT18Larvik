@@ -10,21 +10,30 @@ function setupStatus() {
     if (isLoggedIn) {
         container.innerHTML = '';
         menu.setBreadcrumbs('Status');
-        var currentUser = {
-            name: 'TestName',
-            paidSocial: 10002,
-            boughtShares: 200,
-            loanSocial: 5000,
-            loanShares: 200
-        }
+        //var currentUser = {
+        //    name: 'TestName',
+        //    paidSocial: 10002,
+        //    boughtShares: 200,
+        //    loanSocial: 5000,
+        //    loanShares: 200
+        //}
 
         var statusTable = createStatusTable(container);
 
-        statusTable.nameField.innerHTML = currentUser.name;
-        statusTable.paidSocialField.innerHTML = currentUser.paidSocial + currency;
-        statusTable.boughtSharesField.innerHTML = currentUser.boughtShares + currency;
-        statusTable.loanSocialField.innerHTML = currentUser.loanSocial + currency;
-        statusTable.loanSharesField.innerHTML = currentUser.loanShares + currency;
+        //statusTable.nameField.innerHTML = currentUser.name;
+        //statusTable.paidSocialField.innerHTML = currentUser.paidSocial + currency;
+        //statusTable.boughtSharesField.innerHTML = currentUser.boughtShares + currency;
+        //statusTable.loanSocialField.innerHTML = currentUser.loanSocial + currency;
+        //statusTable.loanSharesField.innerHTML = currentUser.loanShares + currency;
+
+        database.getUserInfo(currentUser.uid).then(result => {
+            let loggedInUser = result.data();
+            database.getUsers(loggedInUser.place).then(results => {
+                results.forEach(user => {
+                    console.log(user.id, user.data().name);
+                });
+            });
+        });
     }
     else {
         setupStartPage();

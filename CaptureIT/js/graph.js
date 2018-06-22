@@ -1,19 +1,27 @@
 
-
 var Graph;
 var graphAddPerson;
 var graphData;
 function graphDrawChooser() {
     var html = document.getElementById('dynamicContentArea');
     html.innerHTML =
-        '<div class="graphCSS">'
-        + '<select class"graphCSS" id="graphSelect">'
+        '<div id="graphCSS" class="graphCSS">'
+        + '<select id="graphSelect">'
         + '<option value="ALL">All</option>'
         + '</select>'
-        + '<button onclick="graphAdd()">Add</button>'
-        + '<button onclick="graphRemoveData()">Remove</button>'
-        + '<canvas id="myChart"></canvas>';
+        + '  <button id="button" onclick="graphAdd()">Add</button>  '
+        + '<button onclick="graphRemoveData()">Remove</button>  '
+        + '<select onchange="graphPushLable()" id="graphSelectLength"></select>';
         + '</div>'
+    if ($(window).width() < 650) {
+        html.innerHTML += '<canvas height="100%" width="100%" id="myChart"></canvas>';
+    }
+    else {
+        html.innerHTML += '<canvas id="myChart"></canvas>';
+    }
+    for (let i = 1; i <= 52; i++)
+        document.getElementById('graphSelectLength').innerHTML += '<option value="' + i + '">' + i + ' Weeks</option>'
+    document.getElementById("button").disabled = "true";
     dbUsers.get().then(function (querySnapshot) {
         let i = 1;
         querySnapshot.forEach(function (doc) {
@@ -35,7 +43,7 @@ function drawGraph() {
     Graph = new Chart(myChart, {
         type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data: {
-            labels: ['January'],
+            labels: ['1', '2'],
             datasets: [{
                 label: 'All',
                 data: [
@@ -52,6 +60,10 @@ function drawGraph() {
             }, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
         },
         options: {
+            Configuration: {
+                responsive: true,
+                maintainAspectRatio: true
+            },
             title: {
                 display: true,
 
@@ -66,7 +78,7 @@ function drawGraph() {
             },
             layout: {
                 padding: {
-                    left: 50,
+                    left: 0,
                     right: 0,
                     bottom: 0,
                     top: 0
@@ -77,26 +89,22 @@ function drawGraph() {
             }
         }
     });
-    graphPush();
-    function graphPush(tag) {
-        Graph.data.labels[1] = ('Febuary');
-        Graph.data.labels[2] = ('March');
-        Graph.data.labels[3] = ('April');
-        Graph.data.labels[4] = ('May');
-        Graph.data.labels[5] = ('June');
-        Graph.data.labels[6] = ('July');
-        Graph.data.labels[7] = ('August');
-        Graph.data.labels[8] = ('September');
-        Graph.data.labels[9] = ('October');
-        Graph.data.labels[10] = ('November');
-        Graph.data.labels[11] = ('December');
-        Graph.update();
-    }
+
+    document.getElementById("button").disabled = false;
+}
+
+function graphPushLable(tag) {
+    for (let i = 0; i < 52; i++)
+        Graph.data.labels[i] = (i + 1);
+    for (let i = 52; i > document.getElementById('graphSelectLength').value; i--)
+        Graph.data.labels.pop();
+    
+    graphPushAll();
 }
 
 function graphPushAll() {
     for (let i = 1; i < Graph.data.datasets.length; i++) {
-        for (let x = 0; x < 12; x++) {
+        for (let x = 0; x < Graph.data.labels.length; x++) {
             if (Graph.data.datasets[0].data[x] === undefined || Graph.data.datasets[0].data[x] === NaN || i === 1)
                 Graph.data.datasets[0].data[x] = Graph.data.datasets[i].data[x];
             else if (Graph.data.datasets[i].data[x] === undefined) { }
@@ -113,8 +121,7 @@ function graphAddData() {
             dbUsers.doc(graphData[i]).get().then(function (doc) {
                 var newDataset = {
                     label: doc.data().Username,
-                    data: [doc.data().January, doc.data().Febuary, doc.data().March, doc.data().April, doc.data().May, doc.data().June,
-                    doc.data().July, doc.data().August, doc.data().September, doc.data().October, doc.data().November, doc.data().December],
+                    data: [],
                     backgroundColor: ['rgba(255, 99, 132, 0.6)'],
                     borderWidth: 3,
                     borderColor: '#777',
@@ -122,6 +129,8 @@ function graphAddData() {
                     hoverBorderWidth: 3,
                     hoverBorderColor: '#000'
                 }
+                for (let i = 0; i < doc.data().WeekData.length; i++)
+                    newDataset.data.push(doc.data().WeekData[i]);
                 Graph.data.datasets[i] = newDataset;
                 graphPushAll();
             });
@@ -129,24 +138,27 @@ function graphAddData() {
     else {
     graphAddPerson = document.getElementById('graphSelect').value;
         dbUsers.doc(graphData[graphAddPerson]).get().then(function (doc) {
-        var newDataset = {
-            label: doc.data().label,
-            data: [doc.data().January, doc.data().Febuary, doc.data().March, doc.data().April, doc.data().May, doc.data().June,
-            doc.data().July, doc.data().August, parseInt(doc.data().September), doc.data().October, doc.data().November, doc.data().December],
-            backgroundColor: ['rgba(255, 99, 132, 0.6)'],
-            borderWidth: 3,
-            borderColor: '#777',
-            fill: false,
-            hoverBorderWidth: 3,
-            hoverBorderColor: '#000'
-        }
-        Graph.data.datasets[graphAddPerson] = newDataset;
-        graphPushAll();
-    });
+            var newDataset = {
+                label: doc.data().label,
+                data: [],
+                backgroundColor: ['rgba(255, 99, 132, 0.6)'],
+                borderWidth: 3,
+                borderColor: '#777',
+                fill: false,
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#000'
+            }
+            for (let i = 0; i < doc.data().WeekData.length; i++)
+                newDataset.data.push(doc.data().WeekData[i]);
+            Graph.data.datasets[graphAddPerson] = newDataset;
+            graphPushAll();
+        });
     }
 }
 
 function graphAdd() {
+    document.getElementById("button").disabled = "true";
+    setTimeout(function () { document.getElementById("button").disabled = false; }, 400);
     graphData = [0];
     dbUsers.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
@@ -157,7 +169,7 @@ function graphAdd() {
 
 }
 
-function graphRemoveData(Grap) {
+function graphRemoveData() {
     let Gra = document.getElementById('graphSelect').value;
     if (Gra === 'ALL')
         for (let i = 1; i < Graph.data.datasets.length; i++)
