@@ -82,7 +82,7 @@
 				'</div>';
 				 setDateToday();  
 		}
-	
+			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
 
 
@@ -153,6 +153,7 @@
 				let LoanFromSocial = socialLoan.value;
                 let LoanFromShares = sharesLoan.value;
 				
+				
 
 				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares,paySocial,payShares);
                 $('input').not("#calendar").not("#submit").val('');
@@ -168,8 +169,8 @@
 					 SharesBougth: SharesBougth,
 					 LoanFromSocial: LoanFromSocial,
 					 LoanFromShares: LoanFromShares,
-					 paySocial: paySocial,
-					 payShares: payShares
+					 PaySocial: paySocial.value,
+					 PayShares: payShares.value
 					 };	
 					  valueCheck();
 					if (valueNotEmpty){db.add(newInput)}; 
