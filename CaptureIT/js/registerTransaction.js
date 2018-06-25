@@ -12,7 +12,7 @@
 
 				'<div class="box dato">' +
 				'<form>' +
-				'<input id="calendar" type="date" name="chooseday">' +
+				'<input id="calendar" type="week" name="chooseday">' +
 				'</form>' +
 				'</div>' +
 
