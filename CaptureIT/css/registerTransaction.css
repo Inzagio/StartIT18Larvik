@@ -218,7 +218,7 @@
             width: 100%;
             margin-top: 10px;
         }
-
+		
         @media (min-width: 720px) {
             .wrapper {
                 max-width: 1000px;
@@ -293,5 +293,6 @@
             border: 1px solid #21ABA5;
             border-radius: 10px;
             margin-top: 20px;
-            width: 40%;
+            width: 60%;
+			transform: translate(-160px, -7px);
         }

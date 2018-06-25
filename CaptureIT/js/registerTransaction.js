@@ -8,14 +8,25 @@
 				'<div class="box nm">' +
 				'<div class="box nameBox" id="nameBox"></div>' +
 				'</div>' +
-				'<div class="box choosedate">Choose date:</div>' +
+				'<div class="box choosedate">'+
+				'<div class="box a"> ' +
+				'<div id="paidText">' + '</br></br>Pay social ' +
+				'</div>'+
+				'</div>' +
+				'</div>' +
 
 				'<div class="box dato">' +
 				'<form>' +
-				'<input id="calendar" type="week" name="chooseday">' +
+				'Choose date:</br>'+
+				'<input id="calendar" type="date" name="chooseday">' +
 				'</form>' +
+				
+				'<label class="switch"> ' +
+				'<input id="socialCheck" type="checkbox">' +
+				'<span class="slider round"></span>' +
+				'</label>' +
 				'</div>' +
-
+				
 				'<div class="box meny">' +
 				'<div class="dropdown">' +
 				'<button class="dropbtn"> Name </button>' +
@@ -29,14 +40,8 @@
 				'</div> ' +
 				'</div>' +
 				'</div>' +
-
-				'<div class="box a"> ' +
-				'<label class="switch"> ' +
-				'<input id="socialCheck" type="checkbox">' +
-				'<span class="slider round"></span>' +
-				'</label>' +
-				'<div id="paidText">' + 'Paid social ' +'</div>'+
-				'</div>' +
+				
+				
 
 				'<div class="box b">' +
 				'<input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
@@ -60,7 +65,7 @@
 				'</div>' +
 
 				'<div class="box f">' +
-				'<input id="paySocial" type="number" min="0"  placeholder="Pay Back Loan from SocialFunds" ' +
+				'<input id="paySocial" type="number" min="0"  placeholder="Pay Back Loan from SocialFunds"> ' +
 				'<br /> ' +
 				'</div> ' +
 				
@@ -115,15 +120,15 @@
 
 			function alertMaxInput() {
 				if (socialLoan.value >= 100) { //100 as dummy. Real number: "toLend * userSavings" <-- userSavings & totalSavings needs to be added to DB
-				//alert('This is all that�s aviable for loans at the moment');
-				socialLoan.value = 100;  
-				document.getElementById('socialAlert').classList.remove('hide');
+				
+				socialLoan.value = 100;   //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
+				document.getElementById('socialAlert').classList.remove('hide');//shows alert
 				}
 				if (sharesLoan.value >= 100)
-				{sharesLoan.value = 100;  
-				document.getElementById('sharesAlert').classList.remove('hide');
+				{sharesLoan.value = 100;   //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
+				document.getElementById('sharesAlert').classList.remove('hide');//shows alert
 				}
-   //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
+  
 			
 			}
 
@@ -148,7 +153,7 @@
 				        
 				if (!socialCheck.checked) { //show a text if social is not checked  
 				paidText.classList.add('alertText');
-				paidText.innerHTML = 'Pay Social';
+				paidText.innerHTML = 'Remember to pay Social';
 				valueNotEmpty = true; //Lets user submit data even if social is not paid - in case of only paying back loan
 			}
 				else{
