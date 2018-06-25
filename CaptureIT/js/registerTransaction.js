@@ -8,10 +8,12 @@
 				'<div class="box nm">' +
 				'<div class="box nameBox" id="nameBox"></div>' +
 				'</div>' +
-				'<div class="box choosedate">Choose week:</div>' +
+				'<div class="box choosedate">Choose date:</div>' +
 
 				'<div class="box dato">' +
-				'<input id="calendar" type="week">' +
+				'<form>' +
+				'<input id="calendar" type="date" name="chooseday">' +
+				'</form>' +
 				'</div>' +
 
 				'<div class="box meny">' +
@@ -48,9 +50,9 @@
 				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan From Social Funds" min="0" > <!---max aviable funds(input from DB put 100 as dummy-->' +
 				//BtS ALERT//
 				'<div id = "socialAlert" class="alert alert-danger hide">' +
-				'<strong>Sorry!</strong> This is all thats aviable for loan at the moment!'+
-               '</div>'+
-			   //BtS ALERT//
+				'<strong>Sorry!</strong> Thats all that is aviable for loans at the moment!'+
+                '</div>'+
+			    //BtS ALERT//
 				'</div>' +
 
 				'<div class="box e">' +
@@ -70,7 +72,7 @@
 				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan From Share Funds" min="0" > <!---max aviable funds(input from DB put 100 as dummy--> ' +
 				//BtS ALERT//
 				'<div id = "sharesAlert" class="alert alert-danger hide">' +
-				'<strong>Sorry!</strong> This is all thats aviable for loan at the moment!'+
+				'<strong>Sorry!</strong> Thats all that is aviable for loans at the moment!'+
                '</div>'+
 			   //BtS ALERT//
 				'</div>' +
@@ -87,7 +89,7 @@
 				'<button onclick="showArray()">DB in console</button>' +
 				'</div>' +
 				'</div>';
-		
+				 setDateToday();  
 		}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
@@ -113,14 +115,16 @@
 
 			function alertMaxInput() {
 				if (socialLoan.value >= 100) { //100 as dummy. Real number: "toLend * userSavings" <-- userSavings & totalSavings needs to be added to DB
-				
-				socialLoan.value = 100;  //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
-				document.getElementById('socialAlert').classList.remove('hide'); //Shows alert
+				//alert('This is all that´s aviable for loans at the moment');
+				socialLoan.value = 100;  
+				document.getElementById('socialAlert').classList.remove('hide');
 				}
-
 				if (sharesLoan.value >= 100)
-				{sharesLoan.value = 100;  //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
-				document.getElementById('sharesAlert').classList.remove('hide'); //shows alert
+				{sharesLoan.value = 100;  
+				document.getElementById('sharesAlert').classList.remove('hide');
+				}
+   //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
+			
 			}
 
 			// Calendar with choosable date - todays date set as standard - 
@@ -131,6 +135,7 @@
 				var d = n.getDate();
 				if (m < 10) m = '0' + m;
 			    if (d < 10) m = '0' + d;
+			document.getElementById("calendar").value = y + "-" + m + "-" + d;
 			}
 
 			var valueNotEmpty = '';
