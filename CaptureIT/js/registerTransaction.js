@@ -12,7 +12,7 @@
 
 				'<div class="box dato">' +
 				'<form>' +
-				'<input id="calendar" type="date" name="chooseday">' +
+				'<input id="calendar" type="week" name="chooseday">' +
 				'</form>' +
 				'</div>' +
 
@@ -115,7 +115,7 @@
 
 			function alertMaxInput() {
 				if (socialLoan.value >= 100) { //100 as dummy. Real number: "toLend * userSavings" <-- userSavings & totalSavings needs to be added to DB
-				//alert('This is all that´s aviable for loans at the moment');
+				//alert('This is all thatï¿½s aviable for loans at the moment');
 				socialLoan.value = 100;  
 				document.getElementById('socialAlert').classList.remove('hide');
 				}
