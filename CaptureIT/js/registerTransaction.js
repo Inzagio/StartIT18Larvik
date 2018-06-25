@@ -47,32 +47,32 @@
 				'</div>'+
 
 				'<div class="box d">' +
-				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Social Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy-->' +
+				'<input id="socialLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan From Social Funds" min="0" > <!---max aviable funds(input from DB put 100 as dummy-->' +
 				'</div>' +
 
 				'<div class="box e">' +
-				'<p> Pay Back Social Funds: </p>' +
+				'<p> Pay back loan from Social Funds: </p>' +
 				'</div>' +
 
 				'<div class="box f">' +
-				'<input id="paySocial" type="number"  placeholder="Pay Back SocialFunds" ' +
+				'<input id="paySocial" type="number" min="0"  placeholder="Pay Back Loan from SocialFunds" ' +
 				'<br /> ' +
 				'</div> ' +
 
 				'<div class="box g">' +
-				'<p>Loan out of Shares Funds:</p>' +
+				'<p>Loan out of Share Funds:</p>' +
 				'</div>' +
 
 				'<div class="box h">' +
-				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan Share Funds" min="0" max="100"> <!---max aviable funds(input from DB put 100 as dummy--> ' +
+				'<input id="sharesLoan" type="number" oninput="alertMaxInput(this)" placeholder="Loan From Share Funds" min="0" > <!---max aviable funds(input from DB put 100 as dummy--> ' +
 				'</div>' +
 
 				'<div class="box i">' +
-				'<p> Pay Back Shares:</p>' +
+				'<p> Pay Back Loan from Shares:</p>' +
 				'</div>' +
 
 				'<div class="box j">' +
-				'<input id="payShares" type="number"  placeholder="Pay Back Shares" ' +
+				'<input id="payShares" type="number" min="0"  placeholder="Pay Back Shares Loan" ' +
 				'</div>' +
 
 				'<div class="box submit"> ' +
@@ -84,8 +84,7 @@
 		}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
-
-
+			
 			function filter() {
 				var input = document.getElementById("nameInput");
 				var filter = input.value.toUpperCase();
@@ -106,9 +105,9 @@
 			}
 
 			function alertMaxInput(inputValue) {
-				if (inputValue.value >= 100) { //Put 100 as dummy. Real number pulled from DB later
+				if (inputValue.value >= 100) { //100 as dummy. Real number: "toLend * userSavings" <-- userSavings & totalSavings needs to be added to DB
 				alert('This is all that´s aviable for loans at the moment');
-				inputValue.value = 100; //Sets value to max aviable if more than that is chosen
+				inputValue.value = 100; //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
 				}
 			}
 
@@ -134,7 +133,7 @@
 				if (!socialCheck.checked) { //show a text if social is not checked  
 				paidText.classList.add('alertText');
 				paidText.innerHTML = 'Pay Social';
-				valueNotEmpty = true; //Lets user submit data even if social is not paid - in case of paying back loan
+				valueNotEmpty = true; //Lets user submit data even if social is not paid - in case of only paying back loan
 			}
 				else{
 				paidText.classList.remove('alertText');
