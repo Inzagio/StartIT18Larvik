@@ -86,7 +86,7 @@
 				'<p> Pay Back Loan from Shares:</p>' +
 				'</div>' +
 				'<div class="box j">' +
-				'<input id="payShares" type="number" min="0"  placeholder="Pay Back Shares Loan" ' +
+				'<input id="payShares" type="number" min="0"  placeholder="Pay Back Shares Loan"> ' +
 				'</div>' +
 
 				'<div class="box submit"> ' +
