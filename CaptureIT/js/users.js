@@ -11,43 +11,7 @@ function element_builder(type, attrs) {
 }
 
 //Tabs with panes
-// function tabCreation() {
-//     let dynamicContentArea = document.getElementById('dynamicContentArea');
-//     let tabNav = element_builder('ul', { class: 'nav nav-tabs', role: 'tablist' });
-//     dynamicContentArea.appendChild(tabNav);
 
-//     for (let i = 0; i < 2; i++) {
-//         let tabNavItem = element_builder('li', { class: 'nav-item' });
-//         let tabNavAnchor = element_builder('a', { class: 'nav-link', data_toggle: 'tab' });
-//         tabNav.appendChild(tabNavItem);
-//         tabNavItem.appendChild(tabNavAnchor);
-
-//         if (i == 0) {
-//             tabNavAnchor.setAttribute('href', '#registerUser');
-//             tabNavAnchor.setAttribute('class', 'nav-link active');
-//             tabNavAnchor.setAttribute('id', 'reg-tab');
-//             tabNavAnchor.setAttribute('role', 'tab');
-//             tabNavAnchor.setAttribute('aria-controls', 'registerUser');
-//             tabNavAnchor.setAttribute('aria-selected', 'true');
-//             tabNavAnchor.innerHTML = 'Register User';
-//             tabNavAnchor.addEventListener('click', function (e) {
-               
-//             });
-//         }
-//         if (i == 1) {
-//             tabNavAnchor.setAttribute('href', '#users');
-//             tabNavAnchor.setAttribute('id', 'showusers-tab');
-//             tabNavAnchor.setAttribute('role', 'tab');
-//             tabNavAnchor.setAttribute('aria-controls', 'users');
-//             tabNavAnchor.setAttribute('aria-selected', 'false');
-//             tabNavAnchor.innerHTML = 'User list';
-//             tabNavAnchor.addEventListener('click', function (e) {
-            
-//             });
-//         }
-//     }
-//     makeTabs();
-// }
 function tabCreation() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let tabNav = element_builder('ul', { class: 'nav nav-tabs', id:'tabNavAdmin', role: 'tablist' });
@@ -97,7 +61,7 @@ function makeTabs(){
     tabPaneReg.appendChild(successAlert);
     renderRegisterUsers();
     getUsers();
-    //($('#tabContent a[href="#registerUserTab"]').tab('show')
+    
 }
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
@@ -206,7 +170,7 @@ function submitUserForm(event) {
     }, 1500);
 }
 
-// Database write and read functions
+// Database read functions
 
 //Read users from firebase
 function getUsers() {
@@ -217,18 +181,5 @@ function getUsers() {
         });
     });
 }
-
-
-//Save user to firebase
-// function saveUserRegistered(Username, Email, FirstName, LastName) {
-//     dbUsers.add({
-//         Username: Username,
-//         FirstName: FirstName,
-//         LastName:LastName,
-//         Email: Email
-//     })
-//     console.log('Data saved', Username, Email, FirstName, LastName);
-// }
-
 
 
