@@ -1,4 +1,9 @@
-﻿        /* Alerter to Paid social text*/
+﻿       /*A hide class to hide messages until the event to display them occures*/
+	   .hide{
+			display:none
+		}
+	   
+	   /* Colored text if something is wrong or right*/
         .alertText{
             color: red;
         }
