@@ -8,12 +8,10 @@
 				'<div class="box nm">' +
 				'<div class="box nameBox" id="nameBox"></div>' +
 				'</div>' +
-				'<div class="box choosedate">Choose date:</div>' +
+				'<div class="box choosedate">Choose week:</div>' +
 
 				'<div class="box dato">' +
-				'<form>' +
-				'<input id="calendar" type="date" name="chooseday">' +
-				'</form>' +
+				'<input id="calendar" type="week">' +
 				'</div>' +
 
 				'<div class="box meny">' +
@@ -89,7 +87,7 @@
 				'<button onclick="showArray()">DB in console</button>' +
 				'</div>' +
 				'</div>';
-				 setDateToday();  
+		
 		}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
@@ -133,7 +131,6 @@
 				var d = n.getDate();
 				if (m < 10) m = '0' + m;
 			    if (d < 10) m = '0' + d;
-			document.getElementById("calendar").value = y + "-" + m + "-" + d;
 			}
 
 			var valueNotEmpty = '';
