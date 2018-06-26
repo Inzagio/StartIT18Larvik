@@ -10,7 +10,6 @@ header {
     background: rgb(0, 134, 186);
     color: #000000;
     border-bottom: rgb(136, 209, 205) 1px solid;
-    margin: -8px;
 }
 
 a {
@@ -36,6 +35,14 @@ a {
     font-size: 20px;
     color: white;
     padding: 0px 0px 0px 10px;
+}
+
+#menuUser {
+    font-size: 20px;
+    color: white;
+    padding: 0px 0px 0px 10px;
+    float: right;
+    margin: 10px;
 }
 
 .sidenav {

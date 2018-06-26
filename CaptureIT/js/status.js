@@ -26,14 +26,6 @@ function setupStatus() {
         //statusTable.loanSocialField.innerHTML = currentUser.loanSocial + currency;
         //statusTable.loanSharesField.innerHTML = currentUser.loanShares + currency;
 
-        database.getUserInfo(currentUser.uid).then(result => {
-            let loggedInUser = result.data();
-            database.getUsers(loggedInUser.place).then(results => {
-                results.forEach(user => {
-                    console.log(user.id, user.data().name);
-                });
-            });
-        });
     }
     else {
         setupStartPage();

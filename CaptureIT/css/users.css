@@ -23,9 +23,13 @@
 #registerUsersForm label{
     display: none;
  }
- #inputUsername, #inputFirstName, #inputLastName, #inputName{
+ #accessLevelSelect{
+     visibility: hidden;
      margin-bottom: 1rem;
  }
+ /* #inputUsername, #inputFirstName, #inputLastName, #inputName {
+     margin-bottom: 1rem;
+ } */
  #alertUserReg{
-     visibility: hidden;
+     margin-top: 1rem;
  }
