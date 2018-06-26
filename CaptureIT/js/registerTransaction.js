@@ -94,7 +94,8 @@
 				'<button onclick="showArray()">DB in console</button>' +
 				'</div>' +
 				'</div>';
-				 setDateToday();  
+				//setDateToday();  
+				setWeek();
 		}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
@@ -132,7 +133,7 @@
 			
 			}
 
-			// Calendar with choosable date - todays date set as standard - 
+			/*Calendar with choosable date - todays date set as standard - 
 			function setDateToday() {
 				var n = new Date();
 				var y = n.getFullYear();
@@ -141,8 +142,28 @@
 				if (m < 10) m = '0' + m;
 			    if (d < 10) m = '0' + d;
 			document.getElementById("calendar").value = y + "-" + m + "-" + d;
-			}
+			}*/
 
+			
+			//Set calendar to calculate current weeknumber.
+			const setWeek = () => {
+			   Date.prototype.getWeek = function () {
+               var target  = new Date(this.valueOf());
+			   var dayNr   = (this.getDay() + 6) % 7;
+			   target.setDate(target.getDate() - dayNr + 3);
+			   var firstThursday = target.valueOf();
+			   target.setMonth(0, 1);
+			   if (target.getDay() != 4) {
+               target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+            }
+			   return 1 + Math.ceil((firstThursday - target) / 604800000);
+			}
+			   var d= new Date();
+	           document.getElementById("calendar").value  = "2018-W"+d.getWeek();
+			} 
+
+
+				
 			var valueNotEmpty = '';
 			function valueCheck() { //Show a text if name is not chosen
 				if (nameBox.innerHTML == '') {
@@ -174,7 +195,6 @@
                 let LoanFromShares = sharesLoan.value;
 				
 				
-
 				addToFirestore(Date, Name, PaidSocial, SharesBougth, LoanFromSocial, LoanFromShares,paySocial,payShares);
                 $('input').not("#calendar").not("#submit").val('');
 				$(".nameBox").text('');    
