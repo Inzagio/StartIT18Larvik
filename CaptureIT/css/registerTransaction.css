@@ -49,12 +49,8 @@
 
         .nm {
             grid-area: nm;
-            font-size: 20px;
-            height: 28px;
             text-align: center;
-            margin-top: 30px;
-            background-color: white;
-            box-shadow: unset;
+            margin: 30px;
         } 
 
         .meny {
@@ -64,6 +60,7 @@
         .choosedate {
             grid-area: choose;
             text-align: center;
+            margin-top: 15px;
         }
 
         .dato {
@@ -73,6 +70,7 @@
         .a {
             grid-area: aaa;
             text-align: center;
+            margin-top: 13px;
         }
 
         .b{
@@ -82,6 +80,7 @@
         .c {
             grid-area: ccc;
             text-align: center;
+            margin-top: 5px;
         }
         .d{
             grid-area: ddd;
@@ -91,6 +90,7 @@
         .e {
             grid-area: eee;
             text-align: center;
+            margin-top: 5px;
         }  
         .f{
             grid-area: fff;
@@ -99,6 +99,7 @@
         .g{
             grid-area: ggg;
             text-align: center;
+            margin-top: 5px;
         }
         .h{
             grid-area: hhh;
@@ -106,6 +107,7 @@
         .i{
             grid-area: iii;
             text-align: center;
+            margin-top: 5px;
         }
         .j{
             grid-area: jjj;
@@ -130,10 +132,8 @@
         .dropbtn {
             background-color: #21ABA5;
             color: white;
-            padding: 16px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
+            padding: 20px;
+            font-size: 20px;
             margin-top: 20px;
             width: 100%;
             border-radius: 10px;
@@ -148,14 +148,16 @@
         #nameInput {
             background-repeat: no-repeat;
             font-size: 16px;
-            padding: 14px 20px 12px 45px;
+            padding: 20px 20px 12px 45px;
             border: none;
             border-bottom: 2px solid gray;
         }
 
         .nameBox {
             width: 100%;
-			height: 50px;
+            height: 70px;
+            padding-top: 25px;
+            font-size: 18px;
 			border: 1px solid lightgray;
             transform: translate(-2px, -7px);		
         }
@@ -199,6 +201,7 @@
         }
 
 		#paySocial{
+            padding-top: 20px;
 			text-align: center;
             width: 100%;	
 		}
@@ -286,13 +289,10 @@
 
         #submit {
             background-color: #21ABA5;
+            font-size: 20px;
             color: white;
-            padding: 5%;
-            font-size: 16px;
-            cursor: pointer;
-            border: 1px solid #21ABA5;
             border-radius: 10px;
-            margin-top: 20px;
+            padding: 20px;
             width: 60%;
 			transform: translate(-160px, -7px);
         }

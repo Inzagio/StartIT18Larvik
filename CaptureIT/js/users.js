@@ -1,5 +1,5 @@
-// Todo move api key out from users.js
-// import config from './secret.js';
+
+
 function element_builder(type, attrs) {
     let elem = document.createElement(type);
     if (attrs) {
@@ -61,8 +61,9 @@ function makeTabs() {
     tabPaneReg.appendChild(successAlert);
     renderRegisterUsers();
     getUsers();
-
+    ifAdminDisplay();
 }
+
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
 function renderRegisterUsers() {
@@ -70,6 +71,29 @@ function renderRegisterUsers() {
 
     let form = element_builder('form', { id: 'registerUsersForm' });
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
+  
+    let accessLevelSelector = element_builder('select', {class:'form-control', id:'accessLevelSelect', visibility:'hidden', disabled:'true'});
+    for (let i = 0; i < 3; i++){
+        let optionsAccessLevels = element_builder('option');
+        divFormGroupName.appendChild(accessLevelSelector);
+        accessLevelSelector.appendChild(optionsAccessLevels);
+       
+        if (i == 0){
+            optionsAccessLevels.innerHTML = 'Group Coordinator';
+            optionsAccessLevels.setAttribute('value', '1');
+        }
+        if (i == 1){
+            optionsAccessLevels.innerHTML = 'Region Manager';
+            optionsAccessLevels.setAttribute('value', '2');
+        }
+        if (i == 2){
+            optionsAccessLevels.innerHTML = 'Global Manager';
+            optionsAccessLevels.setAttribute('value', '3');
+        }
+        
+    }
+    accessLevelSelector.setAttribute('onchange', 'getValueFromOptions();' )
+    
     //Inputs
     let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputName', placeholder: 'Name', required: 'true' });
     let inputUsername = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true', minlength: '3' });
@@ -90,6 +114,7 @@ function renderRegisterUsers() {
 
     // Form appends
     form.appendChild(divFormGroupName);
+    divFormGroupName.appendChild(accessLevelSelector);
     divFormGroupName.appendChild(inputName);
     divFormGroupName.appendChild(nameHelp)
     divFormGroupName.appendChild(inputUsername);
@@ -110,8 +135,31 @@ function renderRegisterUsers() {
     // To do - Compare passwords and validate form
     form.appendChild(submitButton);
     document.getElementById('registerUsersForm').addEventListener('submit', submitUserForm);
+   
+  
 }
 
+function ifAdminDisplay(){
+    database.getUserInfo(currentUser.uid).then((dbUser) => {
+        let optionsList = document.getElementById('accessLevelSelect');
+        //console.log(dbUser.data().accessLevel);
+        if (dbUser.data().accessLevel >= 2){
+            optionsList.disabled = false;
+            optionsList.style.visibility = 'visible';
+        }
+       
+    });
+  
+
+}
+
+
+function getValueFromOptions(){
+    const valueSelected = document.getElementById('accessLevelSelect').value;
+    console.log(valueSelected);
+    
+}
+// Validating the form
 const checkForm = function () {
     pw = getInputVal('inputPassword');
     confirmPw = getInputVal('inputConfirmPassword');
@@ -166,7 +214,12 @@ function renderUsersTable(table, item, index) {
     row.insertCell().innerHTML = user['name'];
     row.insertCell().innerHTML = user['Username'];
     row.insertCell().innerHTML = user['Email'];
+   // row.insertCell().innerHTML = `<button onClick="javascript:removeUser('${item.uid}');;">❌</button>`;
 }
+
+// function removeUser(uid){
+//     const userDel = db.collection('users').doc(uid).delete();
+// }
 
 // Returns the value from input - Used for submitUserForm
 function getInputVal(id) {
@@ -181,6 +234,7 @@ function submitUserForm(event) {
     let Email = getInputVal('inputEmail');
     let password = getInputVal('inputPassword');
     let name = getInputVal('inputName');
+    let accessLevel = document.getElementById('accessLevelSelect').value;
 
     let regBtn = document.getElementById('regUserBtn');
     regBtn.setAttribute('class', 'btn btn-success');
@@ -189,7 +243,7 @@ function submitUserForm(event) {
     alert.innerHTML = 'Successfully registered';
     alert.classList.add('alert-success');
     alert.style.visibility = 'visible';
-    database.addUser(Username, Email, name, password);
+    database.addUser(Username, Email, name, password, accessLevel);
     //Reset after 1,5 seconds
     setTimeout(function () {
         regBtn.setAttribute('class', 'btn btn-primary');
