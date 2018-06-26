@@ -30,6 +30,6 @@
  /* #inputUsername, #inputFirstName, #inputLastName, #inputName {
      margin-bottom: 1rem;
  } */
- /* #alertUserReg{
-     visibility: hidden;
- } */
+ #alertUserReg{
+     margin-top: 1rem;
+ }

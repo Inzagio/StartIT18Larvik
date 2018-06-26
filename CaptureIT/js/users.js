@@ -166,12 +166,14 @@ const checkForm = function () {
     alertField = document.getElementById('alertUserReg');
     subButton = document.getElementById('regUserBtn')
     if (pw == confirmPw && pw.length > 5 && confirmPw.length > 5) {
+        alertField.classList.remove('alert-danger');
         alertField.classList.add('alert-success');
         alertField.visibility = 'visible';
         alertField.innerHTML = 'Passwords match';
         subButton.disabled = false;
     }
     else {
+        alertField.classList.remove('alert-succes');
         alertField.classList.add('alert-danger');
         alertField.innerHTML = 'Passwords are not matching.'
         alertField.visibility = 'visible';
