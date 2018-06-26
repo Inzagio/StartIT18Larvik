@@ -19,9 +19,9 @@ var menu = function () {
                 console.log('No displayname, getting from DB');
                 database.getUserInfo(currentUser.uid).then((dbUser) => {
                     currentUser.updateProfile({
-                        displayName: dbUser.data().displayName
+                        displayName: dbUser.data().Username
                     });
-                    document.getElementById('menuUser').innerHTML = dbUser.data().displayName;
+                    document.getElementById('menuUser').innerHTML = dbUser.data().Username;
                 });
             }
             else {
