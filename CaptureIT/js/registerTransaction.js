@@ -1,5 +1,6 @@
 			function registerTransaction() { // Creates container element if it has been removed.
 			var container = getContainer();
+			var calendarType = typeof InstallTrigger !== "undefined" ? "date" : "week";
 
 			menu.setBreadcrumbs('Register Transactions');
 			container.innerHTML =
@@ -16,7 +17,7 @@
 				'<div class="box dato">' +
 				'<form>' +
 				'Choose week :</br>'+
-				'<input id="calendar" type="week" name="chooseday">' +
+				'<input id="calendar" type="' + calendarType + '" name="chooseday">' +
 				'</form>' +
 				
 				'<label class="switch"> ' +
@@ -94,8 +95,8 @@
 			'<button onclick="showArray()">DB in console</button>' +
 				'</div>' +
 				'</div>';
-				//setDateToday();  
-				setWeek();
+				setDateToday();  
+				
 		}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
@@ -129,20 +130,23 @@
 				{sharesLoan.value = 100;   //Sets value to max aviable if more than that is chosen --> ("toLend * userSavings")
 				document.getElementById('sharesAlert').classList.remove('hide');//shows alert
 				}
-  
-			
 			}
 
-			/*Calendar with choosable date - todays date set as standard - 
+			//Calendar with choosable date - todays date set as standard - 
 			function setDateToday() {
+				if (typeof InstallTrigger !== "undefined") {
 				var n = new Date();
 				var y = n.getFullYear();
 				var m = n.getMonth() + 1;
 				var d = n.getDate();
 				if (m < 10) m = '0' + m;
-			    if (d < 10) m = '0' + d;
+				if (d < 10) m = '0' + d;
 			document.getElementById("calendar").value = y + "-" + m + "-" + d;
-			}*/
+			}
+			else {
+				setWeek();
+			}
+		}
 
 			
 			//Set calendar to calculate current weeknumber.
