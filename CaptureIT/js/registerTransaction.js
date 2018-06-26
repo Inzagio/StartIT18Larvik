@@ -91,7 +91,7 @@
 
 				'<div class="box submit"> ' +
 				'<input id="submit" type="submit" value="Submit" onclick="submit()"> ' +
-				'<button onclick="showArray()">DB in console</button>' +
+			'<button onclick="showArray()">DB in console</button>' +
 				'</div>' +
 				'</div>';
 				//setDateToday();  
