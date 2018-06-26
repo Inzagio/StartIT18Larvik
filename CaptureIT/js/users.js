@@ -1,5 +1,5 @@
-// Todo move api key out from users.js
-// import config from './secret.js';
+
+
 function element_builder(type, attrs) {
     let elem = document.createElement(type);
     if (attrs) {
@@ -61,12 +61,9 @@ function makeTabs() {
     tabPaneReg.appendChild(successAlert);
     renderRegisterUsers();
     getUsers();
-
+    ifAdminDisplay();
 }
 
-// function ifAdminDisplay(){
-//     let 
-// }
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
 function renderRegisterUsers() {
@@ -141,6 +138,20 @@ function renderRegisterUsers() {
    
   
 }
+
+function ifAdminDisplay(){
+    const Level = database.getUserInfo(currentUser.uid).then((dbUser) => {
+        console.log(dbUser.data().accessLevel);
+    });
+    if (Level < 2){
+        let optionsList = document.getElementById('accessLevelSelect');
+        optionsList.disabled = true;
+        optionsList.visibility = 'hidden';
+        console.log(Level);
+    }
+
+}
+
 
 function getValueFromOptions(){
     const valueSelected = document.getElementById('accessLevelSelect').value;
