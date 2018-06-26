@@ -71,7 +71,7 @@ var database = function () {
         }
     }
 
-    function addUser(Username, Email, name, password) {
+    function addUser(Username, Email, name, password, accessLevel = 0) {
         database.getUserInfo(currentUser.uid).then(user => {
             let place = user.data().place;
             //firebase.auth().createUser({
@@ -90,7 +90,7 @@ var database = function () {
                 Email: Email,
                 name: name,
                 place: place,
-                accessLevel: 0
+                accessLevel: accessLevel
             })
                 .then((userRecord) => {
                     console.log("Successfully created new user:", userRecord.id);
