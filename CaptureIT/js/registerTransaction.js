@@ -15,7 +15,7 @@
 
 				'<div class="box dato">' +
 				'<form>' +
-				'Choose week:</br>'+
+				'Choose week :</br>'+
 				'<input id="calendar" type="week" name="chooseday">' +
 				'</form>' +
 				
