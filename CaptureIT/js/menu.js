@@ -15,7 +15,7 @@ var menu = function () {
         if (user) {
             // User is signed in.
             currentUser = user;
-
+            document.getElementById('menuUser').innerHTML = currentUser.displayName;
             isLoggedIn = true;
             menuSetup();
             setupStatus();
