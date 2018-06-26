@@ -72,7 +72,7 @@ function renderRegisterUsers() {
     let form = element_builder('form', { id: 'registerUsersForm' });
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
   
-    let accessLevelSelector = element_builder('select', {class:'form-control', id:'accessLevelSelect'});
+    let accessLevelSelector = element_builder('select', {class:'form-control', id:'accessLevelSelect', visibility:'hidden', disabled:'true'});
     for (let i = 0; i < 3; i++){
         let optionsAccessLevels = element_builder('option');
         divFormGroupName.appendChild(accessLevelSelector);
@@ -140,15 +140,16 @@ function renderRegisterUsers() {
 }
 
 function ifAdminDisplay(){
-    const Level = database.getUserInfo(currentUser.uid).then((dbUser) => {
-        console.log(dbUser.data().accessLevel);
-    });
-    if (Level < 2){
+    database.getUserInfo(currentUser.uid).then((dbUser) => {
         let optionsList = document.getElementById('accessLevelSelect');
-        optionsList.disabled = true;
-        optionsList.visibility = 'hidden';
-        console.log(Level);
-    }
+        //console.log(dbUser.data().accessLevel);
+        if (dbUser.data().accessLevel >= 2){
+            optionsList.disabled = false;
+            optionsList.style.visibility = 'visible';
+        }
+       
+    });
+  
 
 }
 
