@@ -1,5 +1,8 @@
 
-
+// This builds an element using the following syntax  
+// yourletName = element_builder('HTMLTAG',{attribute:'value', attribute:'value'});
+// eg let pepe = element_builder('div',{id:'mainContent', data_toggle:'tab'})
+// Remember to appendChild. e.g if this is the first element created, append it to document.body
 function element_builder(type, attrs) {
     let elem = document.createElement(type);
     if (attrs) {
@@ -11,7 +14,6 @@ function element_builder(type, attrs) {
 }
 
 //Tabs with panes
-
 function tabCreation() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let tabNav = element_builder('ul', { class: 'nav nav-tabs', id: 'tabNavAdmin', role: 'tablist' });
@@ -48,13 +50,15 @@ function tabCreation() {
     makeTabs();
 }
 
+//Appends and set content to the tabs.
 function makeTabs() {
+
     let dynamicContentArea = document.getElementById('dynamicContentArea');
     let successAlert = element_builder('div', { class: 'alert', role: 'alert', id: 'alertUserReg' });
-
     let tabContent = element_builder('div', { class: 'tab-content' });
     let tabPaneReg = element_builder('div', { class: 'tab-pane active', id: 'registerUserTab', role: 'tabpanel', aria_labelledby: 'reg-tab' });
     let tabPaneUser = element_builder('div', { class: 'tab-pane', id: 'userTab', role: 'tabpanel', aria_labelledby: 'users-tab' });
+
     dynamicContentArea.appendChild(tabContent);
     tabContent.appendChild(tabPaneReg);
     tabContent.appendChild(tabPaneUser);
@@ -135,10 +139,9 @@ function renderRegisterUsers() {
     // To do - Compare passwords and validate form
     form.appendChild(submitButton);
     document.getElementById('registerUsersForm').addEventListener('submit', submitUserForm);
-   
-  
 }
 
+//Checks databse for current users acccess level
 function ifAdminDisplay(){
     database.getUserInfo(currentUser.uid).then((dbUser) => {
         let optionsList = document.getElementById('accessLevelSelect');
@@ -153,12 +156,6 @@ function ifAdminDisplay(){
 
 }
 
-
-function getValueFromOptions(){
-    const valueSelected = document.getElementById('accessLevelSelect').value;
-    console.log(valueSelected);
-    
-}
 // Validating the form
 const checkForm = function () {
     pw = getInputVal('inputPassword');
@@ -210,24 +207,20 @@ function createTable() {
     return table;
 }
 
+//Function for rendering the user table
 function renderUsersTable(table, item, index) {
     let user = item.data();
     var row = table.rows[index + 1] ? table.rows[index + 1] : table.insertRow();
     row.insertCell().innerHTML = user['name'];
     row.insertCell().innerHTML = user['Username'];
     row.insertCell().innerHTML = user['Email'];
-   // row.insertCell().innerHTML = `<button onClick="javascript:removeUser('${item.uid}');;">❌</button>`;
-}
 
-// function removeUser(uid){
-//     const userDel = db.collection('users').doc(uid).delete();
-// }
+}
 
 // Returns the value from input - Used for submitUserForm
 function getInputVal(id) {
     return document.getElementById(id).value;
 }
-
 
 //Submit the registration form to the database
 function submitUserForm(event) {
@@ -255,7 +248,6 @@ function submitUserForm(event) {
 }
 
 // Database read functions
-
 //Read users from firebase
 function getUsers() {
     dbUsers.orderBy('name').orderBy('Username').orderBy('Email').get().then(function (querySnapshot) {
