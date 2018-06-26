@@ -47,7 +47,6 @@ var database = function () {
         var loanShares = loanFromShares - payShares;
         var loanSocial = loanFromSocial - paySocial;
         var place = user.data().place;
-        getUserInfo(currentUser);
         return db.add({
             date: date,
             user: uid,
