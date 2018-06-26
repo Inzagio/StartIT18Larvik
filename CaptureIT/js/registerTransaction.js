@@ -9,15 +9,13 @@
 				'<div class="box nameBox" id="nameBox"></div>' +
 				'</div>' +
 				'<div class="box choosedate">'+
-				'<div class="box a"> ' +
-				'<div id="paidText">' + '</br></br>Pay social ' +
+				'<div id="paidText">' + '</br></br>Pay social: ' +
 				'</div>'+
-				'</div>' +
 				'</div>' +
 
 				'<div class="box dato">' +
 				'<form>' +
-				'Choose date:</br>'+
+				'Choose week:</br>'+
 				'<input id="calendar" type="week" name="chooseday">' +
 				'</form>' +
 				
@@ -41,7 +39,9 @@
 				'</div>' +
 				'</div>' +
 				
-				
+				'<div class="box a"> ' +
+				'<p> Buy Shares :  </p>' +
+				'</div>' +
 
 				'<div class="box b">' +
 				'<input id="sharesBought" type="number" placeholder="Buy Shares" min="0" max="100"> <!--Buy shares max 100?-->' +
