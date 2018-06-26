@@ -18,7 +18,7 @@
 				'<div class="box dato">' +
 				'<form>' +
 				'Choose date:</br>'+
-				'<input id="calendar" type="date" name="chooseday">' +
+				'<input id="calendar" type="week" name="chooseday">' +
 				'</form>' +
 				
 				'<label class="switch"> ' +
