@@ -14,12 +14,12 @@ function element_builder(type, attrs) {
 
 function tabCreation() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
-    let tabNav = element_builder('ul', { class: 'nav nav-tabs', id:'tabNavAdmin', role: 'tablist' });
+    let tabNav = element_builder('ul', { class: 'nav nav-tabs', id: 'tabNavAdmin', role: 'tablist' });
     dynamicContentArea.appendChild(tabNav);
 
     for (let i = 0; i < 2; i++) {
         let tabNavItem = element_builder('li', { class: 'nav-item' });
-        let tabNavAnchor = element_builder('a', { class: 'nav-link', data_toggle: 'tab', role:'tab' });
+        let tabNavAnchor = element_builder('a', { class: 'nav-link', data_toggle: 'tab', role: 'tab' });
         tabNav.appendChild(tabNavItem);
         tabNavItem.appendChild(tabNavAnchor);
 
@@ -31,7 +31,7 @@ function tabCreation() {
             tabNavAnchor.setAttribute('aria-selected', 'true');
             tabNavAnchor.innerHTML = 'Register User';
             tabNavAnchor.addEventListener('click', function (e) {
-               
+
             });
         }
         if (i == 1) {
@@ -41,27 +41,27 @@ function tabCreation() {
             tabNavAnchor.setAttribute('aria-selected', 'false');
             tabNavAnchor.innerHTML = 'User list';
             tabNavAnchor.addEventListener('click', function (e) {
-            
+
             });
         }
     }
     makeTabs();
 }
 
-function makeTabs(){
+function makeTabs() {
     let dynamicContentArea = document.getElementById('dynamicContentArea');
-    let successAlert = element_builder('div', { class: 'alert alert-success', role: 'alert', id: 'alertUserReg' });
-    
-    let tabContent = element_builder('div', { class: 'tab-content'});
-    let tabPaneReg = element_builder('div', {class: 'tab-pane active', id: 'registerUserTab', role:'tabpanel', aria_labelledby:'reg-tab' });
-    let tabPaneUser = element_builder('div', {class: 'tab-pane' , id: 'userTab', role:'tabpanel', aria_labelledby:'users-tab' });
+    let successAlert = element_builder('div', { class: 'alert', role: 'alert', id: 'alertUserReg' });
+
+    let tabContent = element_builder('div', { class: 'tab-content' });
+    let tabPaneReg = element_builder('div', { class: 'tab-pane active', id: 'registerUserTab', role: 'tabpanel', aria_labelledby: 'reg-tab' });
+    let tabPaneUser = element_builder('div', { class: 'tab-pane', id: 'userTab', role: 'tabpanel', aria_labelledby: 'users-tab' });
     dynamicContentArea.appendChild(tabContent);
     tabContent.appendChild(tabPaneReg);
     tabContent.appendChild(tabPaneUser);
     tabPaneReg.appendChild(successAlert);
     renderRegisterUsers();
     getUsers();
-    
+
 }
 
 //Firstly I'd like to note, doing it this way, can be very tricky and messy
@@ -72,37 +72,64 @@ function renderRegisterUsers() {
     let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
     //Inputs
     let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputName', placeholder: 'Name', required: 'true' });
-    let inputUsername = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true' });
-    let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'E-Mail', required: 'true' })
+    let inputUsername = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true', minlength: '3' });
+    let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', aria_describedby: 'emailHelp', placeholder: 'E-Mail', required: 'true' })
+    let inputPassword = element_builder('input', { type: 'password', class: 'form-control', id: 'inputPassword', aria_describedby: 'pwHelp', placeholder: 'Password', required: 'true', minlength: '6', onkeyup: 'checkForm();' });
+    let inputConfirmPassword = element_builder('input', { type: 'password', class: 'form-control', id: 'inputConfirmPassword', aria_describedby: 'confirmPwHelp', placeholder: 'Confirm Password', required: 'true', minlength: '6', onkeyup: 'checkForm();' });
+
+    let nameHelp = element_builder('small', { id: 'nameHelp', class: 'form-text text-muted' });
+    let usernameHelp = element_builder('small', { id: 'usernameHelp', class: 'form-text text-muted' });
+    let emailHelp = element_builder('small', { id: 'emailHelp', class: 'form-text text-muted' });
+    let pwHelp = element_builder('small', { id: 'pwHelp', class: 'form-text text-muted' });
+    let confirmPwHelp = element_builder('small', { id: 'confirmPwHelp', class: 'form-text text-muted' });
+
     // Submit button
-    let submitButton = element_builder('button', { type: 'submit', class: 'btn btn-primary', id: 'regUserBtn' });
+    let submitButton = element_builder('button', { type: 'submit', class: 'btn btn-primary', id: 'regUserBtn', disabled: 'true' });
     submitButton.innerHTML = 'Register user';
     tabPaneReg.appendChild(form);
+
     // Form appends
     form.appendChild(divFormGroupName);
     divFormGroupName.appendChild(inputName);
+    divFormGroupName.appendChild(nameHelp)
     divFormGroupName.appendChild(inputUsername);
+    divFormGroupName.appendChild(usernameHelp)
     divFormGroupName.appendChild(inputEmail);
-    // Creates the two password fields, one for pw input and one for repeating it, conforms with regular UX on reg forms
-    for (let i = 0; i < 2; i++) {
-        let divFormGroupPassword = element_builder('div', { class: 'form-group noselect' });
-        let inputPassword = element_builder('input', { type: 'password', class: 'form-control', placeholder: 'Password', required: 'true' });
+    divFormGroupName.appendChild(emailHelp)
+    divFormGroupName.appendChild(inputPassword);
+    divFormGroupName.appendChild(pwHelp)
+    divFormGroupName.appendChild(inputConfirmPassword);
+    divFormGroupName.appendChild(confirmPwHelp)
 
-        form.appendChild(divFormGroupPassword);
-        divFormGroupPassword.appendChild(inputPassword);
-        if (i == 0) {
-            inputPassword.setAttribute('id', 'pwRegUser');
-        }
-        if (i == 1) {
-            inputPassword.setAttribute('placeholder', 'Confirm Password');
-        }
-    }
+    nameHelp.innerHTML = 'Please provide us with your full name';
+    usernameHelp.innerHTML = 'Username must be atleast 3 characters';
+    emailHelp.innerHTML = 'We will never share your email with anyone else';
+    pwHelp.innerHTML = 'Your password must be 6-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.';
+    confirmPwHelp.innerHTML = 'Confirm your password';
+
     // To do - Compare passwords and validate form
     form.appendChild(submitButton);
     document.getElementById('registerUsersForm').addEventListener('submit', submitUserForm);
 }
 
-
+const checkForm = function () {
+    pw = getInputVal('inputPassword');
+    confirmPw = getInputVal('inputConfirmPassword');
+    alertField = document.getElementById('alertUserReg');
+    subButton = document.getElementById('regUserBtn')
+    if (pw == confirmPw && pw.length > 5 && confirmPw.length > 5) {
+        alertField.classList.add('alert-success');
+        alertField.visibility = 'visible';
+        alertField.innerHTML = 'Passwords match';
+        subButton.disabled = false;
+    }
+    else {
+        alertField.classList.add('alert-danger');
+        alertField.innerHTML = 'Passwords are not matching.'
+        alertField.visibility = 'visible';
+        subButton.disabled = true;
+    }
+}
 
 //User list table
 function renderUserListTable() {
@@ -123,11 +150,11 @@ function createTable() {
     let usernameHeader = element_builder('th');
     usernameHeader.innerHTML = 'Username';
     headRow.appendChild(usernameHeader);
-    
+
     let emailHeader = element_builder('th');
     emailHeader.innerHTML = 'E-Mail';
     headRow.appendChild(emailHeader);
-    
+
 
     userTab.appendChild(table);
     return table;
@@ -152,7 +179,7 @@ function submitUserForm(event) {
     event.preventDefault();
     let Username = getInputVal('inputUsername');
     let Email = getInputVal('inputEmail');
-    let password = getInputVal('pwRegUser');
+    let password = getInputVal('inputPassword');
     let name = getInputVal('inputName');
 
     let regBtn = document.getElementById('regUserBtn');
@@ -160,6 +187,7 @@ function submitUserForm(event) {
 
     let alert = document.getElementById('alertUserReg');
     alert.innerHTML = 'Successfully registered';
+    alert.classList.add('alert-success');
     alert.style.visibility = 'visible';
     database.addUser(Username, Email, name, password);
     //Reset after 1,5 seconds
