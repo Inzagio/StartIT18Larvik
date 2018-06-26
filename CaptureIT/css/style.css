@@ -37,6 +37,14 @@ a {
     padding: 0px 0px 0px 10px;
 }
 
+#menuUser {
+    font-size: 20px;
+    color: white;
+    padding: 0px 0px 0px 10px;
+    float: right;
+    margin: 10px;
+}
+
 .sidenav {
     width: 240px;
     position: absolute;

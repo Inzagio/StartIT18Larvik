@@ -15,7 +15,18 @@ var menu = function () {
         if (user) {
             // User is signed in.
             currentUser = user;
-
+            if (currentUser.displayName == null) {
+                console.log('No displayname, getting from DB');
+                database.getUserInfo(currentUser.uid).then((dbUser) => {
+                    currentUser.updateProfile({
+                        displayName: dbUser.data().Username
+                    });
+                    document.getElementById('menuUser').innerHTML = dbUser.data().Username;
+                });
+            }
+            else {
+                document.getElementById('menuUser').innerHTML = currentUser.displayName;
+            }
             isLoggedIn = true;
             menuSetup();
             setupStatus();
