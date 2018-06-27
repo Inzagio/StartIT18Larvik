@@ -69,6 +69,12 @@ function createStatusTable(container) {
     var loanSharesField = row.insertCell();
     loanSharesField.classList.add('right');
 
+    var graphSolo = document.createElement('div');
+    graphSolo.id = 'graphSoloContainer';
+    graphSolo.classList.add('statusTable');
+    container.appendChild(graphSolo);
+    graphDrawSolo();
+
     return {
         nameField,
         paidSocialField,
