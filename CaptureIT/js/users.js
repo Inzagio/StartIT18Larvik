@@ -128,20 +128,24 @@ function ifAdminDisplay(){
             let helpText = element_builder('small', {class: 'form-text text-muted' });
             divFormGroupName.appendChild(helpText);
             helpText.innerHTML = 'Please select the type of administration privileges wanted for this user';
-            for (let i = 0; i < 3; i++){
+            for (let i = 0; i < 4; i++){
                 let optionsAccessLevels = element_builder('option');
                 divFormGroupName.appendChild(accessLevelSelector);
                 accessLevelSelector.appendChild(optionsAccessLevels);
                
                 if (i == 0){
+                    optionsAccessLevels.innerHTML = 'User';
+                    optionsAccessLevels.setAttribute('value', '0');
+                }
+                if (i == 1){
                     optionsAccessLevels.innerHTML = 'Group Coordinator';
                     optionsAccessLevels.setAttribute('value', '1');
                 }
-                if (i == 1){
+                if (i == 2){
                     optionsAccessLevels.innerHTML = 'Region Manager';
                     optionsAccessLevels.setAttribute('value', '2');
                 }
-                if (i == 2){
+                if (i == 3){
                     optionsAccessLevels.innerHTML = 'Global Manager';
                     optionsAccessLevels.setAttribute('value', '3');
                 }
