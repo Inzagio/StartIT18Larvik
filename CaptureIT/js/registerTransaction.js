@@ -232,10 +232,4 @@
 					if (valueNotEmpty){db.add(newInput)}; 
 			}
 
-		    function showArray() {
-					dbUsers.get().then((show) => { 
-					show.forEach((person) => {
-					console.log(person.data().Username);
-					})
-				})
-			}
+		   
