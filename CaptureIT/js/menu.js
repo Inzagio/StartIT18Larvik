@@ -128,8 +128,8 @@ var menu = function () {
         firebase.auth().signInWithEmailAndPassword(document.forms[form]['user'].value, document.forms[form]['pass'].value).catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorCode, errorMessage);
+            document.getElementById('loginError').innerHTML = error.message;
+            console.log(errorCode);
         });
 
         //isLoggedIn = true;
