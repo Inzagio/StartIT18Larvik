@@ -74,37 +74,15 @@ function renderRegisterUsers() {
     let tabPaneReg = document.getElementById('registerUserTab');
 
     let form = element_builder('form', { id: 'registerUsersForm' });
-    let divFormGroupName = element_builder('div', { class: 'form-group noselect' });
-  
-    let accessLevelSelector = element_builder('select', {class:'form-control', id:'accessLevelSelect', visibility:'hidden', disabled:'true'});
-    for (let i = 0; i < 3; i++){
-        let optionsAccessLevels = element_builder('option');
-        divFormGroupName.appendChild(accessLevelSelector);
-        accessLevelSelector.appendChild(optionsAccessLevels);
-       
-        if (i == 0){
-            optionsAccessLevels.innerHTML = 'Group Coordinator';
-            optionsAccessLevels.setAttribute('value', '1');
-        }
-        if (i == 1){
-            optionsAccessLevels.innerHTML = 'Region Manager';
-            optionsAccessLevels.setAttribute('value', '2');
-        }
-        if (i == 2){
-            optionsAccessLevels.innerHTML = 'Global Manager';
-            optionsAccessLevels.setAttribute('value', '3');
-        }
-        
-    }
-    accessLevelSelector.setAttribute('onchange', 'getValueFromOptions();' )
-    
+    let divFormGroupName = element_builder('div', { class: 'form-group noselect', id:'divFormGroup' });
     //Inputs
     let inputName = element_builder('input', { type: 'text', class: 'form-control', id: 'inputName', placeholder: 'Name', required: 'true' });
     let inputUsername = element_builder('input', { type: 'text', class: 'form-control', id: 'inputUsername', placeholder: 'Username', required: 'true', minlength: '3' });
     let inputEmail = element_builder('input', { type: 'email', class: 'form-control', id: 'inputEmail', aria_describedby: 'emailHelp', placeholder: 'E-Mail', required: 'true' })
     let inputPassword = element_builder('input', { type: 'password', class: 'form-control', id: 'inputPassword', aria_describedby: 'pwHelp', placeholder: 'Password', required: 'true', minlength: '6', onkeyup: 'checkForm();' });
     let inputConfirmPassword = element_builder('input', { type: 'password', class: 'form-control', id: 'inputConfirmPassword', aria_describedby: 'confirmPwHelp', placeholder: 'Confirm Password', required: 'true', minlength: '6', onkeyup: 'checkForm();' });
-
+    
+    //Help text
     let nameHelp = element_builder('small', { id: 'nameHelp', class: 'form-text text-muted' });
     let usernameHelp = element_builder('small', { id: 'usernameHelp', class: 'form-text text-muted' });
     let emailHelp = element_builder('small', { id: 'emailHelp', class: 'form-text text-muted' });
@@ -118,17 +96,16 @@ function renderRegisterUsers() {
 
     // Form appends
     form.appendChild(divFormGroupName);
-    divFormGroupName.appendChild(accessLevelSelector);
-    divFormGroupName.appendChild(inputName);
     divFormGroupName.appendChild(nameHelp)
-    divFormGroupName.appendChild(inputUsername);
+    divFormGroupName.appendChild(inputName);
     divFormGroupName.appendChild(usernameHelp)
-    divFormGroupName.appendChild(inputEmail);
+    divFormGroupName.appendChild(inputUsername);
     divFormGroupName.appendChild(emailHelp)
-    divFormGroupName.appendChild(inputPassword);
+    divFormGroupName.appendChild(inputEmail);
     divFormGroupName.appendChild(pwHelp)
-    divFormGroupName.appendChild(inputConfirmPassword);
+    divFormGroupName.appendChild(inputPassword);
     divFormGroupName.appendChild(confirmPwHelp)
+    divFormGroupName.appendChild(inputConfirmPassword);
 
     nameHelp.innerHTML = 'Please provide us with your full name';
     usernameHelp.innerHTML = 'Username must be atleast 3 characters';
@@ -141,14 +118,39 @@ function renderRegisterUsers() {
     document.getElementById('registerUsersForm').addEventListener('submit', submitUserForm);
 }
 
-//Checks databse for current users acccess level
+//Checks databse for current users acccess level. If admin acces level is > 2, render access level selection list. 
 function ifAdminDisplay(){
     database.getUserInfo(currentUser.uid).then((dbUser) => {
-        let optionsList = document.getElementById('accessLevelSelect');
+        let divFormGroupName = document.getElementById('divFormGroup');
         //console.log(dbUser.data().accessLevel);
         if (dbUser.data().accessLevel >= 2){
-            optionsList.disabled = false;
-            optionsList.style.visibility = 'visible';
+            let accessLevelSelector = element_builder('select', {class:'form-control', id:'accessLevelSelect'});
+            let helpText = element_builder('small', {class: 'form-text text-muted' });
+            divFormGroupName.appendChild(helpText);
+            helpText.innerHTML = 'Please select the type of administration privileges wanted for this user';
+            for (let i = 0; i < 4; i++){
+                let optionsAccessLevels = element_builder('option');
+                divFormGroupName.appendChild(accessLevelSelector);
+                accessLevelSelector.appendChild(optionsAccessLevels);
+               
+                if (i == 0){
+                    optionsAccessLevels.innerHTML = 'User';
+                    optionsAccessLevels.setAttribute('value', '0');
+                }
+                if (i == 1){
+                    optionsAccessLevels.innerHTML = 'Group Coordinator';
+                    optionsAccessLevels.setAttribute('value', '1');
+                }
+                if (i == 2){
+                    optionsAccessLevels.innerHTML = 'Region Manager';
+                    optionsAccessLevels.setAttribute('value', '2');
+                }
+                if (i == 3){
+                    optionsAccessLevels.innerHTML = 'Global Manager';
+                    optionsAccessLevels.setAttribute('value', '3');
+                }
+                
+            }
         }
        
     });

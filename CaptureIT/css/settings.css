@@ -1,35 +1,4 @@
-.infoDiv {
-    margin: 10px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 10px;
-}
 
-#selectCurrencyTag {
-    background-color: lightgrey;
-    margin-left: 20px;
-    border-radius: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border: 0px;
-}
-
-.settingsInput {
-    margin-left: 20px;
-    border-radius: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border: 0px;
-    background-color: lightgrey;
-    -moz-appearance: none;
-}
-.settingsInput::-webkit-outer-spin-button,
-.settingsInput::-webkit-inner-spin-button{
-    -webkit-appearance: none;
-}
-
-.settingsBtn {
-    border: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+.input-group-text {
+    width: 30vw;
 }

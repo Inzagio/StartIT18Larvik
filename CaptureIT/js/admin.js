@@ -31,7 +31,19 @@ function element_builder(type, attrs) {
 
 function admin_panel() {
     menu.setBreadcrumbs('Admin Console');
-    renderCard();
+    database.getUserInfo(currentUser.uid).then((dbUser) => {
+        if (dbUser.data().accessLevel >= 2) {
+            renderCard();
+        } else {
+            resetContainer();
+            let externalCont = document.getElementById('container');
+            let errorBox = element_builder('div',{id:'errorBoxAdmin'});
+            externalCont.appendChild(errorBox);
+            let pTagAdmin = element_builder('p');
+            pTagAdmin.innerHTML  = 'Error 401 - Unauthorized';
+            errorBox.appendChild(pTagAdmin);
+        }
+    });
 }
 
 function resetContainer() {
@@ -57,7 +69,7 @@ function renderCard() {
     // i == 1
     renderCardContent('fa-chart-area', 'Statistics', graphDrawChooser);
     // i == 2
-    renderCardContent('fa-cog', 'Settings', null);
+    renderCardContent('fa-cog', 'Settings', drawSettings);
 
     let dynamicContentArea = element_builder('div', { class: 'container', id: 'dynamicContentArea' });
     container.appendChild(dynamicContentArea);
@@ -67,7 +79,7 @@ function createCards() {
     let row = document.getElementById('mainNavRow');
 
     let col = element_builder('div', { class: "col-sm-4" });
-    let card = element_builder('div', { class: 'card text-center bg-light my-2'});
+    let card = element_builder('div', { class: 'card text-center bg-light my-2' });
     let cardBlock = element_builder('div', { class: 'card-block mt-2' });
     let cardTitle = element_builder('h3', { class: 'card-title' }); //Insert text on this node
     let icons = document.createElement('i');
