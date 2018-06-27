@@ -1,6 +1,6 @@
 			function registerTransaction() { // Creates container element if it has been removed.
 			var container = getContainer();
-			var calendarType = typeof InstallTrigger !== "undefined" ? "date" : "week";
+			var calendarType = typeof InstallTrigger !== "undefined" ? "date" : "week"; //sets type of calendar depending on if the browser can read weekNr or not
 
 			menu.setBreadcrumbs('Register Transactions');
 			container.innerHTML =
@@ -31,11 +31,7 @@
 				'<button class="dropbtn"> Name </button>' +
 				'<div id="nameDropdown" class="dropdown-content">' +
 				'<input type="text" placeholder="Search name" id="nameInput" onkeyup="filter()">' +
-				'<a onclick="putName(this)"> Abdi </a>' +
-				'<a onclick="putName(this)"> Hasan </a>' +
-				'<a onclick="putName(this)"> Mohamed </a> ' +
-				'<a onclick="putName(this)"> Li </a>' +
-				'<a onclick="putName(this)"> Zainah </a>' +
+				
 				'</div> ' +
 				'</div>' +
 				'</div>' +
@@ -92,15 +88,31 @@
 
 				'<div class="box submit"> ' +
 				'<input id="submit" type="submit" value="Submit" onclick="submit()"> ' +
-			'<button onclick="showArray()">DB in console</button>' +
+			'</br><button onclick="showArray()">DB in console</button>' +
 				'</div>' +
+
+				'<div id="dbNames"></div>' +
+
 				'</div>';
-				setDateToday();  
+
+				setDateToday(); 
+				
+				getUsers();
 				
 		}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
 			
+			    function getUsers() {
+					dbUsers.get().then((show) => { 
+					show.forEach((person) => {
+					document.getElementById("nameDropdown").innerHTML  += '<a onclick="putName(this)">' + person.data().Username + '</a>';
+					})
+				})
+			}
+
+			
+
 			function filter() {
 				var input = document.getElementById("nameInput");
 				var filter = input.value.toUpperCase();
@@ -221,9 +233,9 @@
 			}
 
 		    function showArray() {
-					db.get().then((show) => { 
+					dbUsers.get().then((show) => { 
 					show.forEach((person) => {
-					console.log(person.data());
+					console.log(person.data().Username);
 					})
 				})
 			}
