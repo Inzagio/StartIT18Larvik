@@ -92,14 +92,14 @@
 				'</div>';
 
 				setDateToday(); 
-				getUsers();
+				getUsersRegTrans();
 				
 			}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
 			
 			//get usernames from DB
-			function getUsers() {
+			function getUsersRegTrans() {
 			    dbUsers.get().then((show) => { 
 				show.forEach((person) => {
 				document.getElementById("nameDropdown").innerHTML  += '<a onclick="putName(this)">' + person.data().Username + '</a>';
