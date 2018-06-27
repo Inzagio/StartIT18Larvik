@@ -69,7 +69,7 @@ function renderCard() {
     // i == 1
     renderCardContent('fa-chart-area', 'Statistics', graphDrawChooser);
     // i == 2
-    renderCardContent('fa-cog', 'Settings', null);
+    renderCardContent('fa-cog', 'Settings', drawSettings);
 
     let dynamicContentArea = element_builder('div', { class: 'container', id: 'dynamicContentArea' });
     container.appendChild(dynamicContentArea);

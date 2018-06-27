@@ -1,131 +1,145 @@
 //JavaScript source code
 
 'use strict'
+var select;
+var lang;
+
+function currencySelector() {
+	select = document.getElementById('selectCurrency');
+	var options = [' GBP', ' NOK', ' MWK', ' TZS', ' USD'];
+        options.forEach(function (option) {
+            let optionSelect = document.createElement('option');
+            select.appendChild(optionSelect);
+            optionSelect.innerHTML += option;
+            optionSelect.value = option;
+        });
+}
+
+function languageSelector() {
+	lang = document.getElementById('selectLanguage');
+	var options = [' English', ' Norsk', ' Swahili', ' French'];
+        options.forEach(function (option) {
+            let optionSelect = document.createElement('option');
+            lang.appendChild(optionSelect);
+            optionSelect.innerHTML += option;
+            optionSelect.value = option;
+        });
+	
+
+}
+
+function changeLanguage() {
+	lang = document.getElementById('selectLanguage');
+	var languageLabel = document.getElementById('languageLabel');
+	language = lang.value;
+	languageLabel.innerHTML = 'Language' + language;
+}  
+
+function changeCurrency() {
+	select = document.getElementById('selectCurrency');
+	var currencyLabel = document.getElementById('currencyLabel');
+	currency = select.value;
+	currencyLabel.innerHTML = 'Currency' + currency;
+}
+
+function submitShares() {
+	let htmlToCHange = document.getElementById('sharesValueField');
+	let valueToSet = document.getElementById('sharesInput');
+	communityValue = valueToSet.value;
+	htmlToCHange.innerHTML = 'Shares Value: ' + communityValue;
+}
+
+function submitCommunity() {
+	let htmlToCHange = document.getElementById('communityValueField');
+	let valueToSet = document.getElementById('communityInput');
+	communityValue = valueToSet.value;
+	htmlToCHange.innerHTML = 'Social Payment: ' + communityValue;
+}
+
+function submitToLendCommunity() {
+	let htmlToCHange = document.getElementById('toLendSocialField');
+	let valueToSet = document.getElementById('toLendSocialInput');
+	toLendSocial = valueToSet.value;
+	htmlToCHange.innerHTML = 'Max Loan from Social: ' + toLendSocial;
+}
+
+function submitToLendShares() {
+	let htmlToCHange = document.getElementById('toLendSharesField');
+	let valueToSet = document.getElementById('toLendSharesInput');
+	toLendShares = valueToSet.value;
+	htmlToCHange.innerHTML = 'Max Loan from Shares: ' + toLendShares;
+}
 
 function drawSettings() {
     //getting contentbox from admin.js and blanking the page
-    var containerbox = document.getElementById('contentbox');
-    containerbox.innerHTML = '';
+    var settingsHtml = document.getElementById('dynamicContentArea');
+	settingsHtml.innerHTML =
+	
+	//currency
+    '<div class="input-group mb-3">'
+	+'<div class="input-group-prepend">'
+    +'<label class="input-group-text" id="currencyLabel" for="inputGroupSelect01">Currency :' + currency + '</label>'
+	+'</div>'
+	+'<select class="custom-select" id="selectCurrency" onchange="changeCurrency()">'
+	+  '<option selected>Choose currency for vilage</option>'
+	+'</select>'
+	+'</div>'
 
-    //setting local variables to be used for text generation
-    var txt = ['Currency: ', 'Shares value: ', 'Minimum savings: ',
-     'Save', 'Max Loan (times saved amount) ']
+	//language
+	+'<div class="input-group mb-3">'
+	+'<div class="input-group-prepend">'
+    +'<label class="input-group-text" id="languageLabel" for="inputGroupSelect01">Language :' + language + '</label>'
+	+'</div>'
+	+'<select class="custom-select" id="selectLanguage" onchange="changeLanguage()">'
+	+  '<option selected>Choose Language</option>'
+	+'</select>'
+	+'</div>'
+	
+	//social
+    +'<div class="input-group mb-3">'
+	+'<div class="input-group-prepend">'
+	+  '<span class="input-group-text" id="communityValueField">Social Payment Value: ' + communityValue + '</span>'
+	+'</div>'
+	+'<input type="number"  id="communityInput" class="form-control" placeholder="input value of social payment" aria-label="Username" aria-describedby="basic-addon1">'
+	+'<div class="input-group-append">'
+    +'<button class="btn btn-outline-primary" type="button" onclick="submitCommunity()">Submit</button>'
+  	+'</div>'
+	+'</div>'
+	
 
-    //setting variables so that currency can be updated in all fields
-    var currencyDiv;
-    var sharesDiv;
-    var communityDiv;
-    var toLendDiv; 
+	//shares
+	+'<div class="input-group mb-3">'
+	+'<div class="input-group-prepend">'
+	+  '<span class="input-group-text" id="sharesValueField">Shares Value:' + sharesValue + '</span>'
+	+'</div>'
+	+'<input type="number"  id="sharesInput" class="form-control" placeholder="input value of each share" aria-label="Username" aria-describedby="basic-addon1">'
+	+'<div class="input-group-append">'
+    +'<button class="btn btn-outline-primary" type="button" onclick="submitShares()">Submit</button>'
+  	+'</div>'
+	+'</div>'
+	
+	//tolend from social
+	+'<div class="input-group mb-3">'
+	+'<div class="input-group-prepend">'
+	+  '<span class="input-group-text" id="toLendSocialField">Max Loan from Social: ' + toLendSocial + '</span>'
+	+'</div>'
+	+'<input type="number" id="toLendSocialInput" class="form-control" placeholder="number x saved amount" aria-label="Username" aria-describedby="basic-addon1">'
+	+'<div class="input-group-append">'
+    +'<button class="btn btn-outline-primary" type="button" onclick="submitToLendCommunity()">Submit</button>'
+  	+'</div>'
+	+'</div>'
+	
+	//to lend from shares
+	+'<div class="input-group mb-3">'
+	+'<div class="input-group-prepend">'
+	+  '<span class="input-group-text" id="toLendSharesField">Max Loan from Shares: ' + toLendShares + '</span>'
+	+'</div>'
+	+'<input type="number" id="toLendSharesInput" class="form-control" placeholder="number x saved amount" aria-label="amount shares" aria-describedby="basic-addon1">'
+	+'<div class="input-group-append">'
+    +'<button class="btn btn-outline-primary" type="button" onclick="submitToLendShares()">Submit</button>'
+  	+'</div>'
+	+'</div>';
 
-    //running all the functions to create settings
-    createList();
-    createShares();
-    createCommunity();
-    createToLend();
-    //----------------------------------------------------------------------------------------------
-
-    //Currency
-    function createList() {
-        currencyDiv = document.createElement('div');
-        currencyDiv.className = 'infoDiv';
-        currencyDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[0] + currency + '</div>';
-        containerbox.appendChild(currencyDiv);
-
-        var selectList = document.createElement('select');
-        selectList.setAttribute('id', 'selectCurrencyTag');
-        selectList.onchange = changeCurrency;
-        containerbox.appendChild(selectList);
-        
-        //populating the select-list
-        var options = [' GBP', ' NOK', ' MWK', ' TZS', ' USD', currency[0]];
-        options.forEach(function (option) {
-            var optionSelect = document.createElement('option');
-            selectList.appendChild(optionSelect);
-            optionSelect.innerHTML += option;
-            optionSelect.value = option;
-            selectList.value = currency;
-        });
-
-        //Changing the currency global variable and currency selected
-        function changeCurrency() {
-            var selectList = document.getElementById('selectCurrencyTag');
-            currency = selectList.value;
-            currencyDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[0] + currency + '</div>';
-            sharesDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[1] + sharesValue + currency + '</div>';
-            communityDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[2] + communityValue + currency + '</div>';
-            toLendDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[4] + toLend + '</div>';
-        }  
-    }
-    //----------------------------------------------------------------------------------------------
-
-    function createShares() {
-        sharesDiv = document.createElement('div');
-        sharesDiv.className = 'infoDiv';
-        containerbox.appendChild(sharesDiv);
-        var sharesHTML = '</br>' + '</br>' + '<div>' + txt[1] + sharesValue + currency + '</div>';
-        sharesDiv.innerHTML = sharesHTML;
-        var sharesBox = document.createElement('input');
-        sharesBox.setAttribute('class', 'settingsInput');
-        sharesBox.setAttribute('type', 'number');
-        containerbox.appendChild(sharesBox);
-
-        var sharesBtn = document.createElement('button');
-        sharesBtn.setAttribute('class', 'settingsBtn');
-        sharesBtn.innerHTML = txt[3];
-        sharesBtn.onclick = submitShares;
-        containerbox.appendChild(sharesBtn);
-
-        function submitShares() {
-            sharesValue = sharesBox.value;
-            sharesDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[1] + sharesValue + currency + '</div>';
-        }
-    }
-    //----------------------------------------------------------------------------------------------
-
-    function createCommunity() {
-        communityDiv = document.createElement('div');
-        communityDiv.className = 'infoDiv';
-        communityDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[2] + communityValue + currency + '</div>';
-        containerbox.appendChild(communityDiv);
-        
-        var communityBox = document.createElement('input');
-        communityBox.setAttribute('class', 'settingsInput');
-        communityBox.setAttribute('type', 'number');
-        containerbox.appendChild(communityBox);
-
-        var communityBtn = document.createElement('button');
-        communityBtn.setAttribute('class', 'settingsBtn');
-        communityBtn.innerHTML = txt[3];
-        communityBtn.onclick = submitCommunity;
-        containerbox.appendChild(communityBtn);
-
-        function submitCommunity() {
-            communityValue = communityBox.value;
-            communityDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[2] + communityValue + currency + '</div>';
-        }
-    }
-    //-----------------------------------------------------------------------------------------------
-
-    function createToLend() {
-        toLendDiv = document.createElement('div');
-        toLendDiv.className = 'infoDiv';
-        toLendDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[4] + toLend + '</div>';
-        containerbox.appendChild(toLendDiv);
-
-        var toLendBox = document.createElement('input');
-        toLendBox.setAttribute('class', 'settingsInput');
-        toLendBox.setAttribute('type', 'number');
-        containerbox.appendChild(toLendBox);
-
-        var toLendBtn = document.createElement('button');
-        toLendBtn.setAttribute('class', 'settingsBtn');
-        toLendBtn.innerHTML = txt[3];
-        toLendBtn.onclick = submitToLend;
-        containerbox.appendChild(toLendBtn);
-
-        function submitToLend() {
-            toLend = toLendBox.value;
-            toLendDiv.innerHTML = '</br>' + '</br>' + '<div>' + txt[4] + toLend + '</div>';
-        }
-    }
+	currencySelector();
+	languageSelector();
 }

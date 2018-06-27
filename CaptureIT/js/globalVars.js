@@ -11,7 +11,12 @@ var sharesValue = 10;
 //Defines the community payment (minimum ammount to save each month)
 var communityValue = 20;
 //Defines what a user is allowed to borrow (users savings * toLend)
-var toLend = 2.5;
+var toLendSocial = 2.5;
+var toLendShares = 2.5;
+
+//defines language
+var language = ' English';
+
 
 var users = ['Jon', 'Arve', 'Torgeir', 'Leif', 'Paul', 'Johannes'];
 
