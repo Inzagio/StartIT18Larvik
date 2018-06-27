@@ -88,31 +88,26 @@
 
 				'<div class="box submit"> ' +
 				'<input id="submit" type="submit" value="Submit" onclick="submit()"> ' +
-			'</br><button onclick="showArray()">DB in console</button>' +
 				'</div>' +
-
-				'<div id="dbNames"></div>' +
-
 				'</div>';
 
 				setDateToday(); 
-				
 				getUsers();
 				
-		}
+			}
 			const db = firebase.firestore().collection('registerTransaction');
 			var nameDrop = document.getElementById("nameDropdown");
 			
-			    function getUsers() {
-					dbUsers.get().then((show) => { 
-					show.forEach((person) => {
-					document.getElementById("nameDropdown").innerHTML  += '<a onclick="putName(this)">' + person.data().Username + '</a>';
+			//get usernames from DB
+			function getUsers() {
+			    dbUsers.get().then((show) => { 
+				show.forEach((person) => {
+				document.getElementById("nameDropdown").innerHTML  += '<a onclick="putName(this)">' + person.data().Username + '</a>';
 					})
 				})
 			}
 
-			
-
+			//Search/filter namelist dropdown
 			function filter() {
 				var input = document.getElementById("nameInput");
 				var filter = input.value.toUpperCase();
