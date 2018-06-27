@@ -35,8 +35,13 @@ function admin_panel() {
         if (dbUser.data().accessLevel >= 2) {
             renderCard();
         } else {
+            resetContainer();
             let externalCont = document.getElementById('container');
-            externalCont.innerHTML = 'Error 401 - Unauthorized'
+            let errorBox = element_builder('div',{id:'errorBoxAdmin'});
+            externalCont.appendChild(errorBox);
+            let pTagAdmin = element_builder('p');
+            pTagAdmin.innerHTML  = 'Error 401 - Unauthorized';
+            errorBox.appendChild(pTagAdmin);
         }
     });
 }
