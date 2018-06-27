@@ -42,7 +42,7 @@ function drawGraphSolo() {
                 fontSize: 25
             },
             legend: {
-                display: true,
+                display: false,
                 position: 'right',
                 labels: {
                     fontColor: '#000'
