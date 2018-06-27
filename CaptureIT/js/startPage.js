@@ -19,6 +19,8 @@ function setupStartPage() {
                         <br>\
                             <input id="startfield2" type="password" placeholder="Password" name="pass" required>\
                                 <br>\
+            <span id="loginError"></span>\
+                                <br>\
                                     <input id="startbutton" type="submit" value="Log in" />\
                                     </form>\
                                     <br>\
